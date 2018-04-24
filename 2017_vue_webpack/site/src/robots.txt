@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /data/
+Disallow: /data_tmp/
+Disallow: /markup_template/
+
+User-agent: Googlebot-Image
+Disallow: /assets/images/
+
+Sitemap: http://example.co.kr/sitemap.xml

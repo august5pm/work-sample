@@ -1,0 +1,66 @@
+<!doctype html >
+<html lang="__LANG__" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="manifest" href="/manifest.json">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <!-- iOS home screen favorite -->
+    <link rel="apple-touch-icon" href="/favicon/apple-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">   <!-- iPad -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">   <!-- iPhone -->
+
+    <meta name="apple-mobile-web-app-capable" content="yes">    <!-- iOS 홈 화면에 즐겨찾기 추가시 사파리 ui 보여질지 여부-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"> <!-- iOS 홈 화면에 즐겨찾기 추가시 상당 status바 스타일 지정 default / black /  black-translucent -->
+    <meta name="format-detection" content="telephone=no"> <!-- iOS 페이지 내의 컨텐츠 중에 전화번호 형식으로 된 컨텐츠를 자동으로 디텍팅하여 전화연결 호출 링크를 만드는 기능을 끄기 -->
+
+    <!-- ======================================================================================================================================================================= -->
+
+    <!-- SEO / SNS Info -->
+
+    <!-- ======================================================================================================================================================================= -->
+
+    <script type="text/javascript" src="/assets/js/common.bundle.js"></script>
+    <script>
+        if(Detectizr.device.type != "mobile")   document.write('<link rel="stylesheet" type="text/css" href="/assets/css/style_pc.css">');
+        else  document.write('<link rel="stylesheet" type="text/css" href="/assets/css/style_mobile.css">');
+    </script>
+</head>
+<body class="errors">
+<div id="app" class="loading">
+    <component-skip></component-skip>
+    <div id="el_body_wrap" class="body-wrapper">
+        <common-group-header :navidata="this.navidata"> <p class="hlogo"><span class="blind">afo</span></p></common-group-header>
+        <common-group-util-top :utildata="this.utildata"></common-group-util-top>
+
+        <!-- Main Area -->
+        <div id="main" class="e404">
+            <div class="inner-wrap">
+                <!-- Add Contents -->
+
+                    <section>
+                        <i class="lf-space"></i>
+                        <div class="inner-wrap">
+                            <h1>__404_message_title__</h1>
+                            <div class="desc">
+                                __404_message_desc__
+                            </div>
+                        </div>
+                    </section>
+
+                <!-- //Add Contents -->
+            </div>
+        </div>
+
+        <common-group-util-bottom :utildata="this.utildata"></common-group-util-bottom>
+        <common-group-footer :footerdata="this.footerdata"></common-group-footer>
+    </div>
+    <component-popup></component-popup>
+</div>
+
+<script type="text/javascript" src="/assets/js/basic.bundle.js"></script>
+</body>
+</html>

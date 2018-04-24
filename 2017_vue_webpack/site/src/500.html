@@ -1,0 +1,48 @@
+<!doctype html >
+<html lang="__LANG__" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Internal Server Error</title>
+
+    <script type="text/javascript" src="/assets/js/common.bundle.js"></script>
+    <script>
+        if(Detectizr.device.type != "mobile")   document.write('<link rel="stylesheet" type="text/css" href="/assets/css/style_pc.css">');
+        else  document.write('<link rel="stylesheet" type="text/css" href="/assets/css/style_mobile.css">');
+    </script>
+</head>
+<body class="errors">
+<div id="app" class="loading">
+    <component-skip></component-skip>
+    <div id="el_body_wrap" class="body-wrapper">
+        <common-group-header :navidata="this.navidata"> <p class="hlogo"><span class="blind">afo</span></p></common-group-header>
+        <common-group-util-top :utildata="this.utildata"></common-group-util-top>
+
+        <!-- Main Area -->
+        <div id="main" class="e404">
+            <div class="inner-wrap">
+                <!-- Add Contents -->
+
+                <section>
+                    <h1>error 500</h1>
+                    <div class="desc">
+                        <!--<p>방문하시려는 페이지의 주소가 잘못 입력되었거나
+                            주소의 변경 혹은 삭제되어 요청하신 페이지를 찾을 수 없습니다.</p>
+
+                        <p>입력하신 주소가 정확한지 다시 한번 확인해주시기 바랍니다.
+                            감사합니다.</p>-->
+                    </div>
+                </section>
+                <!-- //Add Contents -->
+            </div>
+        </div>
+
+        <common-group-util-bottom :utildata="this.utildata"></common-group-util-bottom>
+        <common-group-footer :footerdata="this.footerdata"></common-group-footer>
+    </div>
+    <component-popup></component-popup>
+</div>
+
+<script type="text/javascript" src="/assets/js/basic.bundle.js"></script>
+</body>
+</html>

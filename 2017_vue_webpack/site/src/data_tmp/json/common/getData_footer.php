@@ -1,0 +1,54 @@
+"footer":{
+    "menu":{
+        "lists":[
+            {
+                "text":"Support",
+                "link":"/",
+                "target":"_self"
+            },
+            {
+                "text":"Parent's Guide",
+                "link":"/",
+                "target":"_self"
+            },
+            {
+                "text":"Terms of Service",
+                "link":"/",
+                "target":"_self"
+            },
+            {
+                "text":"Privacy Policy",
+                "link":"/",
+                "target":"_self"
+            }
+        ]
+    },
+    "sns":{
+        "lists":[
+            {
+                "icon":"",
+                "text":"facebook",
+                "link":"/",
+                "target":"_self"
+            },
+            {
+                "icon":"",
+                "text":"tweeter",
+                "link":"/",
+                "target":"_self"
+            },
+            {
+                "icon":"",
+                "text":"instagram",
+                "link":"/",
+                "target":"_self"
+            },
+            {
+                "icon":"",
+                "text":"youtube",
+                "link":"/",
+                "target":"_self"
+            }
+        ]
+    }
+}
