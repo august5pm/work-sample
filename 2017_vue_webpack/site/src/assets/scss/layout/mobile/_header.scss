@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* header style */
+
+header{
+    position: relative; z-index: 100;
+    width:100%; //height:calc-unit(50px);
+
+
+    > .inner-wrap {
+        position: relative; z-index: 102;
+        width:100%; height: inherit;
+        background: #fff;
+    }
+
+
+    .hlogo{
+        width:40%;
+        > a {
+            display: block;
+            width:100%;
+            padding: calc-unit(15px 15px);
+
+            &:after{
+                display: block;
+                width:calc-unit(90px); height:calc-unit(20px);
+                background: url('/assets/images/common/etc/logo_lexus@2x.png') no-repeat 0 0;
+                background-size:contain ;
+            }
+        }
+    }
+
+    .overlay{
+        @extend %overlay;
+        z-index: 101;
+    }
+
+}
+
+

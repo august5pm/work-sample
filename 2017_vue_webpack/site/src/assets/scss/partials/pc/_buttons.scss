@@ -1,0 +1,300 @@
+@charset "utf-8";
+// Buttons module
+
+// * 주석 가이드*
+//##  메인 카테고리
+//#서브 카테고리
+//**  카테고리 설명
+
+//## 기본 버튼
+.btn-base{
+    display: inline-block;
+    position: relative;
+    min-width:110px;  height: 32px;
+    font-size:0;  color:#000; line-height: 32px;
+    text-align: center;  vertical-align:top; text-indent: 0;
+    overflow: hidden;
+
+    &:before{
+
+    }
+
+    > span{
+        display: inline-block;
+        position: relative;
+        font-size: 12px;
+        vertical-align:top;
+        pointer-events:none;
+    }
+
+    // 아이콘을 포함할때
+    &.only-icon{
+        // 아이콘만 존재하는 버튼
+        min-width:0;
+        > span {
+            @extend .blind;
+        }
+    }
+    &.inc-icon{
+        // 아이콘과 텍스트를 포함한 버튼
+        //font-size: 0;
+        > span {
+
+        }
+        .tag-label{
+            width: 2em; height: 2em;
+            font-size: 10px; line-height: 2em; vertical-align: middle !important;
+
+        }
+    }
+}
+
+
+.btn-capsule{
+    @extend .btn-base;
+    height:32px;
+    line-height: 32px;
+    border:1px solid #D4D4D4;
+    border-radius: 16px;
+    padding:0 20px;
+
+    > span{
+
+    }
+}
+
+//## 사각형 버튼
+.btn-square{
+    @extend .btn-base;
+    min-width:80px; height:34px;
+    line-height: 34px;
+    padding:0 25px;
+    border: 1px solid #D4D4D4;
+    font-size: 12px;
+    color:#000;
+    //box-sizing: content-box;
+    transition: all 0.2s;
+    span {
+        vertical-align: top;
+        margin-top:-1px;
+    }
+}
+
+//## 원형 플레이 버튼
+.btn-play{
+    width:77px; height:77px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    text-align:center;
+    transition: all 0.2s;
+    &:after{
+        display: inline-block;
+        position: absolute;  top: 50%; left: 50%;
+        border-left:16px solid #000;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+        margin: -9px 0 0 -6px;
+    }
+
+}
+
+//## 보통 버튼transi
+.btn-lax {
+    min-width:185px; height:55px;
+    line-height: 55px;
+    padding:0 60px;
+    border: 2px solid #000;
+    background-color:#fff;
+    color:#000;
+    font-size: 14px;
+    span {
+        margin-top:-2px;
+    }
+}
+
+//## 강조 버튼
+.btn-square.btn-stress {
+    min-width:185px; height:55px;
+    line-height: 55px;
+    padding:0 60px;
+    border: 2px solid #fff;
+    //background-color:#000;
+    color:#fff;
+    font-size:14px;
+    span {
+        margin-top:-2px;
+    }
+}
+
+//## 빅사이즈 특수 버튼
+.btn-square.btn-big {
+    min-width:340px; height:106px;
+    padding: 0 100px;
+    border:2px solid #000;
+    background-color:#fff;
+    color:#000;
+    line-height:106px;
+    span {
+        @include font('bold', 20px);
+        margin-top:-2px;
+    }
+
+    // 외부 링크 아이콘 포함 시
+    .icon-outlink {
+        padding-left:3px;
+        font-size:12px;
+        margin-top:-7px;
+        vertical-align:middle !important;
+    }
+
+    // 다운로드 아이콘 포함시
+    .icon-down {
+        padding-left:3px;
+        font-size:14px;
+        margin-top:-7px;
+        vertical-align:middle !important;
+    }
+}
+.btn-square.btn-big-bk {
+    min-width:340px; height:106px;
+    padding: 0 100px;
+    border:2px solid #fff;
+    //background-color:#000;
+    color:#fff;
+    line-height:106px;
+    span {
+        @include font('bold', 20px);
+        margin-top:-2px;
+    }
+
+    // 외부 링크 아이콘 포함 시
+    .icon-outlink-w {
+        padding-left:3px;
+        margin-top:-7px;
+        font-size:12px;
+        vertical-align:middle !important;
+    }
+
+    // 외부 링크 아이콘 포함 시
+    .icon-down-w {
+        padding-left:3px;
+        margin-top:-7px;
+        font-size:14px;
+        vertical-align:middle !important;
+    }
+}
+
+.btn-square.btn-bigger{
+    min-width:340px; height:150px;
+    line-height:150px;
+    padding: 0 100px;
+    span {
+        font-size:15px;
+        margin-top:-2px;
+    }
+}
+
+//## 비활성화 버튼
+.btn-inactive {
+    border-color:#D4D4D4 !important;
+    background-color:#fff !important;
+    color:#D4D4D4 !important;
+    pointer-events:none;
+    cursor:default;
+}
+
+.btn-group{display:block; }
+
+
+/* 버튼 그룹간 간격 */
+.btns-wrap{position: relative; font-size: 0;}
+.btns-wrap .btn-group{
+    display:inline-block; overflow:hidden; font-size: 0;
+    .btn-base:after{border-radius: 0;}
+    .btn-base{
+        margin-left:10px;
+        &.btn-stress {
+            margin-left:10px;
+        }
+        &:first-child{
+            margin-left:0; margin-right:0;
+        }
+    }
+}
+.btns-wrap.talign-l .btn-group{margin-right:16px;}
+.btns-wrap.talign-c .btn-group{margin:0 8px;}
+.btns-wrap.talign-r .btn-group{margin-left:16px;}
+
+.btns-wrap.align-set{width:100%; }
+.btns-wrap.align-set:after{content:''; display: table; clear:both; }
+.btns-wrap.align-set .align-left{position: relative; z-index: 2; float:left;}
+.btns-wrap.align-set .align-left .btn-group{margin-right:16px;}
+.btns-wrap.align-set .align-center{position: absolute; left:0; top:0; width:100%; text-align:center; }
+.btns-wrap.align-set .align-center .btn-group{margin:0 8px;}
+.btns-wrap.align-set .align-right{position: relative; z-index: 1; float:right;}
+.btns-wrap.align-set .align-right .btn-group{margin-left:16px;}
+
+
+// 컬러 정의
+.btn-base.on{background-color: #000 !important; color:#fff !important;} //toggle 버튼에 대하여  활성상태
+.btn-base:focus {}
+.btn-base:hover {}
+
+.btn-square.on{border-color:#000 !important; z-index: 1 !important;}
+.btn-square:focus {}
+.btn-square:hover {
+    border-color:#000; background-color:#000; color:#fff; z-index: 1; transition: all 0s;
+}
+
+.btn-stress:focus {}
+.btn-stress:hover {
+    border-color:#fff; background-color:#fff; color:#000;
+}
+
+.btn-big.on{border-color:#000 !important; z-index: 1 !important;}
+.btn-big:focus {}
+.btn-big:hover {
+    border-color:#000; background-color:#000; color:#fff; z-index:1;
+    .icon-outlink:before {
+        background-image: url('/assets/images/common/icons/icon_outlink_w.svg');
+        @at-root .no-svg & {
+            background-image: url('/assets/images/common/icons/icon_outlink_w.png');
+        }
+    }
+    .icon-down:before {
+        background-image: url('/assets/images/common/icons/icon_download_w.svg');
+        @at-root .no-svg & {
+            background-image: url('/assets/images/common/icons/icon_download_w@2x.png');
+        }
+    }
+}
+.btn-big-bk:focus {}
+.btn-big-bk:hover {
+    border-color:#fff !important; background-color:#fff !important; color:#000 !important;
+    .icon-outlink-w:before {
+        background-image: url('/assets/images/common/icons/icon_outlink.svg');
+        @at-root .no-svg & {
+            background-image: url('/assets/images/common/icons/icon_outlink.png');
+        }
+    }
+    .icon-down-w:before {
+        background-image: url('/assets/images/common/icons/icon_download.svg');
+        @at-root .no-svg & {
+            background-image: url('/assets/images/common/icons/icon_download@2x.png');
+        }
+    }
+}
+.btn-play:focus,
+.btn-play:hover {transition: all 0.1s; border: 5px solid #fff;}
+
+.btn-base.stress{background-color: #048f8a;}
+.btn-base.lax{background-color: #495c68;}
+.btn-base.cancel{background-color: #6c777c;}
+
+.btn-base.hot{background-color: #be191a;}
+.btn-base.changeover{background-color: #fff; color:#94a3aa;}
+.btn-base.inactive{opacity: 0.3; color:rgba(255, 255, 255, 0.6); pointer-events:none;}
+.btn-base.changeover.btn-inactive{color:rgba(0,0,0,0.3) !important;}
+
+
+

@@ -1,0 +1,275 @@
+@charset "utf-8";
+
+// 임시, 영역 체크용 스타일
+.debug{
+    // 컬러정의
+    $color-a:teal;
+    $color-dl:silver;
+    $color-dt:#3896e8;
+    $color-desc:#9fe69f;
+    $color-wrap-bg:#ffc962;
+    $body-bg:#FF0;
+    $color-li:rgba(lightslategray,0.4);
+
+    .mod-keyvisual {
+        .fixed-tit-area{
+            background: $color-desc;
+        }
+        .kv-indicator{
+            background: $color-dl;
+        }
+
+        .kv-txt-holder .sub-txt-area{
+            background: $color-dt;
+            p {
+                span > span{
+                   background: $color-li;
+                    strong{
+                        background: $color-wrap-bg;
+                        > span{background:green}
+                    }
+                }
+            }
+
+            .deco-txt-a{background:$color-li }
+        }
+    }
+
+    // 메인리스트
+   .main-list-wrap,
+   .main-banner-wrap{
+        //background: $body-bg;
+        .mod-main-list{ background: $color-wrap-bg;}
+        li{
+            background: $color-li;
+        }
+        a{
+            background: $color-a;
+        }
+        dl{
+
+            span{
+                background: $color-dl}
+        }
+        dt{
+            background: $color-dt;
+        }
+        dd.desc{
+            background: $color-desc;
+        }
+
+    }
+
+    .main-banner-wrap {
+        strong.title{background:rgba($color-wrap-bg, 0.8);}
+        p.desc{background: rgba($color-dt, 0.8)}
+    }
+    .main .main-banner-wrap .mod-main-list-wide .text-holder strong.title
+
+    //gnb
+    .gnb ul.depth-1{
+        background: gray;
+    }
+    .gnb .sbmn-list{
+        background: $color-wrap-bg;
+    }
+    .gnb .sbmn-list li > a{
+        background: $color-a;
+    }
+    .gnb .sbmn-list li  .line-up{
+        background: $color-dl;
+    }
+    .gnb .sbmn-list li .dtail-line{
+        background: $color-dt;
+    }
+
+    .gnb .sbmn-list .lcp-cont dl{
+        background: gray;
+    }
+    .gnb .sbmn-list .lcp-cont dt span{
+        background: red;
+    }
+
+
+    .gnb .mod-related-content dl{
+        background:$color-dl ;
+    }
+    .gnb .mod-related-content dt{
+        background:$color-dt ;
+    }
+
+    footer{
+
+        h2:nth-of-type(1), .ft-link{background: $color-wrap-bg;}
+    }
+    // 기본 템플릿 콘텐츠 영역
+    ._test-wrap{
+        padding:0 40px 0; width:100%; height:1000px;margin:0 auto; background: gold;
+
+        ._test-inner{
+            background: goldenrod; height:100%;
+        }
+    }
+
+    // 서브페이지
+
+    //연혁
+    &.lexus-korea .history .history-list-wrap > dt:nth-of-type(1){
+        background:$color-dt ;
+    }
+    &.lexus-korea .history .history-list-wrap > dd:nth-of-type(1){
+        background:$color-dt ;
+    }
+    &.lexus-korea .history .history-list-wrap > dd:nth-of-type(2){
+        background:$color-dl ;
+    }
+    //팝업
+    .modal{
+        &:before{
+            background: pink;
+        }
+        .lf-space{
+            background: deepskyblue;
+        }
+    }
+
+}
+
+
+
+/*  디버그 모드 믹스인, 함수 테스트*/
+// functions, mixin 예제
+
+// 폰트 사용
+.파라미터만 전달{
+    //컬러 알파값 생략 가능
+    @include font('light',12px, 1.4, gold, 0.3);
+    content: 'psd 가로폭:'+$psd-width + ' psd 세로폭:'+$psd-height + ' ::::::  모바일모드 :' + $is-mobile-mode + ' 타블릿모드 :' + $is-tablet-mode+ ' 피시모드 :' + $is-pc-mode;
+}
+
+
+
+.패딩값변환{
+    padding: calc-unit(30px);
+    padding: calc-unit(30px vmax);
+    padding: calc-unit(40px 10px);
+    padding: calc-unit(50px 10px 10px);
+    padding: calc-unit(60px 10px 10px 30px);
+    padding: calc-unit(auto);
+    padding: calc-unit(auto auto);
+    padding: calc-unit(auto auto auto);
+    padding: calc-unit(auto auto auto auto);
+    padding: calc-unit(auto 10px 10px 30px);
+    padding: calc-unit(60px auto 10px 30px);
+    padding: calc-unit(60px 10px auto 30px);
+    padding: calc-unit(60px 10px 10px auto);
+    content:type_of(60px 30px 30px);
+    content:type_of((auto,30px 30px));
+}
+
+
+.폰트타입{
+    /*  기본 */
+    @include font('default');
+    /* 사이트 기본 */
+    @include font('common');
+    /* 영문light */
+    @include font('light');
+    /* 레귤러 */
+    @include font('regular');
+    /* 국문 레귤러, 영문 light */
+    @include font('lgt-regular');
+    /* 국문 전용 레귤러 */
+    @include font('kr-regular');
+    /* 국문 세미볼드 */
+    @include font('smbold');
+    /* 볼드 */
+    @include font('bold');
+}
+
+.폰트명 생략{
+    @include font('',14px);
+}
+
+
+.폰트 사이즈만{
+    @include font($font-size:24px);
+}
+
+.폰트믹스인_한꺼번에{
+    /*  line-height, color */
+    @include font('','', 1.3, red,.2);
+    /* line-height */
+    @include font('','', 1.3, '',1.2);
+    /* font-size, color */
+    @include font('', 15px,'', green);
+}
+
+.vw{
+    @include font($font-size: 14px vw) //두번째 파라미터(vw)는 생략가능
+}
+
+.vh{
+    @include  font($font-size:14px vh)
+}
+
+.vmin-vmax{
+    @include font($font-size:14px vmin);
+    @include font($font-size:14px vmax);
+}
+
+.pc에서vw단위사용{
+    @include font($font-size:14px vw);
+}
+
+.pc에서vh단위사용{
+    @include font($font-size:14px vh);
+}
+
+.only-lline-height{
+    @include font($line-height: 2);
+    @include font($line-height: 24px);
+    @include font($line-height: 24px vw);
+}
+
+
+//백그라운드 이미지 사용
+.background-image {
+    @include background($color:yellow, $image:('./img/test-1.svg', './img/test-2.svg'), $repeat:(no-repeat, repeat-x));
+    @at-root &{ @include background($image:('./img/test-1.png', './img/test-2.png'))} //png방어
+}
+
+백그라운드이미지2{
+    $path:'../images/';
+    $ext:P; // 파일 확장자 구분 J:jpg, P:png, 기본값은 jpg G:gif
+
+    /* 기본 이미지 출력 */
+    @include bg-img('sample',$path);
+    /* 백그라운드 컬러, 백그라운드 기본 이미지 사용 */
+    @include bg-img('sample',$path, red, G);
+
+    /* 레티나 출력 */
+    @include bg-img('sample' 'sample@2x', $path, '', $ext);
+}
+
+백그라운드 이미지 추가 속성{
+    @include bg-attr(R, 0 0, CV);
+}
+
+
+//  백그라운드 이미지  레티나 대응 믹스인
+// autoprefixer test
+.autoprefixer{
+    display: flex;
+    transition: all .5s;
+    user-select: none;
+    background: linear-gradient(to bottom, white, black);
+
+    transform:translate(50%);
+
+    &:fullscreen{
+        background: red;
+    }
+}
+
+

@@ -1,0 +1,48 @@
+@charset "utf-8";
+// 태그, 라벨 스타일
+
+// * 주석 가이드*
+//##  메인 카테고리
+//== 서브 카테고리
+//**  카테고리 설명
+
+[class^="tag-"], [class*=" tag-"] {
+    display: inline-block;
+    font-size: 75%;
+    font-weight: bold;
+    text-align: center !important;
+    white-space: nowrap !important;
+    vertical-align: baseline !important;
+    line-height: 1;
+    overflow: hidden !important;
+
+    &.none-bg{background: none; color:#000;}
+}
+
+
+// 라벨, 벨벳
+.tag-label {
+    position: relative;
+    width:2.5em; height:2.5em;
+    line-height: 2.5em;
+
+    & em{
+        position: absolute; left:0; top:0;
+        width:inherit; height:inherit;
+        margin:0;
+        line-height: inherit;
+    }
+
+    &[class*=" icon-"]{
+        & em{
+            @extend .blind;
+        }
+        &:before{
+            position: absolute;
+        }
+    }
+}
+
+
+
+

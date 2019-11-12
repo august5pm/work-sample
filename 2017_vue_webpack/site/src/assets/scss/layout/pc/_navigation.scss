@@ -1,0 +1,338 @@
+@charset "utf-8";
+/* navigation style */
+
+.gnb{
+    //height: 100%;
+    .btn-toggle-gnb{display: none;} //모바일 GNB버튼
+
+    &.no-over {
+        pointer-events: none;
+    }
+
+    ul.depth-1{
+        position: absolute; left:calc(50% - 50px); top:0px; z-index: 110; padding-top: 22px;
+        width:712px;
+        /*width:650px;*/
+        font-size:0; text-align: center;
+        transform: translateX(-50%);
+        /*height:75px;*/
+        height:55px;
+        &.widen{
+            height:75px;
+        }
+        > li {
+            display: inline-block;
+            height:33px;
+            margin:0 6px;
+            font-size:15px; line-height: 33px; _background: yellow;
+            vertical-align: top;
+            &:first-child{
+                margin-left:0;
+            }
+
+            > a {
+                position: relative; z-index: 2;
+                display: inline-block;
+                height:inherit;
+                padding:0 9px;
+                @include font('bold', 15px, 1);
+                text-transform: uppercase;
+                line-height: inherit; vertical-align: top;
+                > span{
+                    display: inline-block;
+                    vertical-align: top;
+                    color:#000;
+                }
+
+                /*&:before{
+                    position: absolute; left:50%; top:53px;
+                    display: inline-block;
+                    width:1px; height:0;
+                    background: #000;
+                    transition: height 0.3s;
+                }*/
+
+                // 2뎁스 메뉴가 열리면?
+                @at-root  body.opened-navi &{
+                    opacity: 0.4;
+
+                    &:hover, &:focus, &.on{
+                        opacity: 1;
+                    }
+                }
+
+
+
+                &.on:before {
+                    height: 45px;
+                }
+            }
+
+            &.lcp{
+                margin-left:0; margin-right:0;
+                padding-left:9px;
+                font-size: 0;
+
+                &:before{
+                    display:inline-block;
+                    width:1px; height:33px;
+                    margin-right:12px;
+                    background: #95989A;
+                    vertical-align: middle;
+                }
+                & > a {
+                    span {
+                        @include font('regular', 13px);
+                    }
+                }
+
+            }
+
+            &.compare-car{
+                display: none;
+            }
+        }
+    }
+
+    .gnb-sub-cont{
+        position: absolute; left:0; top:75px; z-index: 111;
+        width: 100%;
+        font-size:0; text-align: center;
+        overflow: hidden;
+
+        .inner-wrap{
+            background: #fff;
+        }
+
+        .depth-2-wrap{
+            min-height:100px;
+            background: #fff;
+        }
+
+        .sbmn-list{
+            display:none;
+            max-width:$screen-pc-smaller; //1280
+            margin:0 auto;
+            overflow: hidden;
+            h2{
+                font-size: 2rem;
+                display:none;
+            }
+            // 모델 리스트
+            ul{
+                //$ul-width:$screen-pc-smaller + 24px; //서브 메뉴 wrapper  양쪽으로 말아주기
+                $ul-width:1040px;
+                position: relative; top:0; left:50%;
+                width:$ul-width; min-height:207px;
+                margin-left: -1 * $ul-width/2;
+                padding:22px 0 35px;
+            }
+            li {
+                display: inline-block;
+                width:240px;
+                margin:5px 10px;
+                > a {
+                    display: block;
+                    padding:10px 0;
+                }
+                span{
+                    display: block;
+                    text-align: center;
+
+                    &.img{
+                        position: relative;
+                        height:77px;
+                        margin-bottom:10px;
+                    }
+
+                    &.line-up{
+                        margin-bottom: 10px;
+                        @include font(en-x-regular, 13px, 1, #000);
+                        text-align: center;
+                        > em{
+                            display: inline-block; white-space: nowrap;
+                        }
+                    }
+
+                    %v-line{
+                        display: inline-block;
+                        width:1px; height:12px;
+                        margin:-2px 10px 0;
+                        background: #95989A;
+                        vertical-align:middle;
+                    }
+
+                    &.dtail-line{
+                        font-size:0; color:#000;
+                        > span{
+                            display: inline-block;
+                            font-size: 10px;
+
+                            > em{
+                                display: inline-block;
+                                line-height: 1;
+                            }
+
+
+
+                            &.name{
+                                width:92px;
+                                text-align: right;
+                                &:after{
+                                    @extend %v-line;
+                                }
+                            }
+                            &:nth-child(2){
+                                text-align:center;
+                            }
+                            &:nth-child(3){
+                                width:92px;
+                                text-align: left;
+                                &:before{
+                                    @extend %v-line;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            //E.모델 리스트
+
+            .lcp-cont{
+                padding: 24px 0 58px;
+
+                //margin-top:-3px;
+
+                > dl{
+                    display:inline-block;
+                    position: relative;
+                    font-size:0;
+
+
+                    > dt, > dd{ // width:500px
+                        display: inline-block;
+                        vertical-align: top;
+                    }
+                    > dt{
+                        // width:53.9%;
+                        padding-right:30px;
+                        text-align: right;
+                        >span{
+                            display: inline-block;
+                            width:500px;
+                            &:before{
+                                display: inline-block;
+                                width:193px; height:35px;
+                                background: url('/assets/images/common/etc/log_lcp.svg') no-repeat 0 0 / contain;
+                            }
+                        }
+                        &:after{
+                            display: inline-block;
+                            position: relative; top:8px;
+                            width:100px; height:1px;
+                            margin-left:30px;
+                            background: #000;
+                            vertical-align: top;
+                        }
+                    }
+
+                    > dd{
+                        width:500px;
+                        margin-top:-5px;
+                        text-align: left;
+                        .desc{
+                            font-size: 15px; line-height: 1.6;
+                            padding-bottom:15px;
+                        }
+
+                        .btn-square{
+                            border:2px solid #000;
+                            height:40px; line-height: 40px;
+                            padding:0 17px;
+                            box-sizing: content-box;
+                            .tag-label{
+                                width:18px; height:18px;
+                                margin-top:-2px;
+                            }
+
+                            span{
+                                padding-right:9px;
+                                @include font('bold', 11px);
+                            }
+
+                            &:hover{
+                                .icon-outlink:before{
+                                    background-image: url('/assets/images/common/icons/icon_outlink_w.svg');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            &.on{
+                display: block;
+            }
+
+            // 아이템 그리드 타입 A (3X2)
+            &.item-grid-3x2{
+                ul{
+                    width: 980px;
+                    margin-left: -490px;
+                }
+            }
+        }
+
+        // 연관 컨텐츠
+        .mod-related-contents-wrap{
+            padding:0 0 45px;
+            .title-wrap{
+                width: calc(100% - 80px);
+                margin:0 auto;
+                padding-bottom:27px;
+                &:before{
+                    display: block;
+                    position: absolute; left:0; top:7px;
+                    width:100%; height:1px;
+                    background:#000;
+                }
+                .title{
+                    height:15px;
+                    padding:0 30px;
+                    background: #fff;
+                    @include font('', 15px, 1);
+                    letter-spacing:1.5px;
+                }
+            }
+
+           .list-item-wrap{
+               width: 1020px;
+               text-align: center;
+           }
+           .mod-related-content{
+               width:240px;
+               margin-left:20px;
+               padding-bottom:0;
+               &:first-child{
+                   margin-left:0;
+               }
+               dl{
+                   padding-top: 78px;
+               }
+               dt.title{
+                   height:35px;
+                   padding:15px 15px 0;
+                   @include font('', 12px, 1.6);
+               }
+               dd.img{
+
+               }
+           }
+
+        }
+    }
+
+}
+

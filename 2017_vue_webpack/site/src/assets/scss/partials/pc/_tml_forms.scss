@@ -1,0 +1,242 @@
+@charset "utf-8";
+
+// Form 스타일
+
+// * 주석 가이드*
+//##  메인 카테고리
+//== 서브 카테고리
+//**  카테고리 설명
+
+//## form 커스텀 스타일
+//== 이메일 인풋과 사용되는 @
+.ico-email-at {
+  display:inline-block;
+  width:34px;
+  @include font('regular', 15px, 80px, #000, 1);
+  text-align:center;
+  vertical-align:top;
+}
+
+//##  폼 구성
+fieldset {
+    legend {
+        @extend .blind;
+    }
+
+    &.info-area {
+        padding-top:50px;
+        border-top: 1px solid #000;
+    }
+    &.terms-area {
+        padding-top:70px;
+    }
+
+    // 필수 입력 사항 알림 디스크립션
+    .note-desc {
+        position: relative;
+        top: 0;
+        right: auto;
+        left: 0;
+        margin-bottom: 23px;
+        margin-left: 98px;
+        color:#FF0000;
+        @include font('',12px, 1);
+        span {
+          padding-left:4px;
+        }
+        .icon-aste{
+            position:relative; left:0; top:2px;
+            &:before {
+            width:10px; height:10px; left:0; top:0;
+            -ms-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+          }
+        }
+      }
+
+    // form 내에서 사용되는 노티
+    .notice-holder {
+        display:block;
+        padding-top: calc-unit(5px);
+        @include font('', 12px, 1.6);
+        color:#95989A;
+
+       em{
+           font-size:13px;
+       }
+    }
+
+
+    // 폼 타이틀 및 서브카피
+    .form-tit-wrap {
+        padding-bottom:46px; text-align:center;
+        .form-title, h1{
+            font-size:20px;
+            padding-bottom:26px;
+        }
+        .read-copy{
+            font-size:15px; line-height:1.6;
+            span {
+                display:block;
+            }
+        }
+    }
+
+  .form-wrap {
+    position:relative; width:666px; padding:0 0 20px 0; margin:0 auto;
+
+    dl {
+      @extend .clearfix;
+      width:100%;
+      dt {
+        width:98px; height:80px;
+        padding-left:25px;
+        margin-bottom:12px;
+        font-size:15px; line-height:80px;
+        float:left;
+
+        &.require {
+          position:relative;
+          &:before {
+            position:absolute; content:''; display:block; top:50%; left:0; width:15px; height:15px; margin-top:-7px;
+            background-image:url('/assets/images/common/icons/icon_asterisk_big.svg');
+            @at-root .no-svg & {
+              background-image: url('/assets/images/common/icons/icon_asterisk_big.png');
+            }
+          }
+        }
+          &.only-lnt {
+              height: 35px;
+              margin-top: 60px; padding-top: 60px;
+              line-height: 35px;
+              border-top: 1px solid #000;
+          }
+      }
+      dd {
+        width:568px; font-size:0; margin-bottom:23px; float:left;
+          &.only-lnt {
+              margin-top: 60px; padding-top: 60px;
+              border-top: 1px solid #000;
+              em {
+                  display: inline-block; padding-right: 5px; color: #f00;
+              }
+          }
+      }
+    }
+
+    // 약관, 수집 내용 텍스트 박스 뒤에 오는 체크박스 스타일
+    .custom-txtarea+.custom-chk-rdo { 
+      width:100%; margin:20px 0 40px; padding-left:12px; overflow:visible;
+      label {
+        span {
+            margin-top:2px;
+            font-size:12px;
+        }
+      }
+      &.require {
+        label {
+          span:after {
+              display:inline-block;
+              position:relative;
+              width:15px; height:15px;
+              top:-2px; left:auto;
+              margin-left:7px;
+              vertical-align: middle;
+              background:url("/assets/images/common/icons/icon_asterisk_big.svg") 0 0 no-repeat;
+              @at-root .no-svg & {
+                  background-image: url('/assets/images/common/icons/icon_asterisk_big.png');
+              }
+          }
+        }
+      }
+        .alert-holder {
+            position: absolute;
+            width: 100%;
+            left: 58px;
+            top: 35px;
+        }
+    }
+  }
+}
+
+//##  검색하기 폼
+.sch-select-wrap{
+    display: inline-block;
+    .form-group{
+        display: inline-block;
+        position: relative;
+        height:50px; line-height: 50px;
+        // border:1px solid #000;
+        box-sizing: content-box;
+        vertical-align: top;
+        font-size:0;
+
+        //&:before{
+        //    // display: inline-block;
+        //    position: absolute; left:120px; top:0;
+        //    width:1px;height:inherit;
+        //    background: #000;
+        //    vertical-align: top;
+        //}
+
+        &:before {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+        }
+
+        &:after {
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+        }
+
+        .select-wrap{
+            width:120px; height:inherit;
+            line-height: inherit;
+            vertical-align: top;
+
+            select{
+                position: relative;
+                height:inherit;
+                padding:0 20px;
+                border:1px solid #000;
+                font-size:14px; line-height: inherit;
+                vertical-align: top;
+                z-index: 1;
+                background-size:contain;
+                background-image:url("/assets/images/common/icons/icon_select_sch_arr_down.png");
+            }
+        }
+        input[type="text"]{
+            width:170px; height:inherit;
+            padding:0 20px;
+            border:1px solid #000;
+            border-left-color:transparent;
+            border-right-color:transparent;
+            margin-left:-1px;
+            font-size:14px;  line-height: inherit;
+            vertical-align: top;
+        }
+        input[type=submit]{
+            background: url('/assets/images/common/icons/icon_zoom.svg') no-repeat 30%  50% / 35% 36%;
+            width:50px; height:inherit;
+            line-height: inherit;
+            border:1px solid #000;
+            border-left:transparent;
+            color:transparent;
+        }
+
+    }
+}
+
+
+

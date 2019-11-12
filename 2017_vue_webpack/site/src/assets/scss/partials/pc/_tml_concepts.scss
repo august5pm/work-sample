@@ -1,0 +1,147 @@
+@charset "utf-8";
+
+.concept{
+    /* 컨텐츠 텍스트 우측 정렬 모듈 */
+    .mod-flush-r-txt {
+        text-align: right;
+        .txt-holder {
+            display: inline-block;
+            width: 50%;
+            padding: 100px 5.1% 100px;
+            text-align: left;
+            .tit {
+                display: block;
+                margin-bottom:54px;
+                @include font('bold', 25px, 1);
+                letter-spacing:0.1em;
+                font-weight: normal;
+            }
+            p {@include font('regular', 18px, 1.55);}
+        }
+    }
+
+    /* 컨텐츠 텍스트 좌측 정렬 모듈 */
+    .mod-flush-l-txt {
+        .txt-holder {
+            display: inline-block;
+            width: 50%;
+            padding: 100px 5.1% 100px;
+            text-align: left;
+            .tit {
+                display: block;
+                margin-bottom:54px;
+                @include font('bold', 25px, 1);
+                letter-spacing:0.1em;
+                font-weight: normal;
+            }
+            p {@include font('regular', 18px, 1.55);}
+        }
+    }
+
+    /* 컨텐츠 텍스트 중앙 정렬 모듈 */
+    .mod-centered-txt {
+        .txt-holder {
+            display: inline-block;
+            width: 100%;
+            padding: 4.395% 0 4.78%;
+            text-align: center;
+            .tit {
+                display: block;
+                margin-bottom: 36px;
+                @include font('bold', 25px vw, 1);
+                font-weight: normal;
+            }
+            p {
+                @include font('regular', 20px vw, 1.75);
+            }
+            cite {
+                display: block;
+                margin-top: 33px;
+                @include font('light', 18px vw, 1.5);
+            }
+        }
+    }
+
+    // 컨텐츠 텍스트 레이아웃
+    //.mod-flush-l-txt,
+    //.mod-flush-r-txt {
+    //    .txt-holder {
+    //        @include font('', 20px vw, 1.6); color: #fff; z-index: 2;
+    //        @media only screen and (max-width: 1280px) {
+    //            .tit {font-size:16px;}
+    //            p {font-size:12px;}
+    //        }
+    //
+    //        @media only screen and (min-width: 1921px) {
+    //            .tit {font-size:30px;}
+    //            p {font-size:20px;}
+    //        }
+    //    }
+    //}
+
+    // 컴포넌트 스타일 컨셉카 공통
+    .mod-half-size,
+    .mod-half-x2-size {
+
+        background-color:#000;
+
+        .inner-wrap {
+            .txt-holder {
+                width:100%;
+                bottom:0;
+                padding:11.48%;
+                color:#fff;
+                font-size:15px;
+                dt {
+                    font-size:20px;
+                }
+            }
+        }
+    }
+
+    .mod-full-size {
+
+        background-color:#000;
+
+        .inner-wrap {
+            .txt-holder {
+                width:50%;
+                bottom:0;
+                padding:5.74% 0 5.74% 5.74%;
+                color:#fff;
+                font-size:15px;
+                dt {
+                    font-size:20px;
+                }
+            }
+        }
+    }
+
+    //@media only screen and (min-width: 1921px) {
+    //    .mod-half-size,
+    //    .mod-full-size,
+    //    .mod-half-x2-size {
+    //        .inner-wrap {
+    //            .txt-holder {
+    //                font-size:18px;
+    //            }
+    //        }
+    //    }
+    //}
+
+    //@media only screen and (max-width: 1280px) {
+    //    .mod-half-size,
+    //    .mod-full-size,
+    //    .mod-half-x2-size {
+    //        .inner-wrap {
+    //            .txt-holder {
+    //                font-size:12px;
+    //            }
+    //        }
+    //    }
+    //}
+}
+
+
+
+

@@ -1,0 +1,443 @@
+@charset "utf-8";
+/* model system component */
+
+//## 모델 키비쥬얼
+
+
+
+// 모델 풀사이즈 레이아웃
+.mod-full-size {
+    display: block; position: relative; padding-top: 50%; width: 100%; height: 0; overflow: hidden;
+    .inner-wrap {
+        position: absolute; top:0; left:0; width: 100%; height: 100%;
+    }
+
+    .txt-holder {
+        position: absolute; width: 50%;  padding: 5.74% 0 5.74% 5.74%; @include font('', 0.9375vw, 1.6); color: #fff; z-index: 2;
+        @media only screen and (max-width: 1280px) {
+            font-size: 12px;
+        }
+
+        @media only screen and (min-width: 1921px) {
+            font-size: 18px;
+        }
+
+        dt {
+            @include font('bold');
+        }
+
+        dd {
+            margin-top: 1.2vw;
+
+            @media only screen and (max-width: 1280px) {
+                margin-top: 15px;
+            }
+
+            @media only screen and (min-width: 1921px) {
+                margin-top: 23px;
+            }
+        }
+    }
+
+    img {display: block; position: absolute; top:0; left:0; width: 100%;}
+    &.txt-top-left {.txt-holder{top:0; left: 0; padding: 5.74% 0 5.74% 5.74%;}}
+    &.txt-mid-left {
+        .inner-wrap {
+            &:before {display: inline-block; content: ''; height: 100%; vertical-align: middle;}
+            .txt-holder {
+                display: inline-block; position: relative; padding: 5.74% 0 5.74% 5.74%; vertical-align: middle;
+            }
+        }
+    }
+    &.txt-bot-left {.txt-holder{bottom:0; left: 0; padding: 5.74% 0 5.74% 5.74%;}}
+    &.txt-top-right {.txt-holder{top:0; left: 50%; width: 50%; padding: 5.74%; }}
+    &.txt-mid-right {
+        .inner-wrap {
+            &:before {display: inline-block; content: ''; height: 100%; vertical-align: middle;}
+            .txt-holder {
+                display: inline-block; position: relative; margin-left: 50%; width: 50%; padding: 5.74%;  vertical-align: middle;
+            }
+        }
+    }
+    &.txt-bot-right {.txt-holder{bottom:0; left: 50%; width: 50%; padding: 5.74%; }}
+    &.half-img-left {
+        background-color: #F5F5F5;
+        img {display: block; position: absolute; top:0; left:0; width: 50%;}
+        .inner-wrap {
+            position: absolute; top:0; right:0; left: auto; width: 50%; height: 100%; padding: 5.74%;
+            .txt-holder {bottom: 0; width: 100%; padding: 11.48%; color: #000;}
+        }
+    }
+    &.half-img-right {
+        background-color: #F5F5F5;
+        img {display: block; position: absolute; top:0; left: auto; right:0; width: 50%;}
+        .inner-wrap {
+            position: absolute; top:0; left: 0; width: 50%; height: 100%;
+            .txt-holder {bottom: 0; width: 100%; padding: 11.48%; color: #000;}
+        }
+    }
+}
+
+// 모델 하프사이즈x2 레이아웃
+.mod-half-x2-size {
+    display: inline-block; position: relative; padding-top: 50%; width: 100%; height: 0; overflow: hidden; background-color: #F5F5F5;
+    .mod-contained-bg {display: block; position: absolute; top:0; left:50%; width: 50%;}
+    .inner-wrap {
+        position: absolute; top:0; left:0; width: 50%; height: 100%;
+        .txt-holder {
+            position: absolute; left:0; padding: 11.48%; @include font('', 0.9375vw, 1.6); color: #000; z-index: 2;
+
+            @media only screen and (max-width: 1280px) {
+                font-size: 12px;
+            }
+            @media only screen and (min-width: 1921px) {
+                font-size: 18px;
+            }
+            dt {
+                @include font('bold');
+            }
+            dd {
+                margin-top: 1.2vw;
+                @media only screen and (max-width: 1280px) {
+                    margin-top: 15px;
+                }
+                @media only screen and (min-width: 1921px) {
+                    margin-top: 23px;
+                }
+            }
+        }
+    }
+
+    &.txt-top-left {
+        .inner-wrap {
+            position: absolute; top:0; left:0; width: 50%; height: 100%;
+            .txt-holder {top:0; left: 0; width: 100%; padding: 11.48%; color: #000;}
+        }
+    }
+    &.txt-bot-left {
+        .inner-wrap {
+            position: absolute; top:0; left:0; width: 50%; height: 100%;
+            .txt-holder {bottom:0; left: 0; width: 100%; padding: 11.48%; color: #000;}
+        }
+    }
+    &.txt-top-right {
+        .mod-contained-bg {display: block; position: absolute; top:0; left:0; width: 50%;}
+        .inner-wrap {
+            position: absolute; top:0; right:0; left: auto; width: 50%; height: 100%;
+            .txt-holder {top:0; width: 100%; padding: 11.48%; color: #000;}
+        }
+    }
+    &.txt-bot-right {
+        .mod-contained-bg {display: block; position: absolute; top:0; left:0; width: 50%;}
+        .inner-wrap {
+            position: absolute; top:0; right:0; left: auto; width: 50%; height: 100%;
+            .txt-holder {bottom:0; width: 100%; padding: 11.48%; color: #000;}
+        }
+    }
+
+    &.txt-2x-type {
+        .inner-wrap {
+            dl {
+                dt {
+                    position:relative; @include font(kr-regular, 1.5625vw, 1.6); padding-bottom:7.8%;
+                    &:after {content:''; display:block; position:absolute; width:100%; height:1px; bottom:0; left:0;background-color:#95989a;}
+
+                    @media only screen and (max-width: 1280px) {
+                        padding-bottom: 33px; font-size: 20px;
+                    }
+                    @media only screen and (min-width: 1921px) {
+                        padding-bottom: 52px; font-size: 30px;
+                    }
+                }
+                dd {
+                    margin-top:6.2%;
+
+                    @media only screen and (max-width: 1280px) {
+                        margin-top: 26px; font-size: 12px;
+                    }
+                    @media only screen and (min-width: 1921px) {
+                        margin-top: 41px; font-size: 18px;
+                    }
+                }
+            }
+            dl:first-child  {
+                margin-bottom:8%;
+                dt {
+                    padding:0; font-size:0.9375vw;
+                    &:after {display:none;}
+
+                    @media only screen and (max-width: 1280px) {
+                        font-size: 12px;
+                    }
+
+                    @media only screen and (min-width: 1921px) {
+                        font-size: 18px;
+                    }
+                }
+                dd {
+                    margin-top: 0.57vw; margin-bottom: 5.402%; font-size:1.5625vw; @include font(en-x-regular);
+
+                    @media only screen and (max-width: 1280px) {
+                        margin-top: 7px; margin-bottom: 23px; font-size: 20px;
+                    }
+                    @media only screen and (min-width: 1921px) {
+                        margin-top:12px; margin-bottom: 35px; font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 모델 하프사이즈 레이아웃
+.mod-half-size {
+    display: block; position: relative; float: left; width: 50%; height:0; padding-top: 50%; overflow: hidden; background-color: #f5f5f5;
+    .txt-holder {
+        position: absolute; bottom: 11.48%; left: 0; width: 100%; padding: 0 11.48%; @include font('', 1vw, 1.6); color: #fff; z-index: 2;
+        @media only screen and (max-width: 1280px) {
+            font-size: 12px;
+        }
+        @media only screen and (min-width: 1921px) {
+            font-size: 18px;
+        }
+
+        dt {
+            @include font('bold');
+        }
+
+        dd {
+            margin-top: 1.2vw;
+
+            @media only screen and (max-width: 1280px) {
+                margin-top: 15px;
+            }
+
+            @media only screen and (min-width: 1921px) {
+                margin-top: 23px;
+            }
+        }
+    }
+
+    .mod-contained-bg {width: 101%; height: 101%; margin: -0.5% 0 0 -0.5%;}
+    //figure {display: block; position: absolute; top:0; left:0; width: 100%;}
+    &.no-bg {
+        .txt-holder {color: #000;}
+    }
+    &.txt-top-left {
+        .txt-holder {bottom: auto; top: 11.48%;}
+    }
+}
+
+/* 표준 연비 - 테이블 타입 : .mod-std-mile */
+.mod-std-mile {
+    display:block; position:relative; width:100%; margin: 40px 0; border:1px solid #000; text-align:center;
+
+    dl {
+        //display:inline-block; padding: 160px 0 150px; font-size:20px;
+        display:inline-block; width:100%; padding: 160px 0 120px; font-size:0;
+        dt, dd {display:inline-block; font-size:20px; vertical-align:top;}
+
+        dt {
+            position:relative; width:48.4%; padding-right:122px; text-align:right;
+            &:after {
+                content:''; display:block; position:absolute; width:90px; height:1px; right:20px; top:50%; background-color:#999;
+            }
+
+            span {
+                display:block;
+                &.rating{
+                    color:red;
+                }
+            }
+        }
+        dd {
+            width:51.4%; text-align:left;
+        }
+    }
+
+    ul {
+        width:372px; font-size:0; text-align:left;
+        li {
+            display:inline-block; width:50%; margin-top:50px; font-size:20px; vertical-align:top;
+
+            strong {display:block; padding-bottom:0; font-size:30px;}
+            p {line-height:1.6;}
+
+            &.col-fir {margin-top:0;}
+        }
+    }
+
+    p.notice {
+        position:relative; width:100%; padding-bottom:24px; font-size:12px; text-align:center;
+        &:before {display:inline-block; content: '※'; margin-right: 3px; }
+    }
+}
+
+/* 구매 혜택 - 리스트 타입 : .mod-purchase-benefit */
+.mod-purchase-benefit {
+    display: inline-block; width: 23.5%; min-height:310px; margin: 1%; border: 1px solid #d4d4d4; vertical-align: top; text-align:left;
+    &:nth-child(4n+1) {margin-left: 0;}
+    &:nth-child(4n+4) {margin-right: 0;}
+    dl {
+        padding: 40px 9.8% 0;
+        dt {margin-bottom: 40px; @include font('bold', 20px, 1);}
+        dd {@include font('regular', 20px ,1.5);}
+    }
+
+}
+
+/* 구매 혜택 - 테이블 타입 : .mod-purchase-benefits */
+.mod-purchase-benefits {
+    display:block; position:relative; width:100%; margin: 40px 0; border:1px solid #000;
+
+    dl {
+        //display:inline-block; padding: 160px 0 150px; font-size:20px;
+        display:inline-block; width:100%; padding: 160px 0 120px; font-size:0; text-align: left;
+        dt, dd {display:inline-block; font-size:20px; vertical-align:top;}
+
+        dt {
+            position:relative; width:48.4%; padding-right:122px; text-align:right;
+            &:after {
+                content:''; display:block; position:absolute; width:90px; height:1px; right:20px; top:50%; background-color:#999;
+            }
+        }
+        dd {
+            width:51.4%; text-align:left;
+        }
+    }
+
+    ul {
+        li {
+            margin-top:50px; font-size:20px;
+
+            strong {display:block; padding-bottom:20px;}
+            p {line-height:1.6;}
+
+            &:first-child {margin-top:0;}
+        }
+    }
+}
+
+//모델 스펙 테이블
+.mod-spec-table {
+    width: 100%; border-top: 1px solid #000; border-bottom: 1px solid #000; border-collapse: separate;
+    tr {
+        border-top: 1px solid #ebebeb; @include font('regular', 12px, 1.5, #000);
+        th {width: 25%; padding: 15px 12px 18px 0; border-top: 1px solid #ebebeb; border-right: 1px solid #d4d4d4; text-align: right; background-color: #f8f8f8; font-weight: normal;}
+        td {width: 75%; padding: 15px 0 18px 20px; border-top: 1px solid #ebebeb; @include font('regular');}
+        &:first-child {
+            th {border-top: 1px solid transparent;} td {border-top: 1px solid transparent;}
+        }
+        &:nth-child(2n){
+            background-color: #f5f5f5;
+            th { background-color: #f5f5f5;}
+        }
+    }
+}
+
+//모델 스펙 아코디언
+.mod-spec-accordion {
+    margin-top: 0!important;
+    dt {
+        button {position: relative; width: 100%; padding: 35px 30px 33px 30px; @include font('regular', 17px, 1, #000); text-align: left;
+            &:before {display: block; position: absolute; top:50%; right:30px; width: 21px; height: 12px; margin-top: -6px; background: url('/assets/images/common/icons/icon_arrow_down.svg') 0 0 no-repeat}
+            &:after {display: block; position: absolute; top:0; left: 0; width: 100%; height: 1px; background: #000;}
+        }
+    }
+    dd {
+        overflow: hidden; height: 0;
+        .mob-only {display: none;}
+        table {
+            width: 100%; margin-bottom: 20px; @include font('regular', 12px, 1, #000); border-spacing: 0; border-bottom: 1px solid #d4d4d4; /*  border-bottom: 1px solid #000; */
+            thead {
+                position: relative; /*border-bottom: 1px solid #ebebeb;*/
+                th {
+                    width: 12.2%; padding: 20px 0; /*border-left: 1px solid #d4d4d4;*/ text-align: center; font-size: 10px; color: #95989a; background-color: #fafafa; letter-spacing: 0.8px; @include font(en-x-regular);
+                    &:first-child {width: 63.4%; border-left: none;}
+                }
+                //&:after {display: block; content: ''; width: 200%; height:1px; background-color: #000;}
+            }
+            tbody {
+                /*border-top: 1px solid #ebebeb; border-collapse: collapse;*/
+                tr{
+                    /*border-top: 1px solid #ebebeb;*/
+                    &:nth-child(2n){background-color: #fafafa;}
+                }
+                th {width: 63.4%; padding: 18px 0 20px 20px; text-align: left; font-weight: normal;}
+                td {
+                    /*border-left: 1px solid #d4d4d4;*/ text-align: center;
+                    .tag-label {
+                        font-size: 15px;
+                        &:before {display: block; position: absolute; top: 50%; left: 50%; content: ''; width: 10px; height: 1px; background-color: #000; background-position: 50% 50%; transform: translateX(-50%) translateY(-50%);}
+                        &.icon-chk-bk:before {width: 8px; height: 8px; border-radius: 50%; background-color: transparent; border: 1px solid #000; background-image: none;}
+                    }
+                }
+            }
+            &.col-5 {
+                thead {
+                    th{
+                        &:first-child {width: 51.2%;}
+                    }
+                }
+                tbody {
+                    th {width: 51.2%;}
+                }
+            }
+            &.col-4 {
+                thead {
+                    th{
+                        &:last-child {display: none}
+                        &:first-child {width: 63.4%;}
+                    }
+                }
+                tbody {
+                    th {width: 63.4%;}
+                    th+td+td+td+td {display: none;}
+                }
+            }
+            &.col-3 {
+                thead {
+                    th{
+                        &:last-child {display: none}
+                        &:first-child {width: 75.6%;}
+                    }
+                }
+                tbody {
+                    th {width: 75.6%;}
+                    th+td+td+td,
+                    th+td+td+td+td {display: none;}
+                }
+            }
+            &.col-2 {
+                thead {
+                    th{
+                        &:nth-child(3),
+                        &:last-child {display: none}
+                        &:first-child {width: 87.8%;}
+                    }
+                }
+                tbody {
+                    th {width: 87.8%;}
+                    th+td+td,
+                    th+td+td+td,
+                    th+td+td+td+td {display: none;}
+                }
+            }
+        }
+    }
+
+    &.opened {
+        dt{
+            border-bottom: 1px solid #d4d4d4 !important;
+            button {
+                &:before {height: 1px; margin-top: -1px; background: #000;}
+            }
+            &:after {border-top: 3px solid #000;}
+        }
+        dd {height: auto;}
+    }
+
+    &:last-child {
+        dt {border-bottom: 1px solid #000;}
+    }
+}

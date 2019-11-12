@@ -1,0 +1,340 @@
+@charset "utf-8";
+
+/* 풀스크린 컨텐츠 공통 스타일 */
+.contents.full-screen {
+    //no-scr st : .body-wrapper {overflow: hidden}
+
+    #main {
+        position: relative; height: auto; min-height: 500px; margin: 0; //no-scr st : height: calc(100% - 75px);
+        .inner-wrap {padding: 0; overflow: auto;} //no-scr st : height: 100%;
+
+    }
+
+    section {height: 100vh; width: 100%; overflow: hidden;} //no-scr st : height: 100%; background: #fff;
+
+    footer{
+
+        > .inner-wrap{
+            //border-top:none;
+        }
+    }
+}
+
+.contents {
+    #main {position: relative;}
+
+    br {
+        &._m {
+            display:none;
+        }
+    }
+
+    .mod-full-page {
+        position: relative; top:0; left: 0;
+        .inner-sect-wrap {
+            height:100%;
+            .txt-holder {
+                //position: absolute; bottom:0; left:0; width: 50%; padding: 5.49%;
+                .tit {@include font('bold', 20px, 1.5); letter-spacing: 2px;}
+                .sub-txt {
+                    margin-top: 14px; @include font('light', 20px, 1.5); letter-spacing: 2px;
+                }
+                .description {
+                    margin-top: 38px; @include font('kr-regular', 20px, 1.75);
+                }
+            }
+            .mod-covered-bg {position: static;}
+        }
+
+        &.txt-top-left {
+            .inner-sect-wrap{
+                .txt-holder {position: absolute; top:0; bottom: auto; left: 0; width: 50%; padding: 5.49%;}
+            }
+        }
+
+        &.txt-top-right {
+            .inner-sect-wrap{
+                .txt-holder {position: absolute; top:0; bottom: auto; left: auto; right: 0; width: 50%; padding: 5.49%;}
+            }
+        }
+
+        &.txt-bot-left {
+            .inner-sect-wrap{
+                .txt-holder {position: absolute; bottom:0; left: 0; width: 50%; padding: 5.49%;}
+            }
+        }
+
+        &.txt-bot-center {
+            .inner-sect-wrap{
+                .txt-holder {
+                    position: absolute; width: 100%; padding: 0; text-align: center;
+                    p {display: inline-block; text-align: left;}
+                }
+            }
+        }
+
+        &.txt-bot-right {
+            .inner-sect-wrap{
+                .txt-holder {position: absolute; bottom:0; left: auto; right: 0; width: 50%; padding: 5.49%;}
+            }
+        }
+
+        &.white-txt {
+            .inner-sect-wrap{
+                .txt-holder {color: #fff;}
+            }
+        }
+    }
+
+    /* 스크롤링 컨텐츠 공통 스타일 */
+
+    /* 키비주얼 모듈 */
+    .mod-post-kv {
+        position: relative; width: 100%; height:0;
+        // 디자인별로 달라지는 값 padding-top: 38.47%;
+        .inner-wrap {
+            width: 100%; height: 100%;
+            .txt-holder {
+                position: absolute; top:0; left: 0; width: 100%; height: 100%; z-index: 2; color: #fff; text-align: center;
+                h1 {
+                    display: inline-block; vertical-align: middle;
+                    @include font('en-x-regular', 70px, 1.28); letter-spacing: 7px;
+                }
+                &:before {display: inline-block; width: 1px; height: 100%; vertical-align: middle;}
+            }
+        }
+        /* 한글 타이틀 - 영문 서브타이틀 */
+        &.kv-tit-kr-en {
+            .inner-wrap{
+                .txt-holder{
+                    h1 {
+                        @include font('smbold', 60px, 1); letter-spacing: 0;
+                        span {display: block; padding-bottom: 20px; @include font('en-x-regular', 30px, 1); letter-spacing: 3px;}
+                    }
+                }
+            }
+        }
+        /* 한글 타이틀 - 한글 서브타이틀 */
+        &.kv-tit-kr-kr {
+            .inner-wrap{
+                .txt-holder{
+                    h1 {
+                        @include font('smbold', 60px, 1); letter-spacing: 0;
+                        span {display: block; padding-bottom: 20px; @include font('regular', 30px, 1); letter-spacing: 0;}
+                    }
+                }
+            }
+        }
+        /* 영문 타이틀 - 영문 서브타이틀 */
+        &.kv-tit-en-en {
+            .inner-wrap{
+                .txt-holder{
+                    h1 {
+                        @include font('en-x-regular', 70px, 1); letter-spacing: 7px;
+                        span {display: block; padding-bottom: 20px; @include font('en-x-regular', 30px, 1); letter-spacing: 3px;}
+                    }
+                }
+            }
+        }
+        /* 영문 타이틀 - 한글 서브타이틀 */
+        &.kv-tit-en-kr {
+            .inner-wrap{
+                .txt-holder{
+                    h1 {
+                        @include font('en-x-regular', 70px, 1); letter-spacing: 7px;
+                        span {display: block; padding-bottom: 20px; @include font('regular', 30px, 1); letter-spacing: 0;}
+                    }
+                }
+            }
+        }
+    }
+
+    /* 컨텐츠 텍스트 우측 정렬 모듈 */
+    .mod-flush-r-txt {
+        .inner-wrap{
+            text-align: right;
+            figure {
+                position: static; width: 100%; height: 0; overflow: hidden;
+                // 디자인별로 달라지는 값 padding-top: 27.36%;
+            }
+            .txt-holder {
+                display: inline-block; width: 50%; padding: 4.39% 7% 4.78%; text-align: left;
+                .tit {display: block; margin-bottom: 36px; @include font('bold', 25px, 1); font-weight: normal; letter-spacing: 3px;}
+                p {@include font('regular', 18px, 1.75);}
+            }
+        }
+
+    }
+
+    /* 컨텐츠 텍스트 좌측 정렬 모듈 */
+    .mod-flush-l-txt {
+        .inner-wrap{
+            figure {
+                position: static; width: 100%; height: 0; overflow: hidden;
+                // 디자인별로 달라지는 값 padding-top: 27.36%;
+            }
+            .txt-holder {
+                display: inline-block; width: 50%; padding: 4.39% 7% 4.78%; text-align: left;
+                .tit {display: block; margin-bottom: 36px; @include font('bold', 25px, 1); font-weight: normal; letter-spacing: 3px;}
+                p {@include font('regular', 18px, 1.75);}
+            }
+        }
+
+    }
+
+    /* 컨텐츠 텍스트 중앙 정렬 모듈 */
+    .mod-centered-txt {
+        .inner-wrap{
+            figure {
+                position: static; width: 100%; height: 0; overflow: hidden;
+                // 디자인별로 달라지는 값 padding-top: 27.36%;
+            }
+            .txt-holder {
+                display: inline-block; width: 100%; padding: 4.395% 0 4.78%; text-align: center;
+                .tit {display: block; margin-bottom: 36px; @include font('bold', 25px, 1); font-weight: normal; letter-spacing: 3px;}
+                p {@include font('regular', 18px, 1.75);}
+                cite {display: block; margin-top: 33px; @include font('light', 18px, 1.5);}
+            }
+        }
+    }
+
+    ///////////////////////////////////////////////
+    // 추가모듈
+    // last updated: 2018.09.28
+    ///////////////////////////////////////////////
+
+    // type: 콘텐츠 배너
+    .mod-content-banner {
+        width: 95.6%;
+        margin: 2.2% auto 0;
+        li {
+            position: relative;
+            width: 100%;
+            height: 284px;
+            overflow: hidden;
+            @include bg-attr(N,center center, cover);
+
+            a {
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                &:before {
+                    display: inline-block;
+                    height: 100%;
+                    vertical-align: middle;
+                }
+
+                .txt-holder {
+                    display: inline-block;
+                    vertical-align: middle;
+                    p {
+                        color: #fff;
+                        padding-left: 70px;
+                        &.title {
+                            padding-top: 0;
+                            letter-spacing: 1.5px;
+                            @include font('en-x-kr-regular', 30px, 1);
+                        }
+
+                        &.desc {
+                            padding-top: 20px;
+                            letter-spacing: 0.5px;
+                            @include font('en-x-kr-regular', 18px, 1);
+                        }
+                        &.more {
+                            padding-top: 52px;
+                            letter-spacing: 2px;
+                            @include font('en-x-regular', 17px, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &.type-dark-text{
+            li{
+                a{
+                    .txt-holder{
+                        p{
+                            color:#000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    /* 영상을 포함한 컨텐츠 모듈 */
+    .mod-vod-area {
+        .inner-wrap{
+            .vod-holder{
+
+            }
+        }
+
+        // 주변으로 두꺼운 흰 여백 존재하는 모듈
+        &.has-outer-space{
+            .inner-wrap {
+                width: 95.6%;
+                margin: 2.2% auto;
+                .vod-holder {
+                    figure{
+                        padding-top: percentage(950/1740);
+                        background-size: cover;
+                    }
+                    .btn-view-vod{
+                        margin:-130px 0 0 -227px;
+                        padding: 56px 0 53px;
+                        span{
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* 관련 컨텐츠 상단 패딩 */
+    .mod-related-contents-wrap {
+        padding-top: 80px;
+    }
+
+    /* 컨텐츠 최하단 기본 여백 */
+    #main {
+        .inner-wrap {
+            section:last-of-type {
+                margin-bottom: 70px;
+            }
+        }
+    }
+
+    .btn-all-contents {
+        position: absolute; top:75px; right: 4.1666%; margin-top:3.51%; z-index: 3;
+        a {
+            position: relative; padding: 14px 19px 27px 19px; @include font(regular, 15px, 1, #fff); border-left: 1px solid #fff; letter-spacing: 1px;
+            &:before {display: block; position: absolute; bottom:14px; left:19px; width: 100px; height: 1px; background: url('/assets/images/common/icons/icon_hor_bar.svg') 0 100% no-repeat;}
+            &:after {display: block; position: absolute; bottom: 14px; left:19px; width: 124px; height: 10px; background: url('/assets/images/common/icons/icon_half_arr.svg') 0 100% no-repeat; transition: all 0.3s;}
+            text-shadow:1px 1px 1px rgba(0,0,0,0.2);
+
+            //마우스 오버 스타일
+            &:hover {
+                transition: all 0.1s;
+                &:after {left:39px; transition: all 0.1s;}
+            }
+
+        }
+
+
+    }
+
+    figure.mod-contained-bg{
+        background-size: 101% auto;
+    }
+}
+
+
+

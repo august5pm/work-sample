@@ -1,0 +1,259 @@
+@charset "utf-8";
+
+// Form 스타일
+
+// * 주석 가이드*
+//##  메인 카테고리
+//== 서브 카테고리
+//**  카테고리 설명
+
+//## form 커스텀 스타일
+//== 이메일 인풋과 사용되는 @
+.ico-email-at {
+    display: inline-block;
+    width: calc-unit(32px);
+    @include font('regular', 22px, 57px, #000, 1);
+    text-align: center;
+    vertical-align: top;
+}
+
+//##  폼 구성
+fieldset {
+    legend {
+        @extend .blind;
+    }
+
+    &.info-area {
+        padding-top: calc-unit(26px);
+        border-top: 1px solid #000;
+    }
+
+    &.terms-area {
+        padding-top: calc-unit(40px);
+        .custom-txtarea {
+            display: none;
+        }
+    }
+
+    // 필수 입력 사항 알림 디스크립션
+    .note-desc {
+        position:absolute;
+        top: 0;
+        right:0;
+        color: #FF0000;
+        @include font('', 12px, 2.5);
+        text-align: right;
+
+        span {
+            padding-left: calc-unit(5px);
+        }
+        .icon-aste {
+            position: relative;
+            left: 0;
+            top: 50%;
+            margin-top: calc-unit(-5px);
+            &:before {
+                width: calc-unit(10px);
+                height: calc-unit(10px);
+                left: 0;
+                top: 0;
+                -ms-transform: translateX(0) translateY(0);
+                transform: translateX(0) translateY(0);
+            }
+        }
+    }
+
+    // form 내에서 사용되는 노티
+    .notice-holder {
+        display:block;
+        padding-top: calc-unit(5px);
+        @include font('kr-regular', 12px, 1.6);
+        color:#95989A;
+    }
+
+    // 개인정보처리방침 타이틀
+    .form-tit-wrap {
+        padding-bottom: calc-unit(2px); text-align:center;
+        .form-title {
+            @include font('', 20px, 1);
+            padding:calc-unit(10px 0 14px);
+    }
+        .read-copy {
+            padding-top:calc-unit(20px);
+            @include font('', 12px, 1.6, #898989);
+        }
+    }
+
+    .form-wrap {
+        position: relative;
+        width: 100%;
+        padding: 0 0 calc-unit(26px) 0;
+
+        .form-col-wrap {
+            margin-bottom: calc-unit(16px);
+            font-size: 0;
+        }
+
+        dl {
+            @extend .clearfix;
+            width: 100%;
+            dt {
+                display: block;
+                width: inherit;
+                padding-left: calc-unit(10px);
+                @include font('', 15px, 2);
+
+                label {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                &.require {
+                    position: relative;
+                    &:after {
+                        display: inline-block;
+                        position: relative;
+                        width: calc-unit(12px);
+                        height: calc-unit(12px);
+                        top: calc-unit(-1px);
+                        left: auto;
+                        margin-left: calc-unit(5px);
+                        vertical-align: middle;
+                        background: url("/assets/images/common/icons/icon_asterisk_big.svg") 0 0 no-repeat;
+                        @at-root .no-svg & {
+                            background-image: url('/assets/images/common/icons/icon_asterisk_big.png');
+                        }
+                    }
+                }
+                &.only-lnt {
+                    border-bottom: 1px solid #d4d4d4;
+                }
+            }
+
+            dd {
+                display: block;
+                width: 100%;
+                font-size: 0;
+                margin-bottom: calc-unit(16px);
+                &.only-lnt {
+                    em {
+                        display: inline-block; padding-right: calc-unit(3px); color: #f00;
+                    }
+                    .custom-chk-rdo {
+                        word-break: break-all;
+                        label {
+                            span {white-space: normal; word-break: break-all;}
+                        }
+                    }
+                }
+            }
+        }
+
+        // 약관, 수집 내용 텍스트 박스 뒤에 오는 체크박스 스타일
+        .custom-txtarea + .custom-chk-rdo {
+            display:block; /*margin:0;*/ overflow:visible;
+            label {
+                span {
+                    @include font('regular', 10px, 1.6);
+                }
+            }
+            &:first-child {
+                margin-top:0;
+            }
+            &.require {
+                label {
+                    span:after {
+                        display: inline-block;
+                        position: relative;
+                        width: calc-unit(12px);
+                        height: calc-unit(12px);
+                        top:0;
+                        left: auto;
+                        margin-top:calc-unit(-4px);
+                        margin-left: calc-unit(5px);
+                        vertical-align: middle;
+                        background: url("/assets/images/common/icons/icon_asterisk_big.svg") 0 0 no-repeat;
+                        @at-root .no-svg & {
+                            background-image: url('/assets/images/common/icons/icon_asterisk_big.png');
+                        }
+                        @include font($font-size: 10px);
+                    }
+                }
+            }
+            .alert-holder {
+                display:block;
+                width: 100%;
+                padding-left:calc-unit(30px);
+                padding-top:calc-unit(5px);
+                @include font($font-size: 10px);
+            }
+        }
+    }
+}
+
+//##  검색하기 폼
+.sch-select-wrap {
+    .form-group {
+        display: block;
+        position: relative;
+        height: calc-unit(46px);
+        line-height: calc-unit(46px);
+        box-sizing: content-box;
+        vertical-align: top;
+        font-size:0;
+        text-align: left;
+
+        &:before {
+            // display: inline-block;
+            position: absolute;
+            left: calc-unit(115px);
+            top: 0;
+            width: 1px;
+            height: inherit;
+            background: #000;
+            vertical-align: top;
+            z-index: 1;
+        }
+        .select-wrap {
+            display: inline-block;
+            width: 35.1%;
+            height: inherit;
+            line-height: inherit;
+            vertical-align: top;
+
+            select {
+                position: relative;
+                height: inherit;
+                border:1px solid #000;
+                line-height: inherit;
+                vertical-align: top;
+                z-index: 1;
+            }
+        }
+        input[type="text"] {
+            width: 50.3%;
+            height: inherit;
+            border:1px solid #000;
+            margin-left:-1px;
+            border-left-color:transparent;
+            border-right-color:transparent;
+            line-height: inherit;
+            vertical-align: top;
+        }
+        input[type=submit] {
+            position: relative;
+            background: url('/assets/images/common/icons/icon_zoom.svg') no-repeat 50% 50% / 50% 50%;
+            width: 14.6%;
+            height: inherit;
+            line-height: inherit;
+            border:1px solid #000;
+            border-left:transparent;
+            color: transparent;
+        }
+
+
+
+    }
+}
+
+

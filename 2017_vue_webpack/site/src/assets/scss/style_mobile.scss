@@ -1,0 +1,11 @@
+@charset "utf-8";
+$is-mobile-mode: true !global;
+$use-unit-px: false !global;
+
+// import common
+@import "global/global_variables";
+@import "global/import_global_mobile";
+
+//pages
+@import "pages/mobile/__index";
+

@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+.concept{
+    /* 텍스트 공통 스타일 */
+
+
+    /* 텍스트 박스 모듈 */
+    .mod-flush-r-txt,
+    .mod-flush-l-txt{
+        .txt-holder {
+            padding:calc-unit(54px 45px 32px);
+            color:#fff;
+            .tit {
+                display: block;
+                margin-bottom: calc-unit(30px);
+                @include font(bold, 17px, 1);
+                font-weight:normal;
+                letter-spacing:1.8px;
+            }
+            p {
+                @include font(regular, 15px, 1.6);
+            }
+        }
+    }
+
+    // 컴포넌트 스타일 컨셉카 공통
+    /* 하프사이즈 타입 */
+    .mod-half-size{
+        padding-top:100%;
+
+        /* 문구가 있는 하프사이트 타입 */
+        &.txt-bot-right,
+        &.txt-bot-left {
+            padding-top:0;
+        }
+    }
+
+
+    /*문구가 */
+    .mod-half-size
+    .mod-full-size,
+    .mod-half-x2-size {
+        background-color:#000;
+
+        .inner-wrap {
+            .txt-holder {
+                color:#fff;
+            }
+        }
+        dl{
+            @include font('', 12px, 1.6);
+
+            &.stress {
+                dt {
+                    @include font('bold', 12px, 1.6);
+                }
+                dd {
+                    @include font($font-size:12px);
+                }
+            }
+        }
+    }
+
+    .mod-half-x2-size,
+    .mod-half-x2-size {
+        &.txt-bot-left,
+        &.txt-bot-right {
+            .inner-wrap {
+                padding-top:0;
+                padding-bottom:100%;
+            }
+            .mod-contained-bg {
+                top:auto;
+                bottom:0;
+            }
+        }
+    }
+
+}
+
+
+
+

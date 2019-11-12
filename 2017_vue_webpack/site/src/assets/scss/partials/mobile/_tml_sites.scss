@@ -1,0 +1,924 @@
+@charset "utf-8";
+/* contents UI */
+// 탭 모듈, 아코디언 리스트...
+
+//##  백그라운드 컨테이너 처리
+figure.mod-basic-bg,
+figure.mod-contained-bg,
+figure.mod-covered-bg {
+    position: absolute; left:0; top:0;
+    width:100%; height:100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    &.bg-pos-top{
+        background-position: 50% 0;
+    }
+
+    figcaption {
+        @extend .blind;
+    }
+}
+
+figure.mod-contained-bg{
+    background-size: contain ;
+}
+
+figure.mod-covered-bg{
+    background-size: cover ;
+}
+
+
+//## 공통으로 쓰이는 키비주얼
+.mod-keyvisual {
+    position:relative; width:100%; /*padding-right:100px;*/ height:calc-unit(360px); background-color:#000;
+
+    .kv-txt-holder {
+        position:absolute; left:0; top:0;  z-index:10;
+        width:100%; margin:0 auto;
+        color:#fff;
+        pointer-events: none;
+
+        .sub-txt-area {
+            display:inline-block;
+            position:relative;
+
+            ul {
+                display:block;
+                position:relative;
+
+                li {
+                    display:none;
+                    position:absolute; left:0; top:0;
+                    width:100%; min-height:11.11vw;
+                    p {
+                        display:inline-block;
+                        vertical-align:middle; overflow:hidden;
+
+                        span, em,i{
+                            vertical-align: bottom;
+                        }
+
+                        br{
+                            display: block;
+                        }
+
+                        & > strong,
+                        &> span{
+                            display: block;
+                            font-weight:normal;
+                        }
+                    }
+                    .btn-play {
+                        display:none;
+                        min-width:0;
+                        border-color:#fff;
+                        pointer-events: auto;
+                        &:after {
+                            border-left-color:#fff;
+                        }
+                    }
+
+                    &.on {
+                        display:block; position:relative;
+                    }
+
+                    &.has-video {
+                        .btn-play {display:block;}
+                    }
+
+                    // 키비주얼 블랙 텍스트 타입
+                    &.type-black {
+                        color:#000;
+                        p strong + span:before {
+                            background:#000;
+                        }
+                        .btn-play {
+                            border-color:#000;
+                            &:after {
+                                border-left-color:#000;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .kv-bg-holder {
+        // 모바일 버전
+        position:relative; width:100%; height:100%; overflow:hidden;
+
+        .inner-wrap {
+            display: inline-block;
+            position: absolute;
+            width: auto;
+            height: 100%;
+            left: 0;
+            top: 0;
+            font-size: 0;
+            white-space: nowrap;
+            .swiper {
+                position: absolute;
+                overflow: visible!important;
+                height: 100%!important;
+                &.horizontal{
+                    .swiper-pagination{
+                        bottom:calc-unit(14px) !important;
+                        .swiper-pagination-bullet{
+                            margin:calc-unit(12px) !important;
+                            background-color:transparent !important;
+                            opacity:1;
+                        }
+                    }
+                }
+                .swiper-wrap {
+                    > div {
+                        display: inline-block;
+                        width: 100vw;
+                        height: 100vw;
+                        vertical-align: top;
+                    }
+                    .swiper-img span, .swiper-img p {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+                .swiper-pagination {
+                    width: 100vw;
+
+                    .swiper-pagination-bullet {
+                        width: 2.77778vw!important;
+                        height: 2.77778vw!important;
+                        border: 1px solid #fff!important;
+                        transition: all .3s ease!important;
+
+                        &.active{
+                            background: #FFFFFF!important;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        // 웹버전
+        //position:absolute; width:100%; height:inherit; top:0; background-color:#000;
+
+    }
+
+    .kv-indicator {
+        @extend %kv-indicator;
+    }
+}
+
+%kv-indicator {
+    position:absolute; left:0; bottom:calc-unit(15px);
+    width:100%;
+    text-align:center; z-index:10;
+
+    ul {
+        font-size:0; line-height:0; text-align: center;
+        li {
+            display:inline-block;
+            padding:calc-unit(0 7px);
+        }
+        a {
+            display:block; padding:calc-unit(10px);
+
+            i {
+                display:block;
+                width:calc-unit(10px); height:calc-unit(10px);
+                border-radius:50%;
+                border:2px solid #fff;
+                text-indent:-9999px; font-size:0; line-height:0;
+                color:transparent;
+            }
+            &.on i {background-color:#fff;}
+
+        }
+    }
+
+    .btn-play {
+        display:none;
+    }
+}
+
+
+// 리스트 타입 모듈 공통 wrapper
+.list-item-wrap {@include font($font-size:0); border-bottom:1px solid #000;}
+
+// 모델 선택 라디오 버튼
+.mod-radio-lineup {
+    display: inline-block;
+    position: relative;
+    width:100%; /*min-height: 151px;
+    margin: 0 20px 0;padding: 18px 0;
+    padding-bottom:50px;*/
+    border-top: 1px solid #000;
+    text-align: right;
+    vertical-align: top;
+    overflow: hidden;
+
+    &:after {
+        display:block; content:''; position:absolute; width:150px; height:100%; left:0; top:0;
+        background-color:transparent;
+    }
+
+    b {
+        position:absolute;
+        top:calc-unit(9px);
+        left:calc-unit(13px);
+        @include font('regular', 19px, 1.25);
+        font-weight: normal;
+        color: #000;
+    }
+
+    /* 모바일버전 아코디언 스타일 */
+    //&.opened {
+    //    .custom-chk-rdo {display:inline-block;}
+    //    button {
+    //        b:after {
+    //            background-image: url('/assets/images/common/button/btn_rdo_close.svg');
+    //            @at-root .no-svg & {
+    //                background-image: url('/assets/images/common/button/btn_rdo_close.png');
+    //            }
+    //        }
+    //    }
+    //}
+    //
+    //button {
+    //    display:block; position:relative; width:100%; top:0; left:0; padding:calc-unit(20.5px 10px); text-align:left;
+    //    b {
+    //        @include font('light', 19px, 1);
+    //        font-weight: normal;
+    //        color: #000;
+    //        &:after {
+    //            display:block; content:''; position:absolute; width:calc-unit(60px); height:calc-unit(60px); top:0; right:0;
+    //            background-size:contain; background-repeat:no-repeat;
+    //            background-image: url('/assets/images/common/button/btn_rdo_open.svg');
+    //            @at-root .no-svg & {
+    //                background-image: url('/assets/images/common/button/btn_rdo_open.png');
+    //            }
+    //        }
+    //    }
+    //    &+.custom-chk-rdo {
+    //        label {border-top:1px solid #d4d4d4;}
+    //    }
+    //}
+    .custom-chk-rdo {
+        display:inline-block; width:50%; margin-top:0; margin-right:0; margin-left:1%; padding:0; text-align: left; overflow: visible;
+        label {padding:calc-unit(17px 0 16px 17px); width: 100%; border-bottom: 1px solid #d4d4d4; box-sizing: border-box; cursor:pointer;}
+        input[type="radio"] {
+            margin-left: -500px;
+            + label{
+                &:before {position:absolute; top:50%; left:0; margin-top:-4px; margin-left: -18px; width: 8px; height: 8px; border: none; border-radius: 4px;}
+                &:after {display: none;}
+            }
+            &:focus {
+                + label {
+                    span {color: #1d1dc5;}
+                }
+            }
+            &:checked {
+                + label {
+                    &:before {background-color: #1d1dc5;}
+                    span {color: #1d1dc5;}
+                }
+            }
+            &:hover {
+                + label {
+                    span {color: #1d1dc5;}
+                }
+            }
+        }
+        label {
+            span {position: relative; margin-left:0; @include font('regular', 17px, 1);}
+        }
+
+        &:last-child {
+            label{border-bottom: none;}
+        }
+
+        //&:nth-child(3),
+        //&:nth-child(4) {
+        //    label{border-bottom:1px solid #d4d4d4 !important;}
+        //}
+
+        /* 선택 불가능한 */
+        input:disabled+label {
+            color:#BFBFBF;
+            pointer-events:none;
+            cursor:auto;
+            span:before {
+                display:inline-block; position:absolute; content:''; /*width:17px; height:17px;*/
+                width:7px; height:7px; top:50%; left:0; margin-top:-3px; margin-left:-42px; border:1px solid #95989A; border-radius:50%;
+                //background-image:url('/assets/images/common/icons/icon_asterisk_big.svg');
+                //@at-root .no-svg & {
+                //    background-image: url('/assets/images/common/icons/icon_asterisk_big.png');
+                //}
+            }
+        }
+
+    }
+
+    b+.custom-chk-rdo,
+    .custom-chk-rdo:first-child {margin-top: 0;}
+
+    &:nth-child(3n+1) {margin-left:0;}
+    &:nth-child(3n+3) {margin-right:0;}
+
+    &:nth-last-child(1),
+    &:nth-last-child(2),
+    &:nth-last-child(3) {/*border-bottom:1px solid #000;*/}
+}
+
+// 모델 선택 체크박스
+.mod-checkbox-lineup {
+    display: inline-block; position: relative; width:100%; /*min-height: 151px;*/ min-height:0; border-top: 1px solid #000; vertical-align: top; text-align: right; overflow: hidden;
+
+    &.opened {
+        .custom-chk-rdo {display:inline-block;}
+        button {
+            b:after {
+                height: 1px;
+                margin-top: -1px;
+                background: #000;
+            }
+        }
+    }
+
+    button {
+        display:block; position:relative; width:100%; top:0; left:0; height:calc-unit(65px); padding-left:calc-unit(15px); /*padding:calc-unit(27px 10px 26px);*/ text-align:left;
+        b {
+            @include font('', 19px, 65px);
+            font-weight: normal;
+            color: #000;
+            &:after {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 5.55556vw;
+                width: 21px;
+                height: 12px;
+                margin-top: -6px;
+                background-repeat:no-repeat;
+                background-image: url('/assets/images/common/icons/icon_arrow_down.svg');
+                @at-root .no-svg & {
+                    background-image: url('/assets/images/common/icons/icon_arrow_down.png');
+                }
+            }
+        }
+        &+.custom-chk-rdo {
+            label {border-top:1px solid #d4d4d4;}
+        }
+    }
+
+    .custom-chk-rdo {
+        display:none; width:50%; margin-top:0; margin-right:0; margin-left:2px; padding:0; text-align: left; overflow: visible;
+        label {padding:calc-unit(17px 0 16px 17px); width: 100%; border-bottom: 1px solid #d4d4d4; box-sizing: border-box;}
+        input[type="checkbox"] {
+            margin-left: -500px;
+            + label{
+                &:before {position:absolute; top:50%; left:0; margin-top:-4px; margin-left: -18px; width: 8px; height: 8px; border: none; border-radius: 4px;}
+                &:after {display: none;}
+            }
+            &:checked {
+                + label {
+                    &:before {background-color: #1d1dc5;}
+                    span {color: #1d1dc5;}
+                }
+            }
+            &:focus,
+            &:hover {
+                + label {
+                    //&:bef ound-color: #1d1dc5;}
+                    span {color: #1d1dc5;}
+                }
+            }
+        }
+        label {
+            span {position: relative; margin-left:0; @include font('regular', 16px, 1);}
+        }
+        &:last-child {
+            label{border-bottom: none;}
+        }
+    }
+
+    b+.custom-chk-rdo,
+    .custom-chk-rdo:first-child {margin-top: 0;}
+
+    &:nth-child(3n+1) {margin-left:0;}
+    &:nth-child(3n+3) {margin-right:0;}
+
+    &:nth-last-child(1),
+    &:nth-last-child(2),
+    &:nth-last-child(3) {/*border-bottom:1px solid #000;*/}
+}
+
+// 지역 선택 라디오 버튼
+.mod-radio-region {
+    display: inline-block;
+    position: relative;
+    width:100%; /*min-height:151px;
+    margin: 0 20px 0; padding: 18px 0;
+    padding-bottom:50px;*/
+    border-top: 1px solid #000;
+    text-align: right;
+    vertical-align: top;
+    overflow: hidden;
+
+    b {
+        position:absolute;
+        top:calc-unit(9px);
+        left:calc-unit(13px);
+        @include font('regular', 19px, 1.25);
+        font-weight: normal;
+        color: #000;
+    }
+
+    .custom-chk-rdo {
+        margin-right: 0; width:50%; margin-top:0; margin-left:1%; padding:0; text-align: left; overflow: visible;
+        label {padding:calc-unit(17px 0 16px 17px); width: 100%; border-bottom: 1px solid #d4d4d4; box-sizing: border-box; cursor:pointer;}
+        input[type="radio"] {
+            margin-left: -500px;
+            + label{
+                &:before {position:absolute; top:50%; left:0; margin-top:-4px; margin-left: -18px; width: 8px; height: 8px; border: none; border-radius: 4px;}
+                &:after {display: none;}
+            }
+            &:checked {
+                + label {
+                    &:before {background-color: #1d1dc5;}
+                    span {color: #1d1dc5;}
+                }
+            }
+            &:focus,
+            &:hover {
+                + label {
+                    //&:before {background-color: #1d1dc5;}
+                    span {color: #1d1dc5;}
+                }
+            }
+        }
+        label {
+            span {position: relative; @include font('regular', 16px, 1);}
+        }
+        &:last-child {
+            label{border-bottom: none;}
+        }
+    }
+
+    b+.custom-chk-rdo,
+    .custom-chk-rdo:first-child {margin-top: 0;}
+
+    &:nth-child(3n+1) {margin-left:0;}
+    &:nth-child(3n+3) {margin-right:0;}
+
+    &:nth-last-child(1),
+    &:nth-last-child(2),
+    &:nth-last-child(3) {/*border-bottom:1px solid #000;*/}
+}
+
+// 모델 페이지 이동 버튼
+.mod-choose-model {
+    display: inline-block;
+    position: relative;
+    width:100%; /*min-height: 166px;*/ min-height:0;
+    /*margin: 0 20px 0;
+    padding-bottom:50px;*/
+    border-top: 1px solid #000;
+    text-align: right;
+    vertical-align: top;
+
+    &.opened {
+        > ul {display:inline-block;}
+        button {
+            b:after {
+                height: 1px;
+                margin-top: -1px;
+                background: #000;
+            }
+        }
+    }
+
+    > button {
+        display:block; position:relative; width:100%; top:0; left:0; height:calc-unit(65px); padding-left:calc-unit(15px); /*padding:calc-unit(20.5px 10px);*/ text-align:left;
+        b {
+            @include font('', 19px, 65px);
+            font-weight: normal;
+            color: #000;
+            &:after {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 5.55556vw;
+                width: 21px;
+                height: 12px;
+                margin-top: -6px;
+                background-repeat:no-repeat;
+                background-image: url('/assets/images/common/icons/icon_arrow_down.svg');
+                @at-root .no-svg & {
+                    background-image: url('/assets/images/common/icons/icon_arrow_down.png');
+                }
+            }
+        }
+        & + ul {
+            li:first-child {
+                button {border-top:1px solid #d4d4d4;}
+            }
+        }
+    }
+    //b {position: absolute; top:21px; left: 12px; @include font('light', 40px, 1); font-weight: normal; color: #000;}
+
+    ul {
+        display:none; position: relative; z-index: 2; width:50%; margin-left:2px; text-align: left;
+        li {
+            position: relative; @include font($font-size:16px);
+            button {
+                display: block; width:100%; padding:calc-unit(17px 0 16px 17px); border-bottom: 1px solid #D4D4D4; text-align:left; box-sizing: border-box; color: #000; overflow:visible;
+                &:after {display: none; position:absolute; top:50%; left:0; margin-top:-4px; margin-left: -18px; width: 8px; height: 8px; border: none; border-radius: 4px; background-color: #1d1dc5;}
+
+                &:focus,
+                &:hover {
+                    color: #1d1dc5;
+                    //&:after {
+                    //    display:block;
+                    //}
+                }
+            }
+            &:last-child {
+                button {border-bottom: 1px solid transparent;}
+            }
+        }
+    }
+    &:nth-child(3n+1) {margin-left: 0}
+    &:nth-child(3n+3) {margin-right: 0}
+    &:hover {
+        img {opacity: 0; transition: all 0.5s ease-in;}
+        ul {max-height: 1000px; transition: max-height 0.75s ease-in-out; transition-delay: 0.2s;}
+    }
+    &.hover-over {
+        img {display: none;}
+        ul {
+            max-height: 1000px; transition: max-height 0.75s ease-in-out;
+            &:last-child {background-color: #000; color: #fff;}
+        }
+    }
+}
+
+// 라인업 리스트 모델정보 시승신청 버튼 포함
+.mod-choose-lineup {
+    display:inline-block; position: relative; width:100%; padding:calc-unit(34px 30px); margin-bottom:calc-unit(127px); text-align:center; border:1px solid #D4D4D4;
+
+    &:last-child {
+        margin-bottom:calc-unit(102px);
+    }
+
+    .txt-holder {
+        text-align: center;
+        dt {
+            display: block; width: 100%; @include font('', 25px, 1); text-align: left;
+        }
+        dd {margin-top:calc-unit(200px);}
+    }
+    figure {
+        top:auto; right:0; bottom:calc-unit(34px); left: auto; width:100%; height:calc-unit(200px);
+    }
+
+    .btn-group {
+        position:absolute; display:block; width:100%; bottom:calc-unit(-77px); left:0;
+        a {
+            width:49.6%; height:calc-unit(57px); line-height:calc-unit(57px); border:2px solid #000;
+            &:first-child {float:left;}
+            &:last-child {float:right;}
+            &:after {
+                display:block; position:relative; content:''; width:100%; height:0; clear:both; float:none;
+            }
+            span {@include font('bold', 12px);}
+        }
+    }
+
+    &:nth-child(3n+1) {margin-left:0;}
+    &:nth-child(3n+3) {margin-right: 0;}
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {margin-top: 0}
+}
+
+// 모델 4종 비교
+.mode-compare-4-vehicles {
+    position: relative; /*width:calc-unit(828px);*/ max-width:1100px; @include font('regular', 12px, 1.5);
+    tr {
+        th, td {box-sizing: border-box;}
+        th {width:calc-unit(100px); height:50px; font-weight:normal;}
+        td {width:calc-unit(182px);}
+    }
+
+    thead {
+        tr {@include font($font-size:0);}
+        th {
+            border-right: 1px solid #d4d4d4;
+            &:first-child {border-left: 1px solid #d4d4d4;}
+            span {
+                /*display: block;*/ padding-left: 13px; @include font($font-size:12px); box-sizing: border-box; text-align: left;
+                &+.btn-base {margin-left: 25px;}
+            }
+        }
+        tr.model-tbl {
+            height:calc-unit(208px) !important;
+            th {
+                padding:25px 0; text-align: center;
+                span {margin-top: 0; padding-left: 0; padding-right:13px; @include font('', 12px, 1.5);}
+                &:first-child {height:inherit; text-align: right; background-color: #f8f8f8;}
+            }
+            td {
+                padding:calc-unit(37px 0); text-align: center; border-right: 1px solid #d4d4d4;
+                .model-img {
+                    position:relative; width:calc-unit(145px); height:calc-unit(99px); margin:0 auto; overflow:hidden;
+                }
+                em {display: block; padding-top:27px; padding-left:20px; @include font('', 19px, 1); box-sizing: border-box; text-align: left;}
+            }
+        }
+    }
+
+    tbody{
+        tr {
+            height: 50px; background-color: #fff;
+            &:nth-child(2n+1) {
+                background-color: #f5f5f5;
+                th {background-color: #f2f2f2;}
+            }
+            &:last-child {
+                height: 74px; text-align: center; background-color: #fff;
+                //td {padding-left: 0;}
+            }
+        }
+        th {
+            padding:calc-unit(0 12px); vertical-align: middle; text-align: right; border-top: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4; border-left: 1px solid #d4d4d4;
+            &:first-child {background-color: #f8f8f8;}
+        }
+        td {
+            padding:calc-unit(12px); vertical-align: middle; @include font('', 12px, 1.5); border-top: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4;
+        }
+    }
+
+    &:before {display: block; content: ''; position: absolute; top:0; left:0; width: 100%; height: 1px; background: #000;}
+    &:after {display: block; content: ''; position: absolute; bottom:0; left:0; width: 100%; height: 1px; background: #000;}
+
+}
+
+// 구매 혜택
+.mod-monthly-benefit {
+    position: relative; width: 100%; background-color:#fff; padding-top:calc-unit(25px); padding-bottom:calc-unit(102px);
+    &:first-child {padding-top:0;}
+    &:last-child {padding-bottom:calc-unit(77px);}
+
+    .inner-wrap {position:relative; width:100%; padding:calc-unit(33px 30px 50px); border:1px solid #D4D4D4;}
+    .model-name {display: block; width:auto; padding-bottom:calc-unit(30px); @include font('regular',25px, 1, #000);}
+
+    ul.benefits {
+        width:100%; font-size: 0; margin-top: 5px;
+        li {
+            display:block; width:100%; padding:calc-unit(15px 0);
+            &:first-child {padding-top:0;}
+            &:last-child {padding-bottom:0;}
+        }
+    }
+    dl {
+        dt{padding-bottom:13px; @include font('bold',15px, 1, #000);}
+        dd{
+            padding-left:calc-unit(20px);
+            border-left:1px solid #000;
+            @include font('regular',15px, 1.6, #000);
+            strong {display: block; margin: 20px 0 0; color: #0027aa; font-weight: normal}
+            span {display: block;}
+        }
+    }
+    .btn-group {
+       display:block; position:absolute; width:100%; bottom:calc-unit(-77px); left:0;
+        a {
+            width:49.6%; min-width:0; height:calc-unit(57px); padding:0; margin:0; border-width:2px; background-color: #fff;
+            span {@include font('bold', 12px, 57px);}
+            &:first-child {float:left;}
+            &:last-child {float:right;}
+            &:after {display:block; content:''; position:relative; width:100%; height:0; clear:both; float:none;}
+        }
+    }
+
+    figure {
+        position:relative; display:block; width:100%; padding-bottom:68%; margin-top:calc-unit(10px); overflow: hidden;
+    }
+    figcaption {
+        display:none;
+    }
+}
+
+// 구매 혜택 유의 사항
+.mod-benefits-note {
+    width:100%; min-height:312px; margin:0 auto; padding:calc-unit(26px 35px 22px); border:1px solid #000;
+    dl {
+        dt {
+            padding-bottom:25px;
+            span {
+                display:block;
+                position:relative;
+                padding-bottom:33px;
+                @include font('bold', 20px, 1.2);
+                letter-spacing:-0.3px;
+
+                &:after {
+                    display:block;
+                    content:'';
+                    position:absolute;
+                    width:50px;
+                    height:1px;
+                    bottom:0; left:0;
+                    background-color:#000;
+                }
+            }
+        }
+        dd {
+            span {
+                display:block;
+                @include font('', 15px, 2);
+                letter-spacing:0.1px;
+            }
+        }
+    }
+}
+
+// 렉서스 서비스 페이지 내 공통 유의 사항
+.mod-notice {
+    position:relative; width:100%; max-width:1100px; margin:0 auto; padding:calc-unit(50px 30px); border:1px solid #000;
+    dl {
+        position:relative; z-index:1;
+        dt {
+            padding-bottom:calc-unit(20px);
+            span {
+                display:block;
+                position:relative;
+                padding-bottom:calc-unit(20px);
+                @include font('smbold', 20px, 1.2);
+                letter-spacing:-0.3px;
+
+                &:after {
+                    display:block;
+                    content:'';
+                    position:absolute;
+                    width:calc-unit(35px);
+                    height:1px;
+                    bottom:0; left:0;
+                    background-color:#000;
+                }
+            }
+        }
+        dd {
+            > strong {
+                display:block;
+                padding-top:calc-unit(30px); margin-bottom:calc-unit(11px);
+                font-weight:normal;
+                @include font('smbold', 15px, 1.6);
+                &:first-child {padding-top:0;}
+            }
+            > strong ~ span {
+                @include font($font-size:12px);
+            }
+            > span {
+                display:block;
+                font-weight:normal;
+                @include font('', 12px, 1.8);
+                letter-spacing:-0.4px;
+                &:first-child {padding-top:0;}
+            }
+        }
+    }
+    // 우측 상단 텍스트 타입 추가
+    .em-txt-holder {
+        position:absolute; top:0; right:0; color:#D4D4D4;
+        em, span {display:inline-block; vertical-align:top;}
+        em {
+            @include font('light', 70px, 1);
+        }
+        span {
+            @include font('', 14px, 1);
+            color:#95989A;
+        }
+    }
+    // 백그라운드 포함
+    figure {
+        position:absolute; left:0; top:0; width:100%; height:100%;
+    }
+    // 아이콘 포함 사이즈는 기본 93x93, top right 기준
+    i {
+        display:inline-block; position:absolute; top:0; right:0;
+        &:before {
+            display:block; width:calc-unit(93px); height:calc-unit(93px);
+            background-repeat:no-repeat;
+            background-size:contain;
+        }
+    }
+}
+
+//##  연관콘텐츠
+.mod-related-contents-wrap{
+    padding: calc-unit(31px 15px 80px);
+    background: #fff;
+    .title-wrap{
+        position: relative;
+        padding-bottom: calc-unit(26px);
+
+        .title{
+            position: relative; z-index: 1;
+            @include font('bold', 12px, null, #000);
+            text-align: center; letter-spacing: 0.3vw;
+        }
+    }
+
+    .list-item-wrap{
+        margin:0 auto;
+    }
+}
+
+.mod-related-content {
+    $img-height:36.76%;
+    box-sizing: content-box;
+    vertical-align: top;
+
+    a {
+        display: block;
+    }
+
+    dl{
+        position: relative;
+        padding-top: $img-height;
+        text-align: center; vertical-align: top;
+    }
+    dt.title {
+        display: block;
+        padding: calc-unit(8px 0 25px);
+        @include font('', 15px, 1.1, #000) ; text-align: center;
+        box-sizing: content-box;
+
+        & > span{
+            display: block;
+
+            > span{
+
+            }
+        }
+    }
+    dd.img {
+        position: absolute; top:0; left: 0;
+        width: 100%;
+        padding-top:inherit;
+    }
+
+
+    //더 보기
+    &.load-more-content{
+        a{
+            display: block;
+            position: relative;
+            padding-top:$img-height;
+            > span{
+                display: block;
+                position: absolute; left:0; top:0;
+                width:100%; height:100%;
+                border:1px solid #000;
+
+                span{
+                    position: absolute; left:50%; top:50%;
+                    font-size: 14px;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+}
+
+/* 영상을 포함한 컨텐츠 모듈 */
+.mod-vod-area {
+    .vod-holder {
+        position: relative;
+        figure {
+            position: static; width: 100%; height: 0; overflow: hidden;
+            // 디자인별로 달라지는 값 padding-top: 27.36%;
+        }
+        .btn-view-vod {
+            display: block; position: absolute; top:50%; left: 50%; margin: calc-unit(-66px 0 0 -105px);  width: calc-unit(210px); padding: calc-unit(22px 0 21px); border-top: 1px solid #fff; border-bottom: 1px solid #fff;
+            span {display: block; @include font('bold', 14px, 1, #fff); text-align: center; letter-spacing: 0.4vw}
+            .btn-play {
+                display: block; position: relative; width: calc-unit(60px); height: calc-unit(60px); border: 3px solid #fff; margin: calc-unit(17px) auto 0;
+                &:after {
+                    border-left-color: #fff;
+                }
+            }
+        }
+    }
+}

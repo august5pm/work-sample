@@ -1,0 +1,561 @@
+@charset "utf-8";
+
+
+
+
+
+// opacity 등장 기본 타잎
+.basic-fade-enter-active, .basic-fade-leave-active { transition: all 0.8s; }
+.mobile .basic-fade-enter-active,
+.mobile .basic-fade-leave-active { transition: all 0.8s; }
+.basic-fade-enter, .basic-fade-leave-to { opacity: 0; }
+
+// opacity 등장 기본 타잎 up
+.basic-down-enter-active, .basic-down-leave-active { transition: all 0.4s; }
+.basic-down-enter, .basic-down-leave-to { opacity: 0; transform: translate3d(0px, -100px, 0px) ;}
+
+//++ header-navigation.vue
+// gnb transition 모바일에선 속도와 ease값만 다르게 수정함
+.navi-trans-enter-active {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.mobile .navi-trans-enter-active {
+  transition: all 0.35s cubic-bezier(0.4, 0.84, 0.44, 1);
+}
+
+.navi-trans-leave-active {
+  transform: translate3d(0px, -100%, 0px) ;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.175, 1);
+}
+
+.navi-trans-enter {
+  transform: translate3d(0px, -100%, 0px);
+}
+.mobile .navi-trans-leave-active {
+
+
+  transform: translate3d(100%, 0, 0px) ;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.175, 1);
+}
+
+.mobile .navi-trans-enter {
+  transform: translate3d(100%, 0, 0px);
+}
+
+
+
+
+//++ main-contens-post-group.vue , model-related-contents.vue
+// related-contents group (transition name="box-fade" interactive/models/model-related-contents 에서 class 적용)
+// main contents group (transition name="box-fade" interactive/main/components/main-contens-post-group 에서 class 적용)
+.box-fade-enter-active, .box-fade-leave-active {
+  transition: all .3s cubic-bezier(0, .35, .0, 1);
+}
+
+.box-fade-enter, .box-fade-leave-to /* .box-fade-leave-active in <2.1.8 */
+{
+  transition: all 0s;
+  opacity: 0;
+  transform: translate3d(0, 50px, 0)
+}
+
+//++ common-dimmed.vue
+// component-common-dimmed transition
+.fade-dim-enter-active, .fade-dim-leave-active {
+  opacity: 0.8;
+  transition: all 0.1s !important;
+  height: 100% !important;
+}
+
+.fade-dim-enter, .fade-dim-leave-to /* .fade-leave-active in <2.1.8 */
+{
+  opacity: 0 !important;
+  transition: all 0.2s !important;
+  height: 100% !important;
+}
+
+
+
+// post brand philosophy - menu 등장 모션 - desktop
+.desktop .philosophy-list-enter-active, .desktop .philosophy-list-leave-active { transition: all 0.3s; }
+.desktop .philosophy-list-enter, .desktop .philosophy-list-leave-to { opacity: 0; transform: translate3d(0px, 0px, 0px); transition: all 0.2s;}
+
+
+
+
+
+//++ desktop / model-view.vue
+// model contens transition (모델에서 컨텐츠 메뉴 눌럿을시 컨텐츠 등장 움직임)
+.model-content-enter-active {
+  transition: all .3s cubic-bezier(0, .35, .0, 1);
+}
+
+.model-content-leave-active {
+  transition: all .0s cubic-bezier(0, .35, .0, 1);
+}
+
+.model-content-enter {
+  transform: translate3d(0px, 50px, 0px);
+  opacity: 0;
+}
+
+//++ desktop / model-view.vue
+// model contens menu fixed transition (모델에서 컨텐츠 메뉴 fixed 될시 움직임)
+.fixed-show-enter-active {
+  transition: all 0.4s;
+}
+
+.fixed-show-leave-active {
+  transform: translate3d(0px, -150px, 0px);
+  transition: all 0.3s;
+}
+
+.fixed-show-enter {
+  transform: translate3d(0px, -150px, 0px);
+}
+
+
+
+
+//++ keyvisual.vue
+// keyvisual bg image (transition name="kv-image" interactive/components/keyvisual.vue에서 class 적용)
+.mod-keyvisual .kv-bg-holder ul li.on{
+  /*-webkit-animation: fadeScaleIn 0.6s cubic-bezier(0, .35, .0, 1);*/
+  animation: fadeScaleIn 0.6s cubic-bezier(0, .35, .0, 1);
+}
+
+
+.dealer-main .mod-keyvisual .kv-bg-holder ul li.on{
+  /*-webkit-animation: fadeScaleIn 0.6s cubic-bezier(0, .35, .0, 1);*/
+  //animation: basicFadeIn 0.6s cubic-bezier(0, .35, .0, 1);
+}
+
+
+
+
+//++ class
+// keyvisual bg image 동영상 끝나고 등장모션
+
+.mod-keyvisual .kv-bg-holder ul li {
+  span {
+    img {
+      transition: all 0.5s cubic-bezier(0, .35, .0, 1);
+    }
+    &.hidden {
+      img {
+        pointer-events: none;
+        opacity: 0;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  p {
+    transition: all 0.5s cubic-bezier(0, .35, .0, 1);
+
+    &.hidden {
+      pointer-events: none;
+      opacity: 0;
+    }
+  }
+
+
+}
+
+// keyvisual title/text 등장모션
+.main {
+  .mod-keyvisual .kv-txt-holder .sub-txt-area {
+    ul {
+      li {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+
+        &.on {
+          display: block;
+          position: relative;
+
+          p {
+            strong {
+              animation: kvTitle 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);;
+            }
+
+            strong + span {
+              span {
+                //sub txt
+                display: block;
+                animation: kvTitle 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+              }
+
+              &::before {
+                //line
+                animation: kvLine 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+              }
+            }
+          }
+          a {
+            //play btn
+            animation: kvTitle 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+          }
+        }
+      }
+    }
+  }
+}
+
+.models {
+  .mod-keyvisual .kv-txt-holder .sub-txt-area {
+
+    ul {
+      li {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+
+        &.on {
+          display: block;
+          position: relative;
+
+          p {
+            //play btn
+            animation: kvSub 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+          }
+
+          a {
+            //play btn
+            animation: kvSub 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes kvTitle {
+  from { opacity: 0; transform: translate3d(0px, -0px, 0) }
+  to { opacity: 1; transform: translate3d(0px, 0px, 0) }
+}
+
+@keyframes kvSub {
+  from { opacity: 0; transform: translate3d(0px, 30px, 0) }
+  to { opacity: 1; transform: translate3d(0, 0, 0) }
+}
+
+@keyframes kvLine {
+  from { opacity: 1; transform: translate3d(-100%, 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+
+
+
+
+
+
+
+
+
+//++ custom-parallax.js
+// parallax custom스크롤할시 등장하는 기본 타잎
+.parallax-init {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.6s, opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0;
+
+  &.init-left {  transform: translate3d(150px, 0, 0); }
+  &.init-right { transform: translate3d(-150px, 0, 0); }
+
+  &.init-up { transform: translate3d(0, 100px, 0); }
+  &.init-down { transform: translate3d(0, -100px, 0); }
+
+  &.init-scale-up { transform: scale(0.8); }
+  &.init-scale-down { transform: scale(1.2); }
+
+  &.init-rotate-left { transform: rotate(4deg); }
+  &.init-rotate-right { transform: rotate(-4deg); }
+
+  &.init-speed-slow { transition: transform 1.0s, opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+  &.init-speed-fast { transition: transform 0.3s, opacity 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+  &.add-stage {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0) !important;
+    opacity: 1;
+  }
+}
+
+// parallax - post에서 최상단 키비쥬얼 이미지, 텍스트 트랜지션
+.main-wide-banner-init {
+  background-position: 50% 50%!important;
+  transform: translate3d(0, 0, 0) scale(2) rotate(0);
+  transition: background-position 1.6s cubic-bezier(0.77, 0, 0.175, 1), transform 1.6s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &.add-stage {
+    /*background-position: 50% 100%!important;*/
+    transform: translate3d(0, 0, 0) scale(1) rotate(0) !important;
+    opacity: 1;
+  }
+}
+
+// parallax - post에서 최상단 키비쥬얼 이미지, 텍스트 트랜지션
+.post-kv-init {
+  overflow: hidden;
+  /*background-color: black;*/
+
+  .mod-contained-bg {
+    transition: transform 0.5s, opacity 0.8s cubic-bezier(0, .35, .0, 1);
+    opacity: 0;
+  }
+  .txt-holder {
+    transition: transform 0.8s, opacity 0.5s;
+    transform: translate3d(0, 30px, 0);
+    opacity: 0;
+  }
+  &.add-stage {
+    .mod-contained-bg {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1) !important;
+    }
+    .txt-holder {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1) !important;
+    }
+
+  }
+}
+
+// parallax - concept car 에서 최상단 키비쥬얼 이미지, 텍스트 트랜지션
+.concept-kv-init {
+  .kv-txt-holder {
+    .fixed-tit-area{
+      //title
+      transition: transform 0.8s, opacity 0.8s;
+      opacity: 0;
+    }
+
+    .sub-txt-area{
+      //sub title
+      p{
+        transition: transform 0.8s, opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        transition-delay: 0.5s;
+        opacity: 0;
+        transform: translate3d(-50px, 0, 0);
+      }
+
+      &::before{
+        opacity: 0;
+        transition: all 1.7s cubic-bezier(0.86, 0, 0.07, 1);
+        transition-delay: 0s;
+        transform: translate3d(0, -50%, 0) scaleY(0);
+      }
+    }
+
+    .btm-txt-area{
+      //content text
+      opacity: 1;
+      transform: translate3d(0, 100px, 0);
+    }
+  }
+
+  .kv-bg-holder{
+    //image
+    transition: all 1.3s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.8s;
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1.05) ;
+  }
+
+  &.add-stage {
+    .kv-txt-holder {
+      .fixed-tit-area{
+        //title
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1) !important;
+      }
+
+      .sub-txt-area{
+        //sub title
+        p{
+          opacity: 1;
+          transform: translate3d(0, 0, 0) scale(1) !important;
+        }
+
+
+        &::before{
+          opacity: 1;
+          transform: translate3d(0, 0, 0) scaleY(1) !important;
+        }
+
+      }
+
+      .btm-txt-area{
+        //content text
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1) !important;
+      }
+    }
+
+    .kv-bg-holder{
+      //image
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1) !important;
+    }
+
+  }
+
+}
+
+
+
+
+
+
+//++ class
+// sky jet - kv 비행성 루핑 모션
+.sky-jet-loop {
+  animation: vertical-loop 3s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes vertical-loop {
+  from { transform: translate3d(0, 0, 0);}
+  50% { transform: translate3d(0, -5px, 0) rotate(-1deg); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+// @@mobile -----------------------------------------------------------------------------------------------------------
+
+//++ util-quickmenu.vue
+//util quick menu - mobile transtion
+.util-quick-enter-active, .util-quick-leave-active {
+  transition: all .3s !important;
+}
+
+.util-quick-enter, .util-quick-leave-to /* .fade-leave-active in <2.1.8 */
+{
+  /*opacity: 0;*/
+  transform: translate3d(0, 100%, 0)
+}
+
+//++ model-contents-mobile.vue
+// model contents container를 스와이프를 위해 좌우로 붙일시 사용
+.js-container-prev {
+  position: absolute !important;
+  transform: translate3d(-100%, 0, 0);
+  top: 0;
+  width: 100%;
+}
+
+.js-container-next {
+  position: absolute !important;
+  transform: translate3d(100%, 0, 0);
+  top: 0;
+  width: 100%;
+}
+
+
+
+
+/* scrollbar mobile hidden*/
+.mobile .main .launcher-content {
+  -ms-overflow-style: none;  // IE 10+
+  overflow: -moz-scrollbars-none;  // Firefox
+}
+.mobile .main .launcher-content::-webkit-scrollbar {
+  display: none;  // Safari and Chrome
+}
+
+.mobile .models .model-cont-top .pg-tab-menu-list {
+  -ms-overflow-style: none;  // IE 10+
+  overflow: -moz-scrollbars-none;  // Firefox
+}
+.mobile .models .model-cont-top .pg-tab-menu-list::-webkit-scrollbar {
+  display: none;  // Safari and Chrome
+}
+
+
+
+
+
+
+
+/* board content view page transition */
+.board-content-enter-active {
+  transition: all .3s cubic-bezier(0.4, 0, 0.175, 1);
+}
+
+.board-content-leave-active {
+  transition: all .0s;
+  opacity: 0;
+}
+
+.board-content-enter {
+  transform: translate3d(0px, 50px, 0px);
+  opacity: 0;
+}
+
+
+
+/* dealer content view page fade transition */
+.fade-content-enter-active {
+  transition: all .6s cubic-bezier(0.4, 0, 0.175, 1);
+}
+
+.fade-content-leave-active {
+  transition: all .0s;
+  opacity: 0;
+}
+
+.fade-content-enter {
+
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+/* popup animation */
+.popup{
+  &.show{
+    animation: fadeInPopup 0.4s cubic-bezier(.73, 0, .07, 1);
+  }
+}
+
+@keyframes fadeInPopup {
+  from { opacity: 0;}
+  10% { opacity: 0;}
+  to { opacity: 1; }
+}
+
+
+
+
+
+
+
+@keyframes fadeScaleIn {
+  from { opacity: 0; transform: scale(1.1) }
+  to { opacity: 1; transform: scale(1) }
+}
+
+
+
+/* basic animation */
+@keyframes basicFadeIn {
+  from { opacity: 0;}
+  to { opacity: 1; }
+}
+
+@keyframes basicFadeOut {
+  from { opacity: 1;}
+  to { opacity: 0; }
+}
+

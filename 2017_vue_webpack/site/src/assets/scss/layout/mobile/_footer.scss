@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* footer style */
+footer {
+    position: relative;
+    background: #000;
+    > .inner-wrap {
+        display: flex;
+        flex-wrap:wrap;
+        position: relative;
+        min-width: 320px;  height: inherit;
+        margin: 0 auto;
+        padding:calc-unit(0 15px 76px);
+    }
+
+    h2{
+        display: none;
+    }
+
+    .ft-menu{
+        font-size: 0;
+        li {
+            display: inline-block;
+            vertical-align: top;
+            > a {
+                display: inline-block;
+                &:hover, &:focus{
+                    color:#fff;
+                }
+            }
+        }
+
+    }
+
+    .sns-wrap{
+        order : 2;
+    }
+
+    .link-wrap{
+        order:1;
+    }
+
+    .ft-quick{
+        @extend .blind;
+    }
+
+    .ft-sns{
+        position:relative; /*margin-top:calc-unit(166px);*/ padding-top:calc-unit(19px); text-align:center;
+
+
+        > li {
+            display:inline-block; margin:calc-unit(0 6px);
+            > a {
+                width:calc-unit(70px); height:calc-unit(70px);
+                border: 1px solid #717171;
+                background: transparent;
+                @include  font('', 14px, 70px, #fff);
+                border-radius: 50%;
+                &:hover, &:focus{
+                    color:#000;
+                }
+
+                &.icon-facebook {
+                    &:before {
+                        background-image: url('/assets/images/common/icons/m_icon_facebook_gray.svg');
+                        @at-root .no-svg & {
+                            background-image: url('/assets/images/common/icons/m_icon_facebook_gray.png');
+                        }
+                    }
+                }
+                &.icon-instagram {
+                    &:before {
+                        background-image: url('/assets/images/common/icons/m_icon_instagram_gray.svg');
+                        @at-root .no-svg & {
+                            background-image: url('/assets/images/common/icons/m_icon_instagram_gray.png');
+                        }
+                    }
+                }
+                &.icon-youtube {
+                    &:before {
+                        background-image: url('/assets/images/common/icons/m_icon_youtube_gray.svg');
+                        @at-root .no-svg & {
+                            background-image: url('/assets/images/common/icons/m_icon_youtube_gray.png');
+                        }
+                    }
+                }
+                &.icon-post {
+                    &:before {
+                        height: 2em;
+                        background-image: url('/assets/images/common/icons/m_icon_naver_post_gray.svg');
+                        @at-root .no-svg & {
+                            background-image: url('/assets/images/common/icons/m_icon_naver_post_gray.png');
+                        }
+                    }
+                }
+            }
+
+
+        }
+        &:before {
+            content:''; display:block; position:absolute;
+            width:100%; height:1px; top:0; left:0; padding:calc-unit(0 15px); margin-left:-(calc-unit(15px));
+            background-color: #242424; box-sizing:content-box;
+        }
+    }
+
+    .ft-menu-contact {
+        display:none;
+    }
+
+    .ft-link{
+        top:0; left:0; padding:calc-unit(20px 0);
+        > li {
+            width:100%;
+            > a {
+                padding:calc-unit(10.4px 0);
+                @include font(bold, 11px, 1, #7B7B7B);
+                vertical-align: middle;
+
+            }
+
+            // 영문 타입
+            &:nth-child(1) > a,
+            &:nth-child(2) > a{
+                letter-spacing: 0.1em;
+            }
+            &:nth-child(4) > a{
+                color: #c9c9c9;
+            }
+        }
+    }
+
+    .address{
+        order:3;
+        padding-top:calc-unit(20px);
+        margin:0 auto;
+        @include font('bold', 9px, 1, #2E2E2E);
+        letter-spacing: 0.03em;
+        text-align:center;
+    }
+}

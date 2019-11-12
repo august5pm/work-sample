@@ -1,0 +1,58 @@
+@charset "utf-8";
+//Desktop version
+
+@import "main";
+
+// 모델 페이지
+@import "models/model_layout";
+@import "models/model_contents";
+
+// 컨셉카, 퓨쳐카
+@import "concept_future/concept_contents";
+@import "concept_future/concept_lfc2";
+@import "concept_future/concept_lfsa";
+@import "concept_future/concept_lffc";
+@import "concept_future/concept_ux";
+@import "concept_future/concept_ls";
+@import "concept_future/concept_lsplus";
+@import "concept_future/concept_lf_1_limitless";
+
+// 렉서스 서비스
+@import "lexus_service/membership";
+@import "lexus_service/test_drive";
+@import "lexus_service/build_and_price";
+@import "lexus_service/find_dealers";
+@import "lexus_service/purchase_benefit";
+@import "lexus_service/service";
+@import "lexus_service/connect_to";
+
+@import "lexus_service/compare_car"; //  기타
+
+// 렉서스 코리아
+@import "about_lexus/history";
+@import "about_lexus/contribution";
+@import "about_lexus/press";
+
+// 렉서스 컨텐츠
+@import "lexus_post/post_contents";
+
+// 딜러 컨텐츠
+@import "dealer/dmain";
+@import "dealer/about_dealer";
+@import "dealer/showroom";
+@import "dealer/service_center";
+@import "dealer/event";
+@import "dealer/consultant";
+@import "dealer/recruit";
+@import "dealer/test_drive";
+@import "dealer/privacy_policy";
+@import "dealer/contact";
+
+// 기타 페이지
+@import "etc/privacy";
+@import "etc/contact_us";
+@import "etc/legal";
+@import "etc/lemon_law";
+@import "etc/errors";
+
+

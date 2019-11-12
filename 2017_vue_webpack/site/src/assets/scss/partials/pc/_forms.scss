@@ -1,0 +1,358 @@
+@charset "utf-8";
+
+// Form 스타일
+
+// * 주석 가이드*
+//##  메인 카테고리
+//== 서브 카테고리
+//**  카테고리 설명
+
+input[type="tel"],
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="password"],
+select {
+  width:100%;
+  height:80px;
+  border:1px solid #000;
+  background-color:#fff;
+  font-size:15px;
+  vertical-align:top;
+  &:checked {
+    border:1px solid #000 !important;
+  }
+  &:focus {
+    border:1px solid $color-feed !important;
+    position:relative;
+    z-index:1;
+  }
+}
+
+input[type="submit"], input[type="reset"]{
+  &:focus {
+    border:1px solid $color-feed !important;
+    position:relative;
+    z-index:1;
+  }
+}
+textarea{
+    width:100%;
+    padding:30px;
+    border:1px solid #000;
+    font-size:15px;
+    &:focus{
+        background: #fafafa;
+        border:1px solid $color-feed !important;
+        outline: none;
+    }
+}
+
+//== 커스텀 스타일 (셀렉트박스)
+.select-wrap {
+  display:inline-block; width:inherit; position: relative;
+  select {
+    display:block;
+    width:100%;
+    height:80px;
+    font-size:15px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /*background-size:20px 11px;*/
+    background-image:url("/assets/images/common/icons/icon_form_select_arr_down.png");
+    background-repeat:no-repeat;
+    background-position:right center;
+    background-size:contain;
+    &::-ms-expand {
+      display: none;
+    }
+    @at-root .windows7.ie9 & {
+      background-image:none;
+      padding-right:0;
+    }
+  }
+  // custom example
+  select.gender-select, select.email-select {
+    position:relative;
+    width:224px;
+  }
+}
+
+// 셀렉트 박스 div 타입
+.select-type-div {
+  display:block;
+  width:100%;
+  height: 70px;
+  padding:0 30px;
+  border: 1px solid #000;
+  font-size: 20px;
+  line-height: 70px;
+}
+
+.chk-group {
+  position:relative;
+
+  .custom-chk {
+    display:inline-block;
+    input[type="checkbox"] {
+      position:absolute; left:-999px;
+    }
+    input[type="checkbox"] + label {
+      display:inherit; font-size:15px; vertical-align:middle;
+     span {
+       display:inherit;
+     }
+      &:before {
+        content:'';
+        display:inline-block;
+        width:20px;
+        height:20px;
+        background-color:#fff;
+        border:1px solid #C7C7C7;
+        box-sizing:border-box;
+      }
+    }
+  }
+}
+
+//== 커스텀 인풋(체크박스, 라디오)
+.custom-chk-rdo {
+  position: relative;
+  display: inline-block;
+  padding-top:10px;
+  margin-top:-10px;
+  margin-right: 10px;
+  line-height: 11px;
+  vertical-align: middle;
+  overflow: hidden;
+  cursor: default;
+
+  input[type="radio"], input[type="checkbox"] {
+    position: absolute;
+    margin-left: -16px;
+    z-index: -1;
+  }
+
+  /*input[type="radio"] {
+    &:focus {
+      & + label {
+        &:before {border:1px solid #0000fe;}
+      }
+    }
+    &:checked {
+      & + label {
+        &:before {border:1px solid #000;}
+      }
+    }
+    &:hover {
+      & + label {
+        &:before {border:1px solid #000;}
+      }
+    }
+  }*/
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    &:focus {
+      & + label {
+        &:before {border:1px solid #0000fe;}
+      }
+    }
+    &:checked {
+      & + label {
+        &:before {border:1px solid #000;}
+      }
+    }
+    &:hover {
+      & + label {
+        &:before {border:1px solid #000;}
+      }
+    }
+  }
+
+  label {
+    display: inherit;
+    position:relative;;
+    padding-left:35px;
+    color: #000;
+    font-size: 0;
+    line-height: 11px;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+
+    &:before {
+      display:inline-block;
+      margin-left:-35px;
+      background-color:#fff;
+      vertical-align:middle;
+      content:'';
+    }
+    &:after {
+      display: none;
+      position: absolute; left:0; top:0;
+      content:'';
+    }
+    span {
+      display: inherit;
+      margin-left:12px;
+      @include font('regular', 12px, 1);
+      vertical-align: middle;
+    }
+  }
+  input:disabled + label {
+    &:before, &:after {
+      opacity:0.3;
+    }
+    span {
+      color: #aaa;
+    }
+  }
+}
+/*.custom-chk-rdo input[type="radio"] + label{
+  &:before {
+    width: 20px; height: 20px; border: 3px solid #000;
+    border-radius: 50%;
+  }
+  &:after {
+    left:5px; top:5px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background-color:#f00;
+  }
+}
+.custom-chk-rdo input[type="radio"]:checked  + label{
+  &:before {
+    border: 1px solid #f00;
+  }
+  &:after {
+    display: inline-block;
+  }
+}*/
+.custom-chk-rdo input[type="radio"] + label,
+.custom-chk-rdo input[type="checkbox"] + label{
+  &:before {
+    width:35px; height:35px;
+    background-color:#fff;
+    border:1px solid #000;
+    box-sizing:border-box;
+  }
+  &:after {
+    display:none;
+    width:35px; height:35px;
+    top:0;
+    left:0;
+    border:none;
+    border-radius: 0;
+    box-shadow: none;
+    background:url("/assets/images/common/icons/icon_chk_red.svg") 0 0 no-repeat;
+    background-size: contain;
+    @at-root .no-svg & {
+      background:url("/assets/images/common/icons/icon_chk_red.png") 0 0 no-repeat;
+    }
+  }
+}
+.custom-chk-rdo input[type="radio"]:checked + label,
+.custom-chk-rdo input[type="checkbox"]:checked + label{
+  &:before {
+    //background-color:#000;
+  }
+  &:after {
+    display:inline-block;
+  }
+}
+
+.custom-chk-rdo.multi-line input + label {
+  white-space: normal;
+}
+.custom-chk-rdo.multi-line input + label span {
+  margin-top: 0;
+  line-height: 1.3;
+}
+
+.type-new-desc {
+  position: relative;
+  margin-top: 43px;
+  @include font('regular', 12px, 1);
+  padding-left: 32px;
+}
+
+.type-new-desc.require:before {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 50%;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  margin-top: -7px;
+  background-image: url(/assets/images/common/icons/icon_asterisk_big.svg);
+}
+
+.custom-chk-rdo.type-new {
+  position: relative;
+  margin-top: -24px;
+  padding-bottom: 60px;
+
+  .alert-holder {
+    display: block;
+    position: absolute;
+    top: 25px; left: 31px;
+  }
+
+  label {
+    &:nth-of-type(1) {margin-left: 483px;}
+    &:nth-of-type(2) {margin-left: 18px;}
+  }
+}
+
+.custom-chk-rdo.dp-none-pc {display: none;}
+
+.form-group.align-right{display:block; text-align: right;}
+.form-group.align-right .custom-chk-rdo{margin-right:0; margin-left:10px;} /* 우측 정렬일때 */
+
+
+//-- 인풋 필드
+.form-group{display: inline-block; vertical-align: middle;}
+
+.inputs-wrap {position:absolute; width:300px; height:40px; top:0; left:0; border-radius:5px; font-size:24px; line-height:40px; text-align:right; background:#fff;}
+.inputs-wrap .type-unit {position:absolute; width:100%; height:inherit; top:0; right:0; padding: 0 18px 0 12px; border:none; outline:none; background:transparent;
+  line-height:inherit; text-align:right; color:#454a4d; z-index:10;
+}
+.inputs-wrap .type-unit::-webkit-input-placeholder {color:#454a4d;}
+.inputs-wrap .type-unit span {display:inline-block; vertical-align:middle; color:#000;}
+.inputs-wrap .type-unit .txt-value {visibility:hidden; font-weight:100;}
+.inputs-wrap .type-unit .currency {padding-right:5px; font-size:16px; font-weight:700;}
+
+//== 커스텀 스타일 (약관 및 수집 내용을 위한 텍스트박스)
+.custom-txtarea {
+  width:100%; height:130px; min-width:624px; min-height:100px;
+  padding:0;
+  border:1px solid #000;
+  background-color:#fff;
+  box-sizing:border-box;
+  .inner-area {
+    width:100%;
+    height:100%;
+    padding:30px 40px;
+    overflow-y:auto;
+    color:#666;
+    margin-bottom:16px;
+    font-size:12px;
+    line-height:1.6;
+
+    &:focus{
+      outline-color:$color-feed;
+    }
+  }
+  .btn-wrap { //모바일전용 텍스트필드 팝업 닫기버튼
+    display:none;
+  }
+  &.mb-65 {margin-bottom: 65px;}
+}
+
+
+
+

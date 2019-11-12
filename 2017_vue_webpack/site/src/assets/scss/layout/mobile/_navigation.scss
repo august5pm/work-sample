@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* navigation style */
+.gnb{
+    .btn-toggle-gnb{
+        position: absolute; top:0; right:0;
+        height:auto;
+        padding:calc-unit(19px 15px);
+        line-height: 1;
+        > span{
+            @include  font('bold',11px);
+            letter-spacing: 0.1em;
+        }
+    }
+
+    .depth-1-wrap {
+        position:absolute;
+        overflow:hidden;
+        width: 100%;
+    }
+
+    ul.depth-1{
+        //position: absolute;
+        width: 100%;
+        display: block;
+        padding:calc-unit(16px 15px 52px);
+        background: #fff;
+        > li{
+            border-bottom:1px solid #EDEDED;
+
+            >a{
+                display: block;
+                position: relative;
+                height:calc-unit(64px);
+                padding: calc-unit(0 10px);
+                @include font('light', 35px,  64px, #000);
+                color:#000;
+
+                span{
+                }
+
+                &:after{
+                    display: block;
+                    position: absolute;
+                    //height:100%; width:calc-unit(12px);
+                    //top:0; right:calc-unit(10px);
+                    //background: url(/assets/images/common/icons/icon_arr_right.svg) no-repeat center center;
+                }
+            }
+
+            &:last-child{border-bottom:none;}
+
+            &.compare-car {
+                display:none;
+            }
+
+            &.future {
+                border-bottom:none;
+            }
+
+            &.lcp {
+                margin-top:calc-unit(20px);
+                border:1px solid #000;
+                a {
+                    height:calc-unit(70px); padding-left:calc-unit(26px);
+                    span {
+                        display:block;
+                        @include font('regular', 20px, 70px);
+                    }
+                    &:after {
+                        width:calc-unit(18px); height:calc-unit(18px);
+                        top:calc-unit(27px); right:calc-unit(27px);
+                        background-size:contain;
+                        background-repeat:no-repeat;
+                        background-image: url('/assets/images/common/icons/icon_outlink.svg');
+                    }
+                }
+            }
+        }
+
+        @at-root  body.opened-navi{
+            header{
+                box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+
+                ul.depth-1 {
+                    display:block;
+                }
+
+                .overlay{
+                    height:100%;
+                }
+            }
+        }
+
+        @at-root  body{
+            header {
+                z-index: 999; // 모바일에서만...
+            }
+        }
+    }
+}

@@ -1,0 +1,1071 @@
+@charset "utf-8";
+/* contents UI */
+// 탭 모듈, 아코디언 리스트...
+
+//##  백그라운드 컨테이너 처리
+figure.mod-basic-bg,
+figure.mod-contained-bg,
+figure.mod-covered-bg {
+    position: absolute; left:0; top:0;
+    width:100%; height:100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    &.bg-pos-top{
+        background-position: 50% 0;
+    }
+
+    figcaption {
+        @extend .blind;
+    }
+}
+
+figure.mod-contained-bg{
+    background-size: contain ;
+}
+
+figure.mod-covered-bg{
+    background-size: cover ;
+}
+
+// 모바일 페이지 백 버튼
+.back-page-title{
+    display: none;
+}
+
+
+//## 공통으로 쓰이는 키비주얼
+.mod-keyvisual {
+    $key-img-height: 680px; // 키비쥬얼 높이
+
+    position:relative; width:100%; /*padding-right:100px;*/ height:$key-img-height; background-color:#000;
+
+    .kv-txt-holder {
+        position:relative; z-index:10;
+        width:100%;
+        color:#fff;
+        text-shadow: 0 0 2px rgba(0,0,0,0.2);
+        pointer-events: none;
+
+        .sub-txt-area {
+            display:inline-block;
+            position:relative;
+            pointer-events: none;
+
+
+            ul {
+                display:block;
+                position:relative;
+
+                li {
+                    display:none;
+                    position:absolute; left:0; top:0;
+                    width:100%;
+                    p {
+                        display:inline-block;
+                        vertical-align:middle; overflow:hidden;
+
+                        span, em,i{
+                            vertical-align: bottom;
+                        }
+
+                        & > strong,
+                        &> span{
+                            display: block;
+                            font-weight:normal;
+                        }
+                    }
+                    .btn-play {
+                        display:none;
+                        min-width:0;
+                        border-color:#fff;
+                        pointer-events: auto;
+                        &:after {
+                            border-left-color:#fff;
+                        }
+                    }
+
+                    &.on {
+                        display:block; position:relative;
+                    }
+
+                    &.has-video {
+                        .btn-play {display:block;}
+                    }
+
+                    // 키비주얼 블랙 텍스트 타입
+                    &.type-black {
+                        color:#000;
+                        p strong + span:before {
+                            background:#000;
+                        }
+                        .btn-play {
+                            border-color:#000;
+                            &:after {
+                                border-left-color:#000;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .kv-bg-holder {
+        position:absolute; width:100%; height:inherit; top:0; /*padding-right:100px;*/ background-color:#000;
+        ul {
+            display:block; position:relative; width:inherit; height:inherit; overflow:hidden;
+            li {
+                display:none;
+                position:absolute;left:0; top:0;overflow:hidden;
+                width:100%; height:inherit;
+                background-color:#000;
+                background-position: -9999px -9999px;
+                background-repeat: no-repeat;
+
+                @media (min-width: $screen-pc-bigger){
+                    background-position: 50% 50%;
+                    background-size: cover;
+
+                    p {width:100%}
+                    img{display: none;}
+                }
+
+                &.on {
+                    display:block;
+                }
+
+                span, p {
+                    position:absolute; left:50%; top:50%;
+                    -ms-transform: translateX(-50%) translateY(-50%);
+                    transform: translateX(-50%) translateY(-50%);
+                    overflow: hidden;
+                }
+
+                video {
+                    min-width: 100%;
+                    min-height: 100%;
+                    width: auto;
+                    height: auto;
+                }
+            }
+        }
+
+    }
+
+    .kv-indicator {
+        @extend %kv-indicator;
+        @extend %kv-indicator-elements;
+
+        .btn-play{
+            @extend %kv-indicator-btn-play;
+        }
+    }
+
+}
+
+%kv-indicator{
+    position:absolute; left:50%; bottom:18px; z-index:10;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+%kv-indicator-elements{
+    ul {
+        display:inline-block; font-size:0; line-height:0; vertical-align:middle;
+        li {
+            display:inline-block; /*margin:0 22px;*/
+            vertical-align:top;
+        }
+        a {
+            display:block; padding:22px;
+
+            i {display:block; width:10px; height:10px; border-radius:50%; border:1px solid #fff; text-indent:-9999px; font-size:0; line-height:0; }
+            &.on i {background-color:#fff;}
+
+            &:hover{
+                i {border-color: #fff; background-color:#fff;}
+            }
+
+            &:focus {
+                i {}
+            }
+        }
+    }
+}
+
+// 키비주얼 인디게이터 재생, 일시정지 스타일
+%kv-indicator-btn-play {
+    display:inline-block;
+    position:relative;
+    width:30px;
+    height:30px;
+    margin-right:17px;
+    vertical-align:middle;
+    border:1px solid rgba(255, 255, 255, 0.3);
+    &:after {
+        border-left: 5px solid #fff;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        margin-top: -3px;
+        margin-left: -1.5px;
+    }
+    i {display:none;}
+    &:focus {}
+    &.on,
+    &:hover {
+        border:2px solid rgba(255, 255, 255, 1);
+    }
+
+    &.pause {
+        &:after {
+            width:4px;
+            height:7px;
+            margin-left:-2px;
+            margin-top:-3.5px;
+            border:1px solid #fff;
+            border-top:none;
+            border-bottom:none;
+        }
+        &:focus {}
+        &.on,
+        &:hover {
+            border:2px solid rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+// 리스트 타입 모듈 공통 wrapper
+.list-item-wrap {
+    font-size:0;
+    &:before {display: table; content: '';}
+    &:after {display: block; clear: both;}
+}
+
+
+// 모델 선택 라디오 버튼
+.mod-radio-lineup {
+    display: inline-block;
+    position: relative;
+    width: 340px; min-height: 151px;
+    margin: 0 20px 0; /*padding: 18px 0;*/
+    padding-bottom:50px;
+    border-top: 1px solid #000;
+    text-align: right;
+    vertical-align: top;
+    overflow: hidden;
+
+    b {
+        position: absolute;
+        top:13px;
+        left: 9px;
+        @include font('light', 40px, 1);
+        font-weight: normal;
+        color: #000;
+    }
+
+    .custom-chk-rdo {
+        margin-right: 0; width: 177px; text-align: left; overflow: visible;
+        label {padding:17px 0 16px 17px; width: 100%; border-bottom: 1px solid #d4d4d4; box-sizing: border-box; cursor:pointer;}
+        input[type="radio"] {
+            margin-left: -500px;
+            + label{
+                &:before {position:absolute; top:50%; left:0; margin-top:-4px; margin-left: -18px; width: 8px; height: 8px; border: none; border-radius: 4px;}
+                &:after {display: none;}
+            }
+            &:focus {
+                + label {
+                    &:before {}
+                    span {color: #1d1dc5;}
+                }
+            }
+            &:checked {
+                + label {
+                    &:before {display:block; background-color: #1d1dc5;}
+                    span {color: #1d1dc5;}
+                }
+            }
+            &:hover {
+                + label {
+                    &:before {}
+                    span {color: #1d1dc5;}
+                }
+            }
+        }
+        label {
+            span {position:relative; margin-left:0; @include font('regular', 16px, 1.3);}
+        }
+
+        /* 선택 불가능한 */
+        input:disabled+label {
+            color:#BFBFBF;
+            pointer-events:none;
+            cursor:auto;
+            span:before {
+                display:inline-block; position:absolute; content:''; /*width:17px; height:17px;*/
+                width:7px; height:7px; top:50%; left:0; margin-top:-3px; margin-left:-42px; border:1px solid #95989A; border-radius:50%;
+                //background-image:url('/assets/images/common/icons/icon_asterisk_big.svg');
+                //@at-root .no-svg & {
+                //    background-image: url('/assets/images/common/icons/icon_asterisk_big.png');
+                //}
+            }
+        }
+
+    }
+    &:nth-child(3n+1) {margin-left:0;}
+    &:nth-child(3n+3) {margin-right:0;}
+}
+
+// 모델 선택 체크박스
+.mod-checkbox-lineup {
+    display: inline-block; position: relative; margin: 0 20px 0; padding-bottom:50px; /*padding: 18px 0;*/ width: 340px; min-height: 151px; border-top: 1px solid #000; vertical-align: top; text-align: right; overflow: hidden;
+
+    &:after {
+        display:block; content:''; position:absolute; width:150px; height:150px; left:0; top:0;
+        background-color:transparent;
+    }
+
+    button {
+        display:block; position:absolute; top:0; left:0; padding-left:13px; padding-top:9px;
+        pointer-events:none; cursor:pointer;
+        b {
+            //position: absolute;
+            //top:13px;
+            //left: 9px;
+            @include font('light', 40px, 1);
+            font-weight: normal;
+            color: #000;
+        }
+    }
+
+    .custom-chk-rdo {
+        margin-right: 0; width: 177px; text-align: left; overflow: visible;
+        label {padding:17px 0 16px 17px; width: 100%; border-bottom: 1px solid #d4d4d4; box-sizing: border-box; cursor:pointer; }
+        input[type="checkbox"] {
+            margin-left: -500px;
+            + label{
+                &:before {position:absolute; top:50%; left:0; margin-top:-4px; margin-left: -18px; width: 8px; height: 8px; border: none; border-radius: 4px; visibility: hidden}
+                &:after {display: none;}
+            }
+            &:checked {
+                + label {
+                    &:before {background-color: #1d1dc5; visibility: visible;}
+                    span {color: #1d1dc5;}
+                }
+            }
+            &:hover,
+            &:focus {
+                + label {
+                    span {color: #1d1dc5;}
+                }
+            }
+        }
+        label {
+            span {position:relative; margin-left:0; @include font('regular', 16px, 1);}
+        }
+    }
+
+    b+.custom-chk-rdo,
+    .custom-chk-rdo:first-child {margin-top: 0;}
+
+    &:nth-child(3n+1) {margin-left:0;}
+    &:nth-child(3n+3) {margin-right:0;}
+}
+
+// 지역 선택 라디오 버튼
+.mod-radio-region {
+    display: inline-block;
+    position: relative;
+    width: 340px; min-height: 151px;
+    margin: 0 20px 0; /*padding: 18px 0;*/
+    padding-bottom:50px;
+    border-top: 1px solid #000;
+    text-align: right;
+    vertical-align: top;
+    overflow: hidden;
+
+    b {
+        position:absolute;
+        top:9px;
+        left:13px;
+        font-size:30px;
+        line-height:1.25;
+        font-weight: normal;
+        color: #000;
+    }
+
+    .custom-chk-rdo {
+        margin-right: 0; width: 177px; text-align: left; overflow: visible;
+        label {padding:17px 0 16px 17px; width: 100%; border-bottom: 1px solid #d4d4d4; box-sizing: border-box; cursor:pointer;}
+        input[type="radio"] {
+            margin-left: -500px;
+            + label{
+                &:before {position:absolute; top:50%; left:0; margin-top:-4px; margin-left: -18px; width: 8px; height: 8px; border: none; border-radius: 4px;}
+                &:after {display: none;}
+            }
+            &:focus {
+                + label {
+                    span {color: #1d1dc5;}
+                }
+            }
+            &:checked {
+                + label {
+                    &:before {display:block; background-color: #1d1dc5;}
+                    span {color: #1d1dc5;}
+                }
+            }
+            &:hover {
+                + label {
+                    span {color: #1d1dc5;}
+                }
+            }
+        }
+        label {
+            span {position:relative; margin-left:0; @include font('regular', 16px, 1.3);}
+        }
+    }
+
+    &:nth-child(3n+1) {margin-left:0;}
+    &:nth-child(3n+3) {margin-right:0;}
+}
+
+// 모델 페이지 이동 버튼
+.mod-choose-model {
+    display: inline-block;
+    position: relative;
+    width: 340px; min-height: 166px;
+    margin: 0 20px 0;
+    padding-bottom:50px;
+    border-top: 1px solid #000;
+    text-align: right;
+    vertical-align: top;
+
+    &:after {
+        display:block; content:''; position:absolute; width:150px; height:150px; left:0; top:0;
+        background-color:transparent;
+    }
+
+    > button {
+        display:block; position:absolute; top:0; left:0; padding-left:12px; padding-top:21px;
+        pointer-events:none; cursor:pointer;
+        b {
+            @include font('light', 40px, 1);
+            font-weight: normal;
+            color: #000;
+        }
+    }
+
+    ul {
+        display:inline-block; position:relative; width:177px; z-index:2;
+        li {
+            display:block; width:100%; @include font($font-size:16px);
+            button {
+                display:block; position:relative; width:100%; padding: 17px 0 16px 17px; border-bottom: 1px solid #D4D4D4; box-sizing: border-box; color: #000; text-align:left; overflow: visible;
+                &:after {display: none; position:absolute; top:50%; left:0; margin-top:-4px; margin-left: -18px; width: 8px; height: 8px; border: none; border-radius: 4px; background-color: #1d1dc5;}
+
+                &:focus,
+                &:hover {
+                    color: #1d1dc5;
+                    //&:after {
+                    //    display:block;
+                    //}
+                }
+            }
+        }
+    }
+    &:nth-child(3n+1) {margin-left: 0}
+    &:nth-child(3n+3) {margin-right: 0}
+    &:hover {
+        img {opacity: 0; transition: all 0.5s ease-in;}
+        ul {max-height: 1000px; transition: max-height 0.75s ease-in-out; transition-delay: 0.2s;}
+    }
+    &.hover-over {
+        img {display: none;}
+        ul {
+            max-height: 1000px; transition: max-height 0.75s ease-in-out;
+            &:last-child {background-color: #000; color: #fff;}
+        }
+    }
+}
+
+// 라인업 리스트 모델정보 시승신청 버튼 포함
+.mod-choose-lineup {
+    display: inline-block; position: relative; width: 340px; height: 230px; margin: 40px 20px; text-align: center; overflow: hidden;
+    .txt-holder {
+        position:relative;
+        z-index: 1;
+        text-align: center;
+        dt {
+            display: block; width: 100%; @include font('', 20px, 1); text-align: left;
+        }
+        dd {margin-top: 160px;}
+    }
+    figure {
+       top:auto; width:255px; height:158px; right:0; bottom:72px; left: auto;
+    }
+    .btn-group {
+        a {
+            width:166px; height: 50px; margin-left:8px; line-height: 50px; border: 1px solid #000;
+            &:first-child {margin-left:0;}
+            span {@include font('bold', 12px, 50px)}
+        }
+    }
+
+    &:nth-child(3n+1) {margin-left:0;}
+    &:nth-child(3n+3) {margin-right: 0;}
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {margin-top: 0}
+}
+
+// 모델 2종 비교
+.mode-compare-2-vehicles {
+    position: relative; width: 1100px; @include font('regular', 12px, 1.5);
+    tr {
+        th, td {box-sizing: border-box;}
+        th {width: 104px; height: 50px;}
+    }
+
+    thead {
+        tr {@include font($font-size:0);}
+        tr.model-info{
+            th {padding: 25px 0; text-align: left;}
+        }
+        th {
+            border-right: 1px solid #d4d4d4; border-left: 1px solid #d4d4d4;
+            &:first-child {width: 104px;}
+            span {
+                display: block; padding-left: 13px; @include font($font-size:19px); box-sizing: border-box; text-align: left;
+                &+.btn-base {margin-left: 25px;}
+            }
+        }
+        tr.img-tbl {
+            height: 105px;
+            th {
+                padding-top:25px; text-align: center;
+                span {display: inline-block; margin-top: 0; padding-left: 0; padding-right: 13px; @include font('', 12px, 1.5);}
+                &:first-child {text-align: right; background-color: #f8f8f8;}
+            }
+        }
+    }
+
+    tbody{
+        tr {
+            height: 50px; background-color: #fff;
+            &:nth-child(2n+1) {
+                background-color: #f5f5f5;
+                th {background-color: #f2f2f2;}
+            }
+            &:last-child {
+                height: 74px; text-align: center; background-color: #fff;
+                td {padding-left: 0;}
+            }
+        }
+        th {
+            padding-right: 13px; width: 104px; vertical-align: middle; text-align: right; border-top: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4; border-left: 1px solid #d4d4d4;
+            &:first-child {background-color: #f8f8f8;}
+        }
+        td {
+            padding-left: 13px; width: 498px; vertical-align: middle; @include font('', 12px, 1.6); border-top: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4;
+        }
+    }
+
+    &:before {display: block; content: ''; position: absolute; top:0; left:0; width: 100%; height: 1px; background: #000;}
+    &:after {display: block; content: ''; position: absolute; bottom:0; left:0; width: 100%; height: 1px; background: #000;}
+
+}
+
+// 모델 3종 비교
+.mode-compare-3-vehicles {
+    position: relative; width: 1100px; @include font('regular', 12px, 1.5);
+    tr {
+        th, td {box-sizing: border-box;}
+        th {width: 104px; height: 50px;}
+    }
+
+    thead {
+        tr {@include font($font-size:0);}
+        tr.model-info{
+            th {padding: 25px 0; text-align: left;}
+        }
+        th {
+            border-right: 1px solid #d4d4d4; border-left: 1px solid #d4d4d4;
+            &:first-child {width: 104px;}
+            span {
+                display: block; padding-left: 13px; @include font($font-size:19px); box-sizing: border-box; text-align: left;
+                &+.btn-base {margin-left: 25px;}
+            }
+        }
+        tr.img-tbl {
+            height: 105px;
+            th {
+                padding-top:25px; text-align: center;
+                span {display: inline-block; margin-top: 0; padding-left: 0; padding-right: 13px; @include font('', 12px, 1.5);}
+                &:first-child {text-align: right; background-color: #f8f8f8;}
+            }
+        }
+    }
+
+    tbody{
+        tr {
+            height: 50px; background-color: #fff;
+            &:nth-child(2n+1) {
+                background-color: #f5f5f5;
+                th {background-color: #f2f2f2;}
+            }
+            &:last-child {
+                height: 74px; text-align: center; background-color: #fff;
+                td {padding-left: 0;}
+            }
+        }
+        th {
+            padding-right: 13px; width: 104px; vertical-align: middle; text-align: right; border-top: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4; border-left: 1px solid #d4d4d4;
+            &:first-child {background-color: #f8f8f8;}
+        }
+        td {
+            padding-left: 13px; width: 332px; vertical-align: middle; @include font('', 12px, 1.6); border-top: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4;
+        }
+    }
+
+    &:before {display: block; content: ''; position: absolute; top:0; left:0; width: 100%; height: 1px; background: #000;}
+    &:after {display: block; content: ''; position: absolute; bottom:0; left:0; width: 100%; height: 1px; background: #000;}
+
+}
+
+// 모델 4종 비교
+.mode-compare-4-vehicles {
+    position: relative; width:100%; max-width:1100px; @include font('regular', 12px, 1.5);
+    //border-left:1px solid #d4d4d4; border-right:1px solid #d4d4d4;
+    overflow:hidden;
+    tr {
+        &:after {
+            display:block;
+            position:absolute;
+            width:1px;
+            height:100%;
+            right:0;
+            top:0;
+            background-color:#d4d4d4;
+            @at-root .ie & {
+                right:1px;
+            }
+        }
+        &:before {
+            display:block;
+            position:absolute;
+            width:1px;
+            height:100%;
+            left:0;
+            top:0;
+            background-color:#d4d4d4;
+        }
+        th, td {box-sizing: border-box;}
+        th {width: 104px; height: 50px;}
+
+        td,
+        &.model-tbl td {
+            &:last-child {
+                border-right:none;
+            }
+        }
+    }
+
+    thead {
+        tr {@include font($font-size:0);}
+        th {
+            height:inherit; border-right:1px solid #d4d4d4;
+            &:first-child {width: 104px; /*border-left: 1px solid #d4d4d4;*/}
+            span {
+                display: block; padding-left: 13px; @include font($font-size:19px); box-sizing: border-box; text-align: left;
+                &+.btn-base {margin-left: 25px;}
+            }
+        }
+        tr.model-tbl {
+            height: 105px;
+            th {
+                padding:25px 0; text-align: center;
+                span {display: inline-block; margin-top: 0; padding-left: 0; padding-right: 13px; @include font('', 12px, 1.5);}
+                &:first-child {text-align: right; background-color: #f8f8f8;}
+            }
+            td {
+                padding:25px 0; text-align: center; border-right: 1px solid #d4d4d4;
+                .model-img {
+                    position:relative; width:210px; height:141px; margin:0 auto; overflow:hidden;
+                }
+                em {display: block; padding-top:27px; padding-left:20px; @include font('', 19px, 1); box-sizing: border-box; text-align: left;}
+            }
+        }
+    }
+
+    tbody{
+        tr {
+            height: 50px; background-color: #fff;
+            &:nth-child(2n+1) {
+                background-color: #f5f5f5;
+                th {background-color: #f2f2f2;}
+            }
+            &:last-child {
+                height: 74px; text-align: center; background-color: #fff;
+                td {padding-left: 0;}
+            }
+        }
+        th {
+            padding: 0 13px; width: 116px; vertical-align: middle; text-align: right; border-top: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4; /*border-left: 1px solid #d4d4d4;*/
+            &:first-child {background-color: #f8f8f8;}
+        }
+        td {
+            padding: 13px; min-width: 246px; vertical-align: middle; @include font('', 12px, 1.5); border-top: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4;
+        }
+    }
+
+    &:before {display: block; content: ''; position: absolute; top:0; left:0; width: 120%; height: 1px; background: #000; z-index:1;}
+    &:after {display: block; content: ''; position: absolute; bottom:0; left:0; width: 120%; height: 1px; background: #000; z-index:1;}
+
+}
+
+// 구매 혜택
+.mod-monthly-benefit {
+    position: relative; width: 100%; border-bottom: 1px solid #000; background-color:#fff;
+    .inner-wrap {position: relative; width:1100px; min-height:514px; padding: 43px 0 145px 10px; margin: 0 auto;}
+    .model-name {display: block; width: 380px; padding-bottom:6px; @include font('regular',30px, 1, #000);}
+    &:first-child {border-top: 1px solid #000;}
+    ul.benefits {
+        width: 420px; font-size: 0;
+        li {
+            display: inline-block; width: 186px; margin: 25px 12px 0; padding: 8px 0 8px 20px; border-left: 1px solid #000; vertical-align: top;
+            &:nth-child(2n+1){
+                margin-left: 0;
+            }
+            &:nth-child(2n+2){
+                margin-right: 0;
+            }
+        }
+    }
+    dl {
+        dt{padding-bottom:13px; @include font('bold',15px, 1, #000);}
+        dd{
+            @include font('regular',12px, 1.6, #000);
+            strong {display: block; margin: 20px 0 0; color: #0027aa; font-weight: normal}
+            span {display: block;}
+        }
+    }
+    .btn-group {
+        position: absolute; bottom:60px; left:0; font-size:0; margin-left:11px;
+        a {
+            width: 185px; min-width: 185px; height: 55px; margin-left:8px; padding: 0; @include font('bold', 14px, 50px);
+            span {@include font('bold', 14px, 55px);}
+            &:first-child {
+                margin-left:0;
+            }
+        }
+    }
+
+    figure {
+        position: absolute; bottom: 18px; left: auto; right: 0; width: 650px; overflow: hidden; background-position: 50% 50%;
+    }
+}
+/*.mod-monthly-purchase_benefit {
+    position: relative; width: 1740px; min-height: 610px; margin: 10px auto 0; padding: 62px 70px; border: 1px solid #d4d4d4; background-color:#fff;
+    .model-name {@include font('regular',29px, 1, #000);}
+    ul.benefits {
+        margin-top: 30px;
+        .monthly-plan {
+            li {
+                float: left; margin-left: 57px;
+                &:first-child {margin-left: 0;}
+            }
+
+            &.inline-item {
+                display:inline-block; padding-right:57px;
+            }
+        }
+        .cash {
+            clear: both; margin-top: 25px;
+        }
+        dd {padding-left: 20px; border-left: 1px solid #000;}
+    }
+    dl {
+        dt{@include font('bold',20px, 1, #000);}
+        dd{
+            @include font('regular',15px, 1.6, #000);
+            strong {display: block; margin: 20px 0 26px; @include font('regular',20px, 1, #0027aa); font-weight: normal}
+            span {display: block;}
+        }
+    }
+    .btn-group {
+        margin-top: 40px;
+    }
+
+    figure {
+        position: absolute; bottom: 50px; right: 75px; overflow: hidden;
+        img {display: block; width: 100%;}
+    }
+}*/
+
+// 렉서스 서비스 페이지 내 공통 유의 사항
+.mod-notice {
+    position:relative; width:100%; max-width:1100px; margin:0 auto; padding:56px 75px 52px; border:1px solid #000;
+    dl {
+        position:relative; z-index:1;
+        dt {
+            padding-bottom:25px;
+            span {
+                display:block;
+                position:relative;
+                padding-bottom:33px;
+                @include font('smbold', 20px, 1.2);
+                letter-spacing:-0.3px;
+
+                &:after {
+                    display:block;
+                    content:'';
+                    position:absolute;
+                    width:50px;
+                    height:1px;
+                    bottom:0; left:0;
+                    background-color:#000;
+                }
+            }
+        }
+        dd {
+            > strong {
+                padding-top:20px; margin-bottom:3px;
+                &:first-child {padding-top:0;}
+            }
+            > strong,
+            > span {
+                display:block;
+                font-weight:normal;
+                @include font('', 15px, 2);
+                letter-spacing:0.1px;
+            }
+        }
+    }
+    // 우측 상단 텍스트 타입 추가
+    .em-txt-holder {
+        position:absolute; top:0; right:0; color:#D4D4D4;
+        em, span {display:inline-block; vertical-align:top;}
+        em {
+            padding-right:5px;
+            margin-top:-17px;
+            @include font('light', 200px, 1);
+        }
+        span {
+            @include font('', 19px, 1);
+        }
+    }
+    // 백그라운드 포함
+    figure {
+        position:absolute; left:0; top:0; width:100%; height:100%;
+    }
+    // 아이콘 포함 사이즈는 기본 130x130, top right 기준
+    i {
+        display:inline-block; position:absolute; top:0; right:0;
+        &:before {
+            display:block; width:130px; height:130px;
+            background-repeat:no-repeat;
+            background-size:contain;
+        }
+    }
+}
+
+//##  연관콘텐츠
+.mod-related-contents-wrap{
+    padding: 102px 0 70px;
+    background: #fff;
+    .title-wrap{
+        position: relative;
+        padding-bottom:40px;
+        text-align: center;
+
+        .title{
+            display: inline-block;
+            position: relative; z-index: 1;
+            padding:0 58px;
+            @include font('bold', 20px, null, #000);
+            letter-spacing: 2.3px;
+        }
+    }
+
+    .list-item-wrap{
+        margin:0 auto;
+    }
+
+}
+
+.mod-related-content {
+    $img-height:36.76%;
+
+    display: inline-block;
+    width: 23.57%;
+    margin-left: 1.906%;
+    padding-bottom:20px;
+    box-sizing: content-box;
+    vertical-align: top;
+
+    &:nth-child(4n+1) {
+        margin-left: 0;
+    }
+
+    a {
+        display: block;
+
+        figure {
+            -webkit-transition: transform 200ms;
+            -moz-transition: transform 200ms;
+            -ms-transition: transform 200ms;
+            -o-transition: transform 200ms;
+            transition: transform 200ms;
+
+            -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            -moz-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            -o-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
+        }
+
+        &:hover{
+            color:$color-text-over;
+            text-decoration: none;
+
+            figure {
+
+                -webkit-transform: scale(1.05);
+                -moz-transform: scale(1.05);
+                -ms-transform: scale(1.05);
+                -o-transform: scale(1.05);
+                transform: scale(1.05);
+
+                -webkit-transition: transform 400ms;
+                -moz-transition: transform 400ms;
+                -ms-transition: transform 400ms;
+                -o-transition: transform 400ms;
+                transition: transform 400ms;
+            }
+        }
+    }
+
+    dl{
+        position: relative;
+        padding-top: $img-height;
+        text-align: left; vertical-align: top;
+    }
+    dt.title {
+        display: block;
+        // height: 55px;
+        padding: 26px 30px;
+        @include font('', 15px, 1.4, #000) ;
+        box-sizing: content-box;
+
+        & > span{
+            display: block;
+
+            > span{
+
+            }
+        }
+    }
+    dd.img {
+        position: absolute; top:0; left: 0;
+        width: 100%;
+        padding-top:inherit;
+        overflow: hidden;
+    }
+
+
+    //더 보기
+    &.load-more-content{
+        a{
+            display: block;
+            position: relative;
+            padding-top:$img-height;
+            transition: all 0.3s;
+            > span{
+                display: block;
+                position: absolute; left:0; top:0;
+                width:100%; height:100%;
+                border:1px solid #000;
+
+                span{
+                    position: absolute; left:50%; top:50%;
+                    font-size: 15px;
+                    transform: translate(-50%, -50%);
+
+                }
+
+
+                /*&:before, &:after{
+                    display: block;
+                    position: absolute; left:50%; top:50%;
+                    background: #000;
+                    transition: all 0.1s;
+                }
+                &:before{
+                    width:2px; height:40px;
+                    margin:-20px 0 0 -1px;
+                }
+                &:after{
+                    width:40px; height:2px;
+                    margin:-1px 0 0 -20px;
+                }*/
+
+                &:hover, &:focus{
+                   /* &:before {
+                        height:50px;
+                        margin:-25px 0 0 -1px;
+                    }
+                    &:after{
+                        width:50px;
+                        margin:-1px 0 0 -25px;
+                    }*/
+                }
+            }
+
+            &:hover{
+                transition: all 0s;
+                background-color:#000 !important; color:#fff !important;
+
+            }
+        }
+    }
+}
+
+//## 차량비교 페이지 버튼 베리에이션
+
+/* 영상을 포함한 컨텐츠 모듈 */
+.mod-vod-area {
+    .vod-holder {
+        position: relative;
+        figure {
+            position: static; width: 100%; height: 0; overflow: hidden;
+            // 디자인별로 달라지는 값 padding-top: 27.36%;
+        }
+        .btn-view-vod {
+            display: block; position: absolute; top:50%; left: 50%; margin: -152px 0 0 -227px;  width: 454px; padding: 50px 0 48px; border-top: 1px solid #fff; border-bottom: 1px solid #fff;
+            span {display: block; @include font('bold', 20px, 1, #fff); text-align: center; letter-spacing: 2px;}
+            .btn-play {
+                transition: all 0.2s;
+                display: block; position: relative; width: 75px; height: 75px; border: 3px solid #fff; margin: 52px auto 0;
+                &:after {
+                    border-left-color: #fff;
+                }
+                &:hover, &:focus{
+                    transition: all 0.1s;
+                    border: 5px solid #FFFFFF;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
