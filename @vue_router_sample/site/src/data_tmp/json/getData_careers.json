@@ -1,0 +1,126 @@
+{
+	"status": 200,
+	"request":{
+        "cate":"august",
+        "p":1
+    },
+	"careers": {
+		"sort": [{
+			"name": "전체직군",
+			"code": "",
+			"total": 26
+		}, {
+			"name": "사업개발",
+			"code": "R201",
+			"total": "12"
+		}, {
+			"name": "영상제작&디자인",
+			"code": "R202",
+			"total": "10"
+		}, {
+			"name": "크리에이터 파트너십",
+			"code": "R203",
+			"total": "3"
+		}, {
+			"name": "경영지원",
+			"code": "R204",
+			"total": "1"
+		}],
+		"page": {
+			"current": 1,
+			"total": 10
+		},
+		"type": "creator",
+		"lists": [{
+				"idx": 1,
+				"isEnd": false,
+				"type": "상시",
+				"job": "상품 기획 MD",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "경력"
+			},
+			{
+				"idx": 2,
+				"isEnd": false,
+				"type": "상시",
+				"job": "IP 사업부문 콘텐츠 기획자",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "경력"
+			},
+			{
+				"idx": 3,
+				"isEnd": false,
+				"type": "상시",
+				"job": "IP 사업부문 커머스 파트장",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "경력"
+			},
+			{
+				"idx": 4,
+				"isEnd": false,
+				"type": "상시",
+				"job": "e스포츠 커뮤니티 매니저",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "신입/경력"
+			},
+			{
+				"idx": 5,
+				"isEnd": false,
+				"type": "상시",
+				"job": "e스포츠 비지니스 매니저",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "신입"
+			},
+			{
+				"idx": 6,
+				"isEnd": false,
+				"type": "상시",
+				"job": "상품 기획 MD",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "경력"
+			},
+			{
+				"idx": 7,
+				"isEnd": false,
+				"type": "상시",
+				"job": "IP 사업부문 콘텐츠 기획자",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "경력"
+			},
+			{
+				"idx": 8,
+				"isEnd": false,
+				"type": "상시",
+				"job": "IP 사업부문 커머스 파트장",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "경력"
+			},
+			{
+				"idx": 9,
+				"isEnd": false,
+				"type": "상시",
+				"job": "e스포츠 커뮤니티 매니저",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "경력"
+			},
+			{
+				"idx": 10,
+				"isEnd": true,
+				"type": "상시",
+				"job": "e스포츠 비지니스 매니저",
+				"area": "Business Development",
+				"term": "2019.01.01 - 2019.01.31",
+				"condition": "경력"
+			}
+		]
+	}
+}

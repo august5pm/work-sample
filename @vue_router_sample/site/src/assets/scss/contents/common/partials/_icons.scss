@@ -1,0 +1,202 @@
+@charset "utf-8";
+
+[class^="ico-"] {
+    //font-size:18px;
+    display:block; font-size:inherit;
+    &:before {
+        display:block; content:''; font-size:inherit; width:1em; height:1em;
+        background:{repeat:no-repeat; size:contain; position:center center;};
+    }
+
+}
+
+.ico {
+    // icon - slider
+    &-prev:before {background-image: url($path-common-img + "icon_lr_prev.png");}
+    &-next:before {background-image: url($path-common-img + "icon_lr_next.png");}
+    &-prev-flat:before {background-image: url($path-common-img + "icon_lr_flat_prev.png");}
+    &-next-flat:before {background-image: url($path-common-img + "icon_lr_flat_next.png");}
+
+    // icon - sns
+    &-sns-npost:before {background-image: url($path-common-img + "icon_sns_npost.png");}
+    &-sns-facebook:before {background-image: url($path-common-img + "icon_sns_facebook.png");}
+    &-sns-insta:before {background-image: url($path-common-img + "icon_sns_insta.png");}
+    &-sns-youtube:before {background-image: url($path-common-img + "icon_sns_youtube.png");}
+    &-sns-twitch:before {background-image: url($path-common-img + "icon_sns_twitch.png");}
+    &-sns-tiktok:before {background-image: url($path-common-img + "icon_sns_tiktok.png");}
+    // icon - sns color type yellow
+    &-sns-youtube-yl:before {background-image: url($path-common-img + "icon_sns_youtube_yl.png");}
+    &-sns-twitch-yl:before {background-image: url($path-common-img + "icon_sns_twitch_yl.png");}
+    &-sns-tiktok-yl:before {background-image: url($path-common-img + "icon_sns_tiktok_yl.png");}
+    // icon - sns color type gray
+    &-sns-youtube-gray:before {background-image: url($path-common-img + "icon_sns_youtube_gray.png");}
+    &-sns-twitch-gray:before {background-image: url($path-common-img + "icon_sns_twitch_gray.png");}
+    &-sns-tiktok-gray:before {background-image: url($path-common-img + "icon_sns_tiktok_gray.png");}
+    // icon - sns color type black
+    &-sns-youtube-bk:before {background-image: url($path-common-img + "icon_sns_youtube_bk.png");}
+
+    // icon - category
+    &-ct-all:before {background-image: url($path-common-img + "icon_category_box.png");}
+    &-ct-game:before {@include convert-pc-tb(margin-top,-2); background-image: url($path-common-img + "icon_category_game.png");}
+    &-ct-kids:before {background-image: url($path-common-img + "icon_category_kids.png");}
+    &-ct-food:before {background-image: url($path-common-img + "icon_category_food.png");}
+    &-ct-daily:before {background-image: url($path-common-img + "icon_category_dailylife.png");}
+
+    // icon - arrow for button
+    &-arrow-r:before {background-image: url($path-common-img + "icon_arr_r_bd.png");}
+    &-arrow-l:before {background-image: url($path-common-img + "icon_arr_l_bd.png");}
+    &-arrow-top:before {background-image: url($path-common-img + "icon_arr_top.png");}
+
+    // icon - for form
+    &-plus {
+        //@include convert-pc-tb(width, 23);
+        //@include convert-pc-tb(height, 23);
+        &:before,
+        &:after {display:block; font-size:inherit; background-color:#bbb;}
+        &:before {width:1em; height:2px; margin-top:-1px;}
+        &:after {position:absolute; width:2px; height:1em; top:0; left:50%; margin-top:-0.5em; margin-left:-1px;}
+    }
+
+    // icon - pageIndicator
+    &-indi-arrow-r:before {background-image: url($path-common-img + "icon_indi_arr_r.png");}
+    &-indi-arrow-l:before {background-image: url($path-common-img + "icon_indi_arr_l.png");}
+
+    // icon - etc
+    &-close:before {background-image: url($path-common-img + "icon_close.png");}
+    &-search:before {background-image: url($path-common-img + "icon_search.png");}
+    &-search-yl:before {background-image: url($path-common-img + "icon_search_yl.png");}
+    &-plus-circ:before {background-image: url($path-common-img + "icon_plus_circle.png");}
+    &-person:before {background-image: url($path-common-img + "icon_person.png");}
+    &-bookmark:before {background-image: url($path-common-img + "icon_bookmark.png");}
+    &-unknown:before {background-image: url($path-common-img + "icon_unknown.png");}
+    &-download:before {background-image: url($path-common-img + "icon_download.png");}
+    &-download-bk:before {background-image: url($path-common-img + "icon_download_bk.png");}
+
+    &-pop-close {
+        &:before {display:none;}
+
+        .line-holder {
+            display:block; position:relative; @include convert-pc-tb(width, 48); @include convert-pc-tb(height, 48);
+            overflow:hidden; transform-origine:50% 50%; transform:rotate(-45deg);
+        }
+        .line {
+            display:block; position:absolute;
+
+            &:before {display:block; content:''; width:100%; height:100%; background-color:#fff;}
+
+            &.line-1{
+                width:100%; @include convert-pc-tb(height,6);
+                left:0; right:0; top:50%; @include convert-pc-tb(margin-top,-3);
+            }
+            &.line-2 {
+                @include convert-pc-tb(width,6); height:100%;
+                top:0; bottom:0; left:50%; @include convert-pc-tb(margin-left,-3);
+            }
+        }
+    }
+}
+
+// icon style reset
+.ico-reset {
+    font-size: initial;
+    &:before {display:none;}
+}
+
+// logo
+.sd-logo {
+    display:block; position:relative; @include convert-pc-tb(width,160); @include convert-pc-tb(height,19);
+
+    &:before {
+        display:block;
+        position:absolute;
+        content:'';
+        width:100%; height:100%; top:0; right:0; bottom:0; left:0;
+        background:{repeat:no-repeat; position:center center; size:contain; image:url($path-common-img + "sd_logo.png")};
+    }
+
+    &:after {
+        display:block;
+        position:absolute;
+        content:'';
+        width:100%; height:100%; top:0; right:0; bottom:0; left:0;
+        background:{repeat:no-repeat; position:center center; size:contain; image:url($path-common-img + "sd_logo_bk.png")};
+        opacity:0;
+    }
+}
+.sd-logo-type-black {
+    //background-image: url($path-common-img + "sd_logo_bk.png");
+    //&:after {display:block;}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// MOBILE 버전
+///////////////////////////////////////////////////////////////////////////////////////////
+@include break-point($mobile) {
+
+    .ico {
+        // icon - for form
+        &-plus {
+            &:before {width:1em; height:1px;}
+            &:after {width:1px; height:1em; margin-top:-0.5em;}
+        }
+
+        // icon hamburg for mobile
+        &-hamburg {
+            position:relative;
+            @include vw-convert-mo(width,64);
+            //@include vw-convert-mo(height,6);
+            height:3px;
+            @include vw-convert-mo(margin, 21 0);
+            background-color:#fff;
+            box-sizing:content-box;
+            &:before,
+            &:after {
+                display:block;
+                content:'';
+                position:absolute;
+                width:100%;
+                left:0;
+                //@include vw-convert-mo(height,6);
+                height:3px;
+                background-color:#fff;
+            }
+            &:before {top:0; @include vw-convert-mo(margin-top,-21);}
+            &:after {bottom:0; @include vw-convert-mo(margin-bottom,-21);}
+
+            &.type-black {
+                @extend .ico-hamburg-type-black;
+            }
+        }
+
+        // icon hamburg type black for mobile
+        &-hamburg-type-black {
+            background-color:$sd-black;
+            box-sizing:content-box;
+            &:before,
+            &:after {
+                background-color:$sd-black;
+            }
+        }
+
+        &-pop-close {
+            .line-holder {
+                @include vw-convert-mo(width, 48); @include vw-convert-mo(height, 48);
+            }
+            .line {
+                &.line-1{
+                    @include vw-convert-mo(height,6); @include vw-convert-mo(margin-top,-3);
+                }
+                &.line-2 {
+                    @include vw-convert-mo(width,6); @include vw-convert-mo(margin-left,-3);
+                }
+            }
+        }
+    }
+
+    .sd-logo {
+        @include vw-convert-mo(width,242); @include vw-convert-mo(height,30);
+    }
+}
+
+
+

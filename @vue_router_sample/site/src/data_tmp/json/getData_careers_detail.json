@@ -1,0 +1,25 @@
+{
+	"status": 200,
+	"request":{
+        "cate":"august",
+        "p":1
+    },
+    "careers":{
+        "page":{
+            "current":1,
+            "total":10
+        },
+        "cate":"august",
+        "detail":{
+            "idx":1,
+            "type":"상시",
+            "job":"IP 사업부문 커머스 파트장",
+            "area":"Business Development",
+            "term":"2019.01.01 - 2019.01.31",
+            "condition":"경력",
+            "content":"<img src='/assets/images/pc/careers/detail_tmp.jpg' alt=''><dl><dt>[담당업무]</dt><dd>브랜드와 크리에이터를 활용한 상품 기획 및 제작<ul><li>상품 기획 및 제작</li><li>제조사 발굴 및 관리</li><li>판매 전략 수립</li></ul></dd><dd>상품화 라이센싱 파트너사 관리</dd><dd>커머스 입점, 상품 데이터 관리, QA, 매출 정산 등 업무 전반 서포트</dd></dl><dl><dt>[자격요건]</dt><dd>4년제 대졸 이상</dd><dd>상품 기획/제작 관련 경력 1년 이상 (Manager)</dd><dd>상품 기획/제작 관련 경력 3년 이상 (Senior Manager)</dd><dd>콘텐츠를 사랑하시는 분 (유튜브/게임/영화/책/웹툰 무관)</dd><dd>디자인, 파트너사, 유통팀 등 Multi-Functional한 팀과의 협업 능력</dd><dd>시장의 트렌드를 잘 이해하고 브랜드에 대한 관심이 높은 자</dd></dl><dl><dt>[우대사항]</dt><dd>판촉/문구/잡화/리빙/의류 쪽에 3년 이상의 MD 근무 경험 및 전문성을 가지신 분</dd><dd>IP 콜라보 MD 출시 경험이 있으신 분</dd><dd>유튜브 생태계에 대한 이해도가 높으신 분</dd><dd>지원 방법 및 결과 발표</dd><dd>아래의 채용 담당자 이메일로 자유 형식의 이력서/자기소개서 제출</dd><dd>채용 담당자: hr@augustnetwork.net</dd><dd>지원 마감: 채용 완료 시</dd><dd>서류 전형 합격자에 한해 개별 연락</dd><dd>전형 절차: 서류 전형 – 실무 면접 – 임원 면접 – 최종 합격</dd></dl>"
+        },
+        "prev_idx":null,
+        "next_idx":2
+    }
+}

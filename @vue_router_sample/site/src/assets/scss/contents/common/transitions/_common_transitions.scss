@@ -1,0 +1,231 @@
+@charset "utf-8";
+
+.page-transition-wrap{
+    position:fixed;
+    width:100vw;
+    height:200vh;
+    top:0;
+    left:0;
+    overflow: hidden;
+    z-index:1000;
+    pointer-events: none;
+
+    li{
+        position:absolute;
+        width:100%;
+        height:100vh;
+        top:0;
+        left:0;
+        margin-top:calc(100vh + 57vw);
+        transform: skewY(-30deg);
+
+        overflow: hidden;
+
+        &.tr-1{
+            height:30vh;
+            background-color: $sd-yellow;
+        }
+        &.tr-2{
+            background-color: $sd-pink;
+        }
+        &.tr-3{
+            height:160vh;
+            background-color: $sd-blue;
+        }
+    }
+    &.tr-page-enter-active{
+        transition:opacity 1.25s;
+        li{
+            &.tr-1{
+                transition : height 0.7s $ease-in-cubic , margin-top 0.95s $ease-in-out-cubic;
+            }
+            &.tr-2{
+                transition : margin-top 0.7s $ease-in-cubic;
+            }
+            &.tr-3{
+                transition : height 1.25s $ease-in-cubic,margin-top 1.25s $ease-in-out-cubic;
+            }
+        }
+    }
+    &.tr-page-enter-to{
+        li{
+            margin-top:calc(-100vh - 57vw);
+            &.tr-1{
+                height:0;
+            }
+            &.tr-3{
+                height:0;
+            }
+        }
+    }
+    &.tr-page-leave-active{
+        transition:opacity 0s;
+    }
+}
+
+/*
+.ie,
+.edge{
+    .tr-page-leave-active{
+        &.inner-footer{
+            transition : height 1.3s $ease-in-out-cubic;
+        }
+    }
+}*/
+
+.tr-opacity-enter{
+    opacity:0;
+}
+.tr-opacity-enter-active{
+    transition: opacity 0.5s;
+}
+
+.page-destory{
+    &#container-sb{
+        //position:absolute;
+
+        //height:300vh;
+        transform:skewY(-30deg);
+        overflow:hidden;
+
+        #content-sb{
+            width:100%;
+            //height:100vh;
+            //margin-top:100vh;
+            transform:skewY(30deg);
+
+            #con-sb{
+                position:relative;
+            }
+        }
+    }
+}
+
+.tr-page-leave{
+    @at-root #main-sb .inner-wrap{
+        position : relative;
+        width : 100%;
+
+        overflow: hidden;
+    }
+
+    &.inner-footer{
+        width: 100%;
+        height: 200vw;
+        //margin-top: -50vw;
+        overflow: hidden;
+
+        .con{
+
+            //margin-top: 50vw;
+        }
+    }
+}
+.tr-page-leave-to{
+
+    @at-root #main-sb .inner-wrap{
+        position : relative;
+        width : 100%;
+        overflow: hidden;
+    }
+    &#container-sb{
+        height:0!important;
+    }
+
+    #container-sb{
+        height:0!important;
+    }
+
+    &.inner-footer{
+        height: 0;
+        transform: skewY(-30deg);
+        margin-top:-50vw;
+        .con{
+            margin-top:50vw;
+            transform: skewY(30deg);
+        }
+    }
+}
+.tr-page-leave-active{
+    transition : height 0.9s $ease-in-out-cubic;
+    #container-sb{
+        transition : height 0.9s $ease-in-out-cubic;
+    }
+    &.inner-footer{
+        transition : height 0.85s $ease-in-out-cubic;
+    }
+}
+@include break-point($mobile) {
+    .page-transition-wrap{
+        li {
+            &.tr-1 {
+                height: 12vh;
+            }
+            &.tr-2 {
+                height: 50vh;
+            }
+            &.tr-3 {
+                height: 70vh;
+            }
+        }
+
+    }
+    .tr-page-enter{
+        //header-mobile
+        &.gnb-wrap-tr{
+            .gnb-wrap-tr2{
+                height: 0!important;
+                .gnb-wrap-tr3{
+                    overflow-y: hidden!important;
+                }
+            }
+        }
+    }
+    .tr-page-enter-to{
+        &.gnb-wrap-tr {
+            .gnb-wrap-tr2{
+                .gnb-wrap-tr3{
+                    overflow-y: hidden!important;
+                }
+            }
+        }
+    }
+
+    .tr-page-enter-active {
+        &.gnb-wrap-tr{
+            transition: height 0.9s $ease-in-out-cubic;
+            .gnb-wrap-tr2{
+                transition: height 0.9s $ease-in-out-cubic;
+            }
+        }
+    }
+    .tr-page-leave-active{
+        transition : height 0s $ease-in-out-cubic;
+        #container-sb{
+            transition : height 0s $ease-in-out-cubic;
+        }
+        &.inner-footer{
+            transition : height 0s $ease-in-out-cubic;
+        }
+
+        &.gnb-wrap-tr {
+            transition: opacity 1s;
+            .gnb-wrap-tr2{
+                @include break-point($mobile) {
+                    transition: height 1s $ease-in-out-cubic;
+                }
+            }
+        }
+    }
+
+    .tr-page-leave-to{
+        &.gnb-wrap-tr{
+            .gnb-wrap-tr2{
+                @include break-point($mobile) {
+                    height: 0!important;
+                }
+            }
+        }
+    }
+
+}

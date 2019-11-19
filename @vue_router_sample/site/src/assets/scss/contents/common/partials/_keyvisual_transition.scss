@@ -1,0 +1,309 @@
+@charset "utf-8";
+
+body {
+    $defaultDelay : 0.2;
+    $initDelay : 0.6;
+
+    // no slick
+    .business-brand,
+    .business-ip,
+    .esports,
+    .about,
+    .ir-notice {
+        .section-keyvisual{
+            .kv-list-wrap{
+                .kv-item {
+                    &-tit {
+                        .txt-tit { overflow:hidden;
+                            span.txt-box{ display:block; transform:translateY(100%); opacity:0; } // 키비주얼 모션1
+                        }
+                        .txt-tit_explain{
+                            span.txt-box{
+                                display:block; transform:translateY(100%); opacity:0;  // 키비주얼 모션2
+                            }
+                        }
+                        .txt-des{
+                            display:block; transform:translateY(100%); opacity:0;  // 키비주얼 모션3
+                        }
+                    }
+                    .btn-wrap{
+                        transform:translateY(0); opacity:0;  // 키비주얼 모션4
+                    }
+                }
+            }
+            &.onShow{
+                .kv-list-wrap{
+                    .kv-item{
+                        &-tit{
+                            .txt-tit {
+                                span.txt-box{ transform:translateY(0); opacity:1; transition:transform 0.45s $defaultDelay+s cubic-bezier(0.29, 0.13, 0.25, 1), opacity 0.25s $defaultDelay+s ease-out; }
+                            }
+                            .txt-tit_explain{
+                                span.txt-box{
+                                    transform:translateY(0); opacity:1; transition:transform 0.55s ( $defaultDelay + 0.15 )+s cubic-bezier(0.29, 0.13, 0.25, 1), opacity 0.25s ( $defaultDelay + 0.15 )+s ease-out;
+                                }
+                            }
+                            .txt-des{
+                                span.txt-box{
+                                    transform:translateY(0); opacity:1; transition:transform 0.65s ( $defaultDelay + 0.3 )+s cubic-bezier(0.29, 0.13, 0.25, 1), opacity 0.25s ( $defaultDelay + 0.3 )+s ease-out;
+                                }
+                            }
+                        }
+                        .btn-wrap{
+                            transform:translateY(0); opacity:1; transition:transform 0.45s ( $defaultDelay + 0.3 )+s $ease-out-quad, opacity 0.2s ( $defaultDelay + 0.8 )+s linear;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // creator kv motion
+    .creator-creators {
+        .creators-kv {
+            .v-slick { //.kv-slide-wrap
+                .kv-item-wrap{
+                    .kv-item{
+                        .kv-item-tit{
+                            .tit-top{ overflow : hidden;
+                                strong{ transform : translateY(100%); opacity:0; margin-top:0; }
+                                .txt-tit_explain{}
+                            }
+                            .txt-tit{ overflow : hidden;
+                                span{ display:block; }
+                            }
+                            .tit-bottom{
+                                .txt-tit_desc{ overflow : hidden;
+                                    span{ display:block; transform : translateY(-100%); opacity:0; }
+                                }
+                                .btn-wrap{ opacity:0; }
+                            }
+                        }
+                        &.onShow{
+                            $transDuration : 4s;
+                            $transDelay :0s;
+                            $transEasing : cubic-bezier(0.13, 0.16, 0, 1);
+
+                            .tit-top{ overflow : hidden; transform : none;
+                                strong{ opacity:1; transform : translateY(0%); transition:transform 0.4s ( $defaultDelay - 0.1 )+s cubic-bezier(0.29, 0.13, 0.25, 1), opacity 0.25s ( $defaultDelay - 0.1 )+s $ease-out-cubic; }
+                            }
+                            .txt-tit{ overflow : hidden; opacity:1; transform : none; color:#fff;
+                                span{ opacity:1; display:block; transform : translateY(0%); transition:opacity 0.3s ( $defaultDelay - 0.2 )+s linear,color 0.25s linear; }
+                            }
+                            .tit-bottom{
+                                .txt-tit_desc{ overflow : hidden; opacity:1;
+                                    span{ opacity:1; display:block; transform : translateY(0); transition:transform 0.4s ( $defaultDelay + 0.02 )+s cubic-bezier(0.29, 0.13, 0.25, 1), opacity 0.25s ( $defaultDelay + 0.02 )+s $ease-out-cubic; }
+                                }
+                                .btn-wrap{ opacity:1; transition: opacity 0.4s ( 0.4 )+s ease-out; }
+                            }
+                        }
+                        &.onHide{
+                            .tit-top{ transform: translateX(0); opacity:0; transition:opacity 0.4s linear;
+                                strong{ transform : translateY(0); opacity:1; }
+                            }
+                            .txt-tit{ transform: translateX(0); opacity:1; transition:opacity 0.4s linear;
+                                span{ opacity:1; color:#4c5bbb; transition:color 0.4s linear; }
+                            }
+                            .tit-bottom{ transform : translateX(0); opacity:0; transition:opacity 0.4s linear;
+                                .txt-tit_desc{ overflow : hidden; opacity:1;
+                                    span{ transform : translateY(0); opacity:1; }
+                                }
+                                .btn-wrap{ opacity:1 }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // esports-txt- motion
+    .esports{
+        .section-keyvisual{
+            .kv-list-wrap{
+                .kv-item {
+                    .txt-tit_desc{
+                        transform:translateY(0); opacity:0;  // 키비주얼 모션4
+                    }
+                }
+            }
+            &.onShow{
+                .kv-list-wrap{
+                    .kv-item{
+                        .txt-tit_desc{
+                            transform:translateY(0); opacity:1; transition:transform 0.45s ( $defaultDelay + 0.3 )+s $ease-out-quad, opacity 0.2s ( $defaultDelay + 0.8 )+s linear;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    // bg-transition
+    .business-brand,
+    .business-ip,
+    .esports,
+    .about,
+    .ir-notice{
+        .section-keyvisual {
+            .kv-list-wrap {
+                .kv-item {
+                    figure{
+                        transform: translate3d(-50%, -50%, 0) scale(1.2 ); opacity:0.1;
+                    }
+
+                    // onlyInited_Desktop
+                    &.isStartDeskTop{
+                        figure{ transform: translate3d(-50%, -50%, 0) scale(1); opacity:1; transition : transform 1s $ease-out-cubic, opacity 1s linear; }
+                    }
+                    &.onChangeTrans{
+                        figure{ transition : none; transform: translate3d(-50%, -50%, 0) scale(1); opacity:1; }
+                    }
+
+                    // // onlyInited_Mobile
+                    &.isStartMobile{
+                        figure{
+                            transform: translate3d(-50%, -50%, 0) scale(1); opacity:1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    .esports{
+        .section-keyvisual {
+            .kv-list-wrap {
+                .kv-item {
+                    figure{
+                        transform: translate3d(-50%, 0%, 0) scale( 1.2 ); opacity:0.3; transform-origin: 58% 20.4%; // 마크기준 origin
+                    }
+
+                    // onlyInited_Desktop
+                    &.isStartDeskTop{
+                        figure{ transform: translate3d(-50%, 0%, 0) scale( 1 ); }
+                    }
+                    &.onChangeTrans{
+                        figure{ transition : none; transform: translate3d(-50%, 0%, 0) scale( 1 ); }
+                    }
+                }
+            }
+        }
+    }
+
+
+    .about{
+        .section-keyvisual {
+            .kv-list-wrap {
+                .kv-item {
+                    figure{
+                        transform: translate3d(-50%, -42%, 0) scale( 1.2 ); opacity:0.3; transform-origin: 50% 42%;
+                    }
+
+                    // onlyInited_Desktop
+                    &.isStartDeskTop{
+                        figure{ transform: translate3d(-50%, -42%, 0) scale(1); }
+                    }
+                    &.onChangeTrans{
+                        figure{ transition : none; transform: translate3d(-50%, -42%, 0) scale(1); }
+                    }
+                }
+            }
+        }
+    }
+
+    // cntr Fixed
+    // 일반 키비
+
+    @at-root .edge,.ie{
+        .main,
+        .creator-creators,
+        .creator-agency,
+        .careers-august{
+            .content-size-full{
+                .inner-content-wrap{ position:relative!important; left: 0; top: 0; transform: none;}
+            }
+        }
+    }
+
+    @at-root .edge,.ie{
+        .business-brand,
+        .business-ip,
+        .esports,
+        .about,
+        .ir-notice{
+            .kv-item-img{ position:relative!important; left: 0; width: auto; }
+        }
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    // MOBILE 버전
+    ///////////////////////////////////////////////////////////////////////////////////////////
+
+    @include break-point($mobile) {
+
+        // creator kv motion
+        .creator-creators{
+            .creators-kv{
+                .v-slick {  //.kv-slide-wrap
+                    .kv-item-wrap{
+                        .kv-item{
+                            &.onSetMobile {
+                                .txt-tit{
+                                    opacity:1; color:#fff;
+                                    span{opacity:1;}
+                                }
+                            }
+                            &.onShow{
+                                $transDuration : 4s;
+                                $transDelay :0s;
+                                $transEasing : cubic-bezier(0.13, 0.16, 0, 1);
+
+                                .tit-top{
+                                    strong{ transition:transform 0.4s ( $defaultDelay + 0.35 )+s cubic-bezier(0.29, 0.13, 0.25, 1), opacity 0.25s ( $defaultDelay + 0.35 )+s $ease-out-cubic; }
+                                }
+                                .txt-tit{
+                                    span{ transition:opacity 0.35s ( $defaultDelay + 0.15 )+s linear,color 0.4s linear; }
+                                }
+                                .tit-bottom{
+                                    .txt-tit_desc{
+                                        span{ transition:transform 0.4s ( $defaultDelay + 0.35 )+s cubic-bezier(0.29, 0.13, 0.25, 1), opacity 0.25s ( $defaultDelay + 0.35 )+s $ease-out-cubic; }
+                                    }
+                                    .btn-wrap{ transition: opacity 0.2s ( 0.7 )+s ease-out; }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // bg-transition
+        .business-brand,
+        .business-ip,
+        .esports,
+        .about,
+        .ir-notice {
+            .section-keyvisual {
+                .kv-list-wrap {
+                    .kv-item {
+                        figure{
+                            transform: translate3d(0, 0, 0) scale(1); opacity:1;
+                        }
+                    }
+                }
+                &.onShow{
+                    .kv-list-wrap{
+                        .kv-item{
+                            figure{ transform: translate3d(0, 0, 0) scale(1); opacity:1; transition : none; }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

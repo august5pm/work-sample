@@ -1,0 +1,33 @@
+{
+	"status": 200,
+    "news":{
+        "recommend":{
+           "lists":[
+                {
+                    "idx":1,
+                    "img_url":"/assets/images/pc/template/news_key_img_1.jpg",
+                    "title":"추천뉴스 내용 1",
+                    "date":"2018 12 20",
+                    "cate":"AUGUST",
+                    "link":""
+                },
+                {
+                    "idx":2,
+                    "img_url":"/assets/images/pc/template/news_key_img_2.jpg",
+                    "title":"추천뉴스 내용 2",
+                    "date":"2018 12 20",
+                    "cate":"CREATOR",
+                    "link":"https://www.insight.co.kr/news/205321"
+                },
+                {
+                    "idx":3,
+                    "img_url":"/assets/images/pc/template/news_key_img_3.jpg",
+                    "title":"추천뉴스 내용 3",
+                    "date":"2018 12 20",
+                    "cate":"AUGUST",
+                    "link":""
+                }
+           ]
+        }
+    }
+}
