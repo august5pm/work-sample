@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+@import './abstracts/_abstracts-dir';
+@import './base/_base-dir';
+@import './vendor/_vendor-dir';
+
+html,
+body {
+    height: 100%;
+    background: #fff;
+}
+.wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+
+    .contents {
+        position: relative;
+        height: 100%;
+        .gs-section {
+            position: relative;
+            height: 100%;
+        }
+        .main {
+            background-color: gray;
+        }
+        .world {
+            background-color: green;
+            .inner {
+                height: 100%;
+                button {
+                    position: absolute;
+                    z-index: 30;
+                }
+                .story {
+                    position: absolute;
+                    height: 100%;
+                    .gs-video {
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+        .character {
+            background-color: red;
+        }
+        .weapon {
+            background-color: blue;
+        }
+        .media {
+            background-color: violet;
+        }
+    }
+}
+.popup {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    &.open {
+        display: block;
+    }
+    .inner {
+        position: relative;
+        text-align: center;
+        height: 100%;
+        font-size: 0;
+        .dimmed {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #000;
+            opacity: 0.8;
+        }
+        &::before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+        .container {
+            display: inline-block;
+            position: relative;
+            width: 100%;
+            height: 56.25vw;
+            background-color: gray;
+            vertical-align: middle;
+        }
+    }
+    &.popup-youtube {
+        .youtube-player {
+            display: none;
+            &.play {
+                display: block;
+            }
+        }
+    }
+}
