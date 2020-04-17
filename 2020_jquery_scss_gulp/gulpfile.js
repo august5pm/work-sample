@@ -35,18 +35,27 @@ function jsVendor() {
 			srcPath + 'assets/js/vendor/jquery-1.12.4.min.js',
 			srcPath + 'assets/js/vendor/gsap.min.js',
 			srcPath + 'assets/js/vendor/swiper.min.js',
-			srcPath + 'assets/js/vendor/NPIXEL.libs.js'
+			srcPath + 'assets/js/vendor/AFP.libs.js'
 		])
 		.pipe(concat('vendor.min.js'))
 		.pipe(uglify())
-		.pipe(dest(buildPath + 'assets/js/vendor'))
+		.pipe(dest(buildPath + 'assets/js'))
 }
 // main.min.js
 function jsMain() {
 	return src([
-			srcPath + 'assets/js/main.js'
+			srcPath + 'assets/js/contents/common/resize.js',
+			srcPath + 'assets/js/contents/common/scroll.js',
+			srcPath + 'assets/js/contents/common/resize.js',
+			srcPath + 'assets/js/contents/common/swiper.js',
+			srcPath + 'assets/js/contents/common/wheel.js',
+			srcPath + 'assets/js/contents/popup/popup.js',
+			srcPath + 'assets/js/contents/popup/popup_world.js',
+			srcPath + 'assets/js/contents/popup/popup_youtube.js',
+			srcPath + 'assets/js/contents/main.js',
+			srcPath + 'assets/js/contents/world.js'
 		])
-		.pipe(concat('main.min.js'))
+		.pipe(concat('contents.min.js'))
 		.pipe(uglify())
 		.pipe(dest(buildPath + 'assets/js'))
 }
@@ -83,8 +92,9 @@ function sassCompile() {
 function copyIndex() {
 	return src([srcPath + 'index.html'])
 		.pipe(htmlReplace({
-			'js': ['./assets/js/vendor/vendor.min.js?v='+time, './assets/js/main.min.js?v='+time]
+			'js': ['./assets/js/vendor.min.js?v='+time, './assets/js/contents.min.js?v='+time]
 		}))
+		.pipe(replace('vendor/detectizr.min.js', 'detectizr.min.js'))
 		.pipe(replace('.css', '.css?v='+time))
 		.pipe(dest(buildPath))
 }
@@ -106,14 +116,14 @@ function copyFavicon() {
 // Js file copy
 function copyJs() {
 	return src([srcPath + 'assets/js/vendor/detectizr.min.js'])
-		.pipe(dest(buildPath + 'assets/js/vendor/'))
+		.pipe(dest(buildPath + 'assets/js/'))
 }
-// Font file copy
+// Fonts folder copy
 function copyFont() {
 	return src([srcPath + 'assets/fonts/*'])
 		.pipe(dest(buildPath + 'assets/fonts/'))
 }
-// Video file copy
+// Video folder copy
 function copyVideo() {
 	return src([srcPath + 'assets/video/*'])
 		.pipe(dest(buildPath + 'assets/video/'))
