@@ -5,6 +5,7 @@
     'use strict';
     win.AFP = win.AFP || {};
     var UTIL = win.AFP.libs.utils,
+        CustomEvents = win.NPIXEL.libs.customEvents,
         pluginName = 'popupLayer';
     win.AFP[pluginName] = function (container, args) {
         if (!(this instanceof win.AFP[pluginName])) {
@@ -42,11 +43,11 @@
             var popupId = $(e.currentTarget).data('target');
             var youtubeId = $(e.currentTarget).data('youtube-id');
             var data = { popupId: popupId, videoId: youtubeId };
-            this.contents.trigger('open_popup', data);
+            this.contents.trigger(CustomEvents.OPEN_POPUP, data);
         },
         // 딤드를 클릭했을 때
         onClick_dimmed: function (e, data) {
-            this.contents.trigger('close_popup');
+            this.contents.trigger(CustomEvents.CLOSE_POPUP);
         },
     };
     $(function () {

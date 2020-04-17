@@ -5,6 +5,7 @@
     'use strict';
     win.AFP = win.AFP || {};
     var UTIL = win.AFP.libs.utils,
+        CustomEvents = win.NPIXEL.libs.customEvents,
         pluginName = 'windowResize';
     win.AFP[pluginName] = function (container, args) {
         if (!(this instanceof win.AFP[pluginName])) {
@@ -52,7 +53,7 @@
         // 타이머 이벤트 핸들러
         timerHandler: function () {
             this.stopTimer();
-            this.contents.trigger('resizeComplete');
+            this.contents.trigger(CustomEvents.COMPLETE_RESIZE);
         },
     };
     $(function () {

@@ -6,6 +6,7 @@
     win.AFP = win.AFP || {};
     var UTIL = win.AFP.libs.utils,
         GlobalVars = win.AFP.libs.globalVars,
+        CustomEvents = win.NPIXEL.libs.customEvents,
         pluginName = 'popupYoutubePlayer';
 
     win.AFP[pluginName] = function (container, args) {
@@ -49,8 +50,8 @@
         },
         // 콜백 이벤트 등록
         bindCallbackEvents: function () {
-            this.contents.on('open_popup', $.proxy(this.onOpen_popup, this));
-            this.contents.on('close_popup', $.proxy(this.onClose_popup, this));
+            this.contents.on(CustomEvents.OPEN_POPUP, $.proxy(this.onOpen_popup, this));
+            this.contents.on(CustomEvents.CLOSE_POPUP, $.proxy(this.onClose_popup, this));
         },
         // 팝업 열기 이벤트
         onOpen_popup: function (e, data) {

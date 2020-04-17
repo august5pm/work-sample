@@ -5,6 +5,7 @@
     'use strict';
     win.AFP = win.AFP || {};
     var UTIL = win.AFP.libs.utils,
+        CustomEvents = win.NPIXEL.libs.customEvents,
         pluginName = 'worldSection';
     win.AFP[pluginName] = function (container, args) {
         if (!(this instanceof win.AFP[pluginName])) {
@@ -35,8 +36,8 @@
         bindEvents: function () {},
         // 콜백 이벤트
         bindCallbackEvents: function () {
-            this.contents.on('startSlide', $.proxy(this.onStart_slide, this));
-            this.contents.on('endSlide', $.proxy(this.onEnd_slide, this));
+            this.contents.on(CustomEvents.START_SLIDE, $.proxy(this.onStart_slide, this));
+            this.contents.on(CustomEvents.END_SLIDE, $.proxy(this.onEnd_slide, this));
         },
         // 슬라이드 변경 시작
         onStart_slide: function (e, from, to) {},

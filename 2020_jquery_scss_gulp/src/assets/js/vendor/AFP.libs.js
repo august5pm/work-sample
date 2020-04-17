@@ -311,4 +311,12 @@ var utils = (function() {
     window.AFP.libs.utils = utils;
     window.AFP.libs.globalVars = {};
     window.AFP.libs.globalVars.isMobile = Detectizr.device.type == 'mobile' ? true : false;
+    // custom events
+    window.NPIXEL.libs.customEvents = {};
+    window.NPIXEL.libs.customEvents.START_SLIDE = 'start_slide';
+    window.NPIXEL.libs.customEvents.END_SLIDE = 'end_slide';
+    window.NPIXEL.libs.customEvents.MOVE_SLIDE = 'move_slide';
+    window.NPIXEL.libs.customEvents.OPEN_POPUP = 'open_popup';
+    window.NPIXEL.libs.customEvents.CLOSE_POPUP = 'close_popup';
+    window.NPIXEL.libs.customEvents.COMPLETE_RESIZE = 'complete_resize';
 })();

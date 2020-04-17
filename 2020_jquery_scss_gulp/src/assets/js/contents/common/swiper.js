@@ -6,6 +6,7 @@
     win.AFP = win.AFP || {};
     var UTIL = win.AFP.libs.utils,
         GlobalVars = win.AFP.libs.globalVars,
+        CustomEvents = win.NPIXEL.libs.customEvents,
         pluginName = 'swiperCon';
     win.AFP[pluginName] = function (container, args) {
         if (!(this instanceof win.AFP[pluginName])) {
@@ -34,9 +35,9 @@
         bindEvents: function () {},
         // 콜백 이벤트 등록
         bindCallbackEvents: function () {
-            this.contents.on('open_popup', $.proxy(this.onOpen_popup, this));
-            this.contents.on('close_popup', $.proxy(this.onClose_popup, this));
-            this.contents.on('move_slide', $.proxy(this.onMove_slide, this));
+            this.contents.on(CustomEvents.OPEN_POPUP, $.proxy(this.onOpen_popup, this));
+            this.contents.on(CustomEvents.CLOSE_POPUP, $.proxy(this.onClose_popup, this));
+            this.contents.on(CustomEvents.MOVE_SLIDE, $.proxy(this.onMove_slide, this));
         },
         // 스와이퍼 ADD
         addSwiper: function () {
@@ -61,11 +62,11 @@
         },
         // 슬라이드 시작 이벤트
         onStart_slide: function () {
-            this.contents.trigger('startSlide', [this.mainSwiper.previousIndex, this.mainSwiper.activeIndex]);
+            this.contents.trigger(CustomEvents.START_SLIDE, [this.mainSwiper.previousIndex, this.mainSwiper.activeIndex]);
         },
         // 슬라이드 끝 이벤트
         onEnd_slide: function () {
-            this.contents.trigger('endSlide', [this.mainSwiper.previousIndex, this.mainSwiper.activeIndex]);
+            this.contents.trigger(CustomEvents.END_SLIDE, [this.mainSwiper.previousIndex, this.mainSwiper.activeIndex]);
         },
         // 팝업이 열렸을 때
         onOpen_popup: function (e, data) {

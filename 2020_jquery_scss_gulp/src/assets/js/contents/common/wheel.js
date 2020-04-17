@@ -6,6 +6,7 @@
     win.AFP = win.AFP || {};
     var UTIL = win.AFP.libs.utils,
         GlobalVars = win.AFP.libs.globalVars,
+        CustomEvents = win.NPIXEL.libs.customEvents,
         pluginName = 'mouseWheel';
     win.AFP[pluginName] = function (container, args) {
         if (!(this instanceof win.AFP[pluginName])) {
@@ -44,10 +45,10 @@
         },
         // 콜백 이벤트 등록
         bindCallbackEvents: function () {
-            this.contents.on('resizeComplete', $.proxy(this.onResizeComplete, this));
+            this.contents.on(CustomEvents.COMPLETE_RESIZE, $.proxy(this.onComplete_resize, this));
         },
         // 리사이즈 완료 되었을 때
-        onResizeComplete: function (e, data) {
+        onComplete_resize: function (e, data) {
             this.move(this.currentSlide, true);
         },
         // 마우스 이벤트 핸들러
@@ -84,7 +85,7 @@
                 this.isTrans = false;
                 return;
             }
-            this.contents.trigger('startSlide', [this.currentSlide, slide]);
+            this.contents.trigger(CustomEvents.START_SLIDE, [this.currentSlide, slide]);
             var targetY = $(win).height() * slide;
             var target = this.obj;
             gsap.to(target, {
@@ -98,7 +99,7 @@
         // 이동 완료
         moveComplete: function (slide) {
             this.isTrans = false;
-            this.contents.trigger('endSlide', [this.currentSlide, slide]);
+            this.contents.trigger(CustomEvents.END_SLIDE, [this.currentSlide, slide]);
             this.currentSlide = slide;
         },
     };
