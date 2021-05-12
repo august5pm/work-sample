@@ -14,7 +14,7 @@
     "gsap": "^3.2.6",
     "mobile-device-detect": "^0.3.3",
     "sass-resources-loader": "^2.0.1",
-    "swiper": "^5.3.6",
+    "swiper": "^6.5.1",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^4.1.0",
     "vue-router": "^3.0.1"
