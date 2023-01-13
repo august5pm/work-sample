@@ -1,4 +1,4 @@
-# npixel
+# Vue
 
 > A Vue.js project
 
