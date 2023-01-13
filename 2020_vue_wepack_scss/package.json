@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "gsap": "^3.2.6",
+    "gsap": "^3.6.0",
     "mobile-device-detect": "^0.3.3",
     "sass-resources-loader": "^2.0.1",
     "swiper": "^5.3.6",
