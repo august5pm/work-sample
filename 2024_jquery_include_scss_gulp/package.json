@@ -1,0 +1,40 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "CONTENTSMADANG. all right reserved",
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp prod",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "del": "^5.1.0",
+    "ejs": "^3.1.9",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssbeautify": "^3.0.1",
+    "gulp-file-include": "^2.3.0",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^3.0.0",
+    "nodemon": "^3.1.7",
+    "sass": "^1.63.6"
+  },
+  "dependencies": {
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-watch": "^5.0.1"
+  }
+}

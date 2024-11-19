@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+/*
+This file is used to contain all base imports.
+Files inside this folder can contain global styles used in the project.
+*/
+
+//Import Base files
+@import "body";
+@import "container";
+@import "header";
+@import "footer";
+@import "loader_screen";
+@import "popup";
+@import "section";
+@import "wrap";

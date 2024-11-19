@@ -1,0 +1,238 @@
+header{
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 56px;
+  justify-content: space-between;
+  z-index: 110;
+  .logo{
+    display: block;
+    position: relative;
+    margin: 10px 0 0 16px;
+    a{
+        display: block;
+        width: 80px;
+        height: 32px;
+        figure{
+            width:100%;
+            height:100%;
+            background: url('/assets/images/common/logo.png') 0 0 no-repeat;
+            background-size: 100%;
+        }
+    }
+  }
+
+  .btn-menu{
+    display: block;
+    position: relative;
+    width: 20px;
+    margin: 20px 20px 0 0;
+    cursor: pointer;
+    transition: left 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
+    span{
+      display: block; 
+      width: 20px;
+      height: 2px;
+      margin-bottom: 6px; 
+      background-color: #fff;
+      transition: transform 300ms cubic-bezier(0.6, 0.05, 0.28, 0.91), opacity 300ms, box-shadow 250ms, background-color 500ms;
+    }
+    &.is-active{
+        .top{transform: translateY(8px) rotate(-135deg);}
+        .middle{transform: scale(0);}
+        .bottom{transform: translateY(-8px) rotate(-45deg);}
+    }
+  }
+  &::before {
+    display: block;
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.8;
+  }
+}
+.gnb-wrap{
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  z-index: 100;
+  .inner {
+    position: relative;
+    height: calc(100vh - 56px);
+    margin-top: 56px;
+    padding: 0 24px;
+    overflow-y: auto;
+  }
+  .scroll-wrap {
+    width: 100%;
+  }
+  .lan-holder {
+    display: flex;
+    padding-top: 24px;
+    gap: 32px;
+    li {
+      position: relative;
+      a {
+        color: #BABABA;
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+      &:nth-child(n+2) {
+        &::before {
+          display: inline-block;
+          position: absolute;
+          content: '';
+          width: 1px;
+          height: 20px;
+          top: -2px;
+          left: -16px;
+          background-color: #BABABA;
+        }
+      }
+      &.is-active {
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .gnb-holder {
+    padding-top: 28px;
+    .depth1 {
+      padding-top: 28px;
+      font-size: 2.4rem;
+      font-weight: 800;
+      a {
+        color: #BABABA;
+        &:hover {
+          color: #fff;
+        }
+      }
+      &.is-active {
+        > a {
+          color: #fff;
+        }
+      }
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    .depth2-holder {
+      height: 0;
+      overflow: hidden;
+      /* &.is-active {
+        height: auto;
+      } */
+    }
+    .depth2 {
+      padding-top: 12px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      &.is-active {
+        > a {
+          color: #fff;
+        }
+      }
+    }
+  }
+  .sns-holder {
+    display: flex;
+    position: absolute;
+    bottom: 54px;
+    gap: 20px;
+    li {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        i {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &.sns-youtube {
+        i {
+          background: url('/assets/images/icon/ico_sns_youtube.svg') 0 0 no-repeat;
+          background-size: 100%;
+        }
+      }
+      &.sns-x {
+        i {
+          background: url('/assets/images/icon/ico_sns_x.svg') 0 0 no-repeat;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+  &.is-active {
+    display: block;
+  }
+  &.is-min-height {
+    .sns-holder {
+      position: relative;
+      margin-top: 120px;
+    }
+  }
+}
+
+/* 가로 해상도가 1024px 이상*/
+@media (min-width: 1024px) {
+  header {
+    .logo {
+      margin: 10px 0 0 120px;
+    }
+    .btn-menu{
+      margin: 20px 120px 0 0;
+    }
+  }
+  .gnb-wrap{
+    background: url('/assets/images/common/menu_bg_1x.jpg') no-repeat 50% 0% / cover;
+    &::before {
+      display: block;
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
+    }
+    .inner {
+      padding: 0 120px;
+    }
+    .scroll-wrap {
+      width: 260px;
+    }
+    .lan-holder {
+      padding-top: 60px;
+      li {
+        a {
+          font-weight: 700; 
+        }
+      }
+    }
+    .gnb-holder {
+      padding-top: 40px;
+      .depth1 {
+        padding-top: 48px;
+        font-size: 4.4rem;
+      }
+      .depth2 {
+        padding-top: 20px;
+        font-size: 2.4rem;
+        font-weight: 800;
+      }
+    }
+  }
+}

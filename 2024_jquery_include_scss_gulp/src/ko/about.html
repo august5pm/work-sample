@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	@@include('../_include/head.html', {
+		'page_title': '페이지 타이틀',
+		'path': 'ko/about.html'
+	})
+	<body id="container"> <!-- .show-menu -->
+		<div class="wrap">
+			@@include('../_include/header.html', {'about': 'is-active'})
+			<main class="about">
+				<section class="about-visual">
+					<div class="inner">
+						
+					</div>
+				</section>
+			</main>
+			@@include('../_include/footer.html')
+		</div>
+		<!-- Javascript -->
+		<!-- build:js -->
+		
+		@@include('../_include/script.html')
+
+		<!-- endbuild -->
+		<!-- // Javascript -->
+	</body>
+</html>

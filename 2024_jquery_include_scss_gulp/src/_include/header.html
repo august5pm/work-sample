@@ -1,0 +1,35 @@
+<!--[D] HEADER -->
+<header id="header" class="header">
+	<h1 class="logo">
+		<a href="/">
+			<figure>
+				<figcaption>로고</figcaption>
+			</figure>
+		</a>
+	</h1>
+	<a class="btn-menu">
+		<span class="top"></span>
+		<span class="middle"></span>
+		<span class="bottom"></span>
+	</a> 
+</header>
+<nav class="gnb-wrap">
+	<div class="inner">
+		<div class="scroll-wrap">
+			<ul class="gnb-holder">
+				<li class="depth1 @@if (context.about) {is-active}">
+					<a href="/ko/about.html">ABOUT</a>
+				</li>
+				<li class="depth1 @@if (context.voting) {is-active}">
+					<a href="#" class="btn-depth2">1뎁스 메뉴명</a>
+					<ul class="depth2-holder">
+						<li class="depth2 @@if (context.voting_main) {is-active}"><a href="#">2뎁스 메뉴명1</a></li>
+						<li class="depth2 @@if (context.voting_fan) {is-active}"><a href="#">2뎁스 메뉴명2</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<!--//[D] HEADER -->
+			

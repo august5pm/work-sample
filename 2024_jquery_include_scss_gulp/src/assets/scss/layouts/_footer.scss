@@ -1,0 +1,75 @@
+footer {
+  position: relative;
+  width: 100%;
+  border-top: 1px solid #212121;
+  background-color: #000;
+  .inner {
+    padding: 32px 16px;
+  }
+  .logo{
+    display: block;
+    position: relative;
+    a{
+      display: block;
+      width: 80px;
+      height: 32px;
+      figure{
+        width: 100%;
+        height: 100%;
+        background: url('/assets/images/common/logo.png') 0 0 no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
+  .select-family {
+    width: 100%;
+    height: 44px;
+    margin-top: 16px;
+    padding: 12px 24px;
+    font-size: 1.4rem;
+    background:#212121 url('/assets/images/icon/ico_arr_down.svg') no-repeat right 17px top 50%; appearance: none;
+    border: solid 1px #2e2e2e;
+    border-radius: 8px;
+    color: #fff;
+    &::-ms-expand {
+      /* for IE 11 */
+      display: none;
+    }
+    option:disabled{color: #969696;}
+  }
+  .copyright {
+    padding-top: 12px;
+    color: #969696;
+    font-size: 1.2rem;
+    font-weight: 400;
+    
+  }
+}
+
+/* 가로 해상도가 1024px 이상*/
+@media (min-width: 1024px) {
+  footer {
+    .inner {
+      padding: 56px 120px;
+    }
+    .logo-group {
+      display: flex;
+      justify-content: space-between;
+    }
+    .logo {
+      a {
+        width: 130px;
+        height: 52px;
+      }
+    }
+    .select-family {
+      width: 212px;
+      height: 52px;
+      margin-top: 0;
+    }
+    .copyright {
+      padding-top: 8px;
+      font-size: 1.3rem;
+    }
+  }
+}

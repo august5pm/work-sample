@@ -1,0 +1,143 @@
+.main {
+  .inner {
+    position: relative;
+    padding: 54px 16px;
+  }
+  
+  .btn {
+    display: inline-flex;
+    height: 42px;
+    padding: 0 24px;
+    margin-top: 24px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 99px;
+    &.blk {
+      background-color: #191919;
+      border-color: #212121;
+    }
+  }
+
+  &-visual {
+    li {
+      height: 80vw;
+      figure{
+        width:100%;
+        height:100%;
+      }
+    }
+    
+    .swiper-control {
+      display: inline-block;
+      position: absolute;
+      width: 34px;
+      height: 24px;
+      top: 12px;
+      right: 12px;
+      z-index: 10;
+      cursor: default;
+      &::before {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        border-radius: 99px;
+      }
+    }
+    .swiper-button-prev {
+      display: none;
+      &::after {
+        display: none;
+      }
+    }
+    .swiper-button-next {
+      display: none;
+      &::after {
+        display: none;
+      }
+    }
+    .swiper-pagination-fraction {
+      bottom: 5px;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #969696;
+      .swiper-pagination-current {
+        color: #fff;
+      }
+    }
+    .logo {
+      display: none;
+    }
+  }
+  &-info {
+    //height: 436px;
+    text-align: center;
+    font-size: 1.4rem;
+    .inner {
+      padding: 64px 16px;
+    }
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('/assets/images/main/m_info_bg.jpg') no-repeat 50% 50% / cover;
+    }
+  }
+}
+
+
+/* 가로 해상도가 1024px 이상*/
+@media (min-width: 1024px) {
+  .main {
+    overflow-x: hidden;
+    padding-top: 0;
+    .btn {
+      padding: 0 32px;
+      margin-top: 60px;
+    }
+    &-visual {
+      li {
+        height: 55.111vw;
+        &.visual-1 {
+          figure{
+            background: url('/assets/images/main/keyvisual_1.jpg') no-repeat 0% 0% / 100%;
+          }
+        }
+        &.visual-2 {
+          figure{
+            background: url('/assets/images/main/keyvisual_2.jpg') no-repeat 0% 0% / 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 가로 해상도가 1360px 이상*/
+@media (min-width: 1360px) {
+  .main {
+    &-info {
+      .info-bi {
+        transform: translate(-125%, -50%);
+        width: 572px;
+      }
+      .info-holder {
+        width: 710px;
+        transform: translate(-20%, -50%);
+      }
+      h2 {
+        font-size: 4.4rem;
+      }
+      p {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

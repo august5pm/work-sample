@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	@@include('./_include/head.html', {
+		'page_title': '페이지 타이틀',
+		'path': 'index.html'
+	})
+	<body id="container"> <!-- .show-menu -->
+		<div class="wrap">
+			@@include('./_include/header.html')
+			<main class="main">
+				<section class="main-visual">
+					
+				</section>
+			</main>
+			@@include('./_include/footer.html')
+		</div>
+
+		<!-- build:js -->
+		@@include('./_include/script.html')
+		<!-- endbuild -->
+		<script src="/assets/js/contents/main.js"></script>
+		<!-- // Javascript -->
+	</body>
+</html>
