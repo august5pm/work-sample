@@ -1,1 +1,1 @@
-# probaseball-prize-homepage
+# jquery + html include + scss + gulp
