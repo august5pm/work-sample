@@ -1,0 +1,167 @@
+/* @charset "utf-8";
+@font-face {
+	font-family:'Pretendard Variable';
+	font-weight: 45 920;
+	src: url('../fonts/PretendardVariable.ttf') format('opentype'),
+}
+@font-face {
+	font-family: 'Pretendard Variable';
+	font-weight: 45 920;
+	src: url('../fonts/PretendardVariable.woff2') format('woff2-variations');
+}
+
+@mixin font($size, $weight) {
+	font-size: $size + px;
+	font-weight: $weight;
+}
+@mixin font-impt($size, $weight) {
+	font-size: $size + px !important;
+	font-weight: $weight !important;
+}
+
+.font12-400 {@include font-impt(12, 400)}
+// .font12-500 {@include font-impt(12, 500)}
+// .font12-700 {@include font-impt(12, 700)}
+.font14-400 {@include font-impt(14, 400)}
+// .font14-500 {@include font-impt(14, 500)}
+// .font14-600 {@include font-impt(14, 600)}
+// .font14-700 {@include font-impt(14, 700)}
+// .font16-400 {@include font-impt(16, 400)}
+// .font16-500 {@include font-impt(16, 500)}
+// .font16-700 {@include font-impt(16, 700)}
+// .font18-700 {@include font-impt(18, 700)}
+// .font20-700 {@include font-impt(20, 700)}
+// .font24-700 {@include font-impt(24, 700)}
+
+.font-regular {font-weight: 400 !important;}
+.font-medium {font-weight: 500 !important;}
+.font-bold {font-weight: 700 !important;}
+
+.color-default {color: #20102b !important;}
+.color-primary {color: #003879 !important;}
+.color-primary2 {color: #376CFB !important;}
+.color-white {color: #fff !important;}
+.color-red {color: #FF2828 !important;}
+.color-blue {color: #82A3FF !important;}
+.color-blue2 {color: #E6ECFF !important;}
+.color-green {color: #33C481 !important;}
+
+.color-black1 {color: #444 !important;}
+.color-black2 {color: #333 !important;}
+.color-black3 {color: #888 !important;}
+.color-black4 {color: #5b5b5b !important;}
+
+.align-left {justify-content: flex-start !important; text-align: left !important;}
+.align-center {justify-content: center !important; text-align: center !important;}
+.align-right {justify-content: flex-end !important; text-align: right !important;}
+
+
+[class^=bullet-] {
+	>.bullet {
+		position: relative;
+		padding-left: 12px;
+
+		& + .bullet {
+			margin-top: 4px;
+		}
+
+		&:before {
+			content: '';
+			display: inline-block;
+			position: absolute;
+			left: 0;
+			color: inherit;
+		}
+	}
+	&.bullet-tit {
+		margin-bottom: 4px;
+	}
+	&.col {
+		.bullet {
+			flex-direction: column;
+			gap: 0;
+		}
+	}
+}
+
+.bullet {
+	&-dot {
+		>.bullet {
+			&:before {
+				content: 'ㆍ';
+				margin-right: 8px;
+			}
+		}
+		&.align-center {
+			.bullet:before {
+				position: static;
+				margin: 0;
+			}
+		}
+	}
+
+	&-dash {
+		>.bullet {
+			&:before {
+				content: '-';
+				margin-right: 8px;
+			}
+		}
+		&.align-center {
+			.bullet:before {
+				position: static;
+				margin: 0;
+			}
+		}
+	}
+
+	&-square {
+		>.bullet {
+			&:before {
+				top: 10px;
+				width: 4px;
+				max-width: 4px;
+				min-width: 4px;
+				height: 4px;
+				max-height: 4px;
+				min-height: 4px;
+				background: $primary;
+			}
+		}
+	}
+
+	&-num {
+		>.bullet {
+			display: flex;
+			gap: 4px;
+			padding: 0;
+
+			span {
+				min-width: 12px;
+			}
+		}
+	}
+}
+
+.require {
+	&:before {
+		content: '*';
+		display: none;
+		color: $red;
+		margin-right: 2px;
+	}
+	&:after {
+		content: '*';
+		color: $red;
+		margin-left: 2px;
+	}
+
+	&.reverse {
+		&:before {
+			display: initial;
+		}
+		&:after {
+			display: none;
+		}
+	}
+} */
